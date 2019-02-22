@@ -1,0 +1,276 @@
+﻿{
+  "member":[
+  {
+    "name": "Azrael",
+    "line1": "：「傾聽吧。晚鐘正響明了汝的名號。」",
+    "line2": "：「告死之羽，斬斷首級吧──」",
+    "line3": "：「死告天使（アズライール）……！」",
+    "image": "https://i.imgur.com/Cg9aoEt.gif",
+    "duration": 10000
+  },
+  {
+    "name": "Aroundight_Overload",
+    "line1": "：「到達最終、超越極限。」",
+    "line2": "：「彼方之王啊，請看著這道光吧！」",
+    "line3": "：「縛鎖全斷・過重湖光（アロンダイト・オーバーロード）！」",
+    "image": "https://i.imgur.com/akoTkFM.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Gae_Bolg_Alternative",
+    "line1": "：「刺穿吧，貫穿吧，」",
+    "line2": "：「貫穿死翔之槍（ゲイ・ボルク・オルタナティブ）！」",
+    "line3": "",
+    "image": "https://i.imgur.com/4ccXMiC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Unlimited_Blade_Works",
+    "line1": "：「I am, the bone of my sword.」",
+    "line2": "：「So, as I pray.」",
+    "line3": "：「無限劍制（アンリミテッド・ブレイド・ワークス）！」",
+    "image": "https://i.imgur.com/92FNbfp.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Chariot_My_Love",
+    "line1": "：「所有的力量都是我的力量，統御群眾的王權，」",
+    "line2": "：「凌虐群眾的鋼鐵，震撼群眾的恐怖！」",
+    "line3": "：「我可愛的鐵戰車（チャリオット・マイ・ラヴ）！」",
+    "image": "https://i.imgur.com/yV5fbRV.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Wu_Er_Da_1",
+    "line1": "：「百招全不如一招鮮，」",
+    "line2": "：「一招足以擊斃敵人。」",
+    "line3": "：「此乃無二打（にのうちいらず）！破！」",
+    "image": "https://i.imgur.com/yjH3egL.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Wu_Er_Da_2",
+    "line1": "：「老夫八極無需二手！」",
+    "line2": "：「喝！破！」",
+    "line3": "：「七竅噴血，橫屍在此罷！」",
+    "image": "https://i.imgur.com/yjH3egL.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Shimatsuken1",
+    "line1": "：「初次見面，幸會幸會。」",
+    "line2": "：「那就……死吧。」",
+    "line3": "：「——老子啊，可是劍術、天才啊啊啊啊！哈哈哈哈哈！！」",
+    "image": "https://i.imgur.com/fFclhvC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Shimatsuken2",
+    "line1": "：「你剛剛是不是想笑我？」",
+    "line2": "：「老子、不會再讓人、笑我——！",
+    "line3": "",
+    "image": "https://i.imgur.com/fFclhvC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Shimatsuken3",
+    "line1": "：「雖然和你無冤無仇，」",
+    "line2": "：「但這活總得幹……」",
+    "line3": "：「天！誅！！喝哈哈哈哈——！！」",
+    "image": "https://i.imgur.com/fFclhvC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Eternal_Lament1",
+    "line1": "：「連毀滅的命運都拋棄了我，那永遠的慟哭。」",
+    "line2": "：「天空啊！白雲啊！」",
+    "line3": "：「灑下憐憫的眼淚，詛咒生命吧！」",
+    "image": "https://i.imgur.com/a7JxonS.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Eternal_Lament2",
+    "line1": "：「終有一死的人……終會入土永眠的幸運者啊。」",
+    "line2": "：「我的艷羨！我的憎惡！」",
+    "line3": "：「你就連同死亡的痛苦來好好嘗嘗吧！」",
+    "image": "https://i.imgur.com/a7JxonS.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Bolverk_Gram1",
+    "line1": "：「魔劍完了。讓我見識下閣下的矜持吧……！」",
+    "line2": "：「此即為破滅的黎明！」",
+    "line3": "：「壞劫的天輪（ベルヴェルク・グラム）！」",
+    "image": "https://i.imgur.com/TlaNdns.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Bolverk_Gram2",
+    "line1": "：「絕技準備。」",
+    "line2": "：「太陽的魔劍啊，以其身掀起破壞吧！」",
+    "line3": "：「壞劫的天輪（ベルヴェルク・グラム）！」",
+    "image": "https://i.imgur.com/TlaNdns.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Archer_Infernal",
+    "line1": "：「寶具，斷片展開。」",
+    "line2": "：「請賜予我火炎，賜予我烈日的光輝！」",
+    "line3": "：「燒盡吧！吞噬吧！這一切，這所有！」",
+    "image": "https://i.imgur.com/TlaNdns.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Archer_Infernal1",
+    "line1": "：「聖觀世音菩薩……請賜予我力量，」",
+    "line2": "：「賜予我烈日的光輝！」",
+    "line3": "：「真言・聖觀世音菩薩（オン・アロリキヤ・ソワカ）！」",
+    "image": "https://i.imgur.com/TlaNdns.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Gae_Bolg",
+    "line1": "：「那顆心臟就由我收下了！」",
+    "line2": "：「刺穿死棘之槍（ゲイボルク）！」",
+    "line3": "",
+    "image": "https://i.imgur.com/vfPZs3y.gif",
+    "duration": 10000
+  },   
+  {
+    "name": "Deadend_Agateram",
+    "line1": "：「吞噬我的靈魂疾馳吧，銀之流星！」",
+    "line2": "：「一閃而過吧，銀之臂（デッドエンド・アガートラム）！」",
+    "line3": "",
+    "image": "https://i.imgur.com/eyt1OnX.gif",
+    "duration": 15000
+  }, 
+  {
+    "name": "Excalibur_Gallatin",
+    "line1": "：「此劍為太陽移宿之身。」",
+    "line2": "：「將一切不淨清除的焰之炎陽」",
+    "line3": "：「輪轉勝利之劍（エクスカリバー・ガラティーン）！」",
+    "image": "https://i.imgur.com/4sWnRAV.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Mumiyou_Sandantsuki",
+    "line1": "：「一步越音，二步無間，」",
+    "line2": "：「三步絕刀！」",
+    "line3": "：「無明三段突刺（むみょうさんだんつき）！」",
+    "image": "https://i.imgur.com/ZNgX37P.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Excalibur_Morgan",
+    "line1": "：「卑王鐵槌。反轉極光。」",
+    "line2": "：「將光吞噬吧！」",
+    "line3": "：「誓約勝利之劍（エクスカリバー・モルガン）！」",
+    "image": "https://i.imgur.com/J3QCBTd.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Excalibur",
+    "line1": "：「以群星的氣息束縛。」",
+    "line2": "：「耀眼的生命之奔流。」",
+    "line3": "：「接招吧，誓約勝利之劍（エクスカリバー）！」",
+    "image": "https://i.imgur.com/J3QCBTd.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Balmung1",
+    "line1": "：「邪惡之龍終將失墜，」",
+    "line2": "：「世界，如今已到日落時分」",
+    "line3": "：「將你擊落——幻想大劍·天魔失墜（バルムンク）！」",
+    "image": "https://i.imgur.com/bN1dCiV.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Balmung2",
+    "line1": "：「自黃金之夢醒來，」",
+    "line2": "：「從搖籃之中解放。」",
+    "line3": "：「邪龍，死滅吧……幻想大劍·天魔失墜（バルムンク）！」",
+    "image": "https://i.imgur.com/bN1dCiV.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Excalibur_Arthur",
+    "line1": "：「十三拘束解放，圓桌議決開始！」",
+    "line2": "：「──此為，拯救世界之戰。」",
+    "line3": "：「誓約勝利之劍（エクスカリバー）！」",
+    "image": "https://i.imgur.com/S8M65ky.gif",
+    "duration": 15000
+  },
+  {
+    "name": "Musashi",
+    "line1": "：「南無天滿大自在天神。」",
+    "line2": "：「仁王俱利伽羅、衝天象！」",
+    "line3": "：「要上囉，劍豪拔刀……伊舍那大天象！」",
+    "image": "https://i.imgur.com/Mv2XBZJ.gif",
+    "duration": 14000
+  },
+  {
+    "name": "ONEKEN",
+    "line1": "：「來也……吾心不動如山，然弗自由無拘而不得。」",
+    "line2": "：「此正為無念無想之境地是也。」",
+    "line3": "：「劍術無雙・劍禪一如 （剣術無双・剣禅一如）。」",
+    "image": "https://i.imgur.com/n8vMHTJ.gif",
+    "duration": 14000
+  },
+  {
+    "name": "TWOKEN",
+    "line1": "：「上吧。劍者，身至生死間隙而大活；禪者，念至靜思默想而大悟。」",
+    "line2": "：「於汝而言，吾所執之物，是劍是何？」",
+    "line3": "：「劍術無雙・劍禪一如（剣術無双・剣禅一如）。」",
+    "image": "https://i.imgur.com/n8vMHTJ.gif",
+    "duration": 14000
+  },
+  {
+    "name": "AestusDomusAurea",
+    "line1": "：「凝見余之才華！聽聞萬雷喝采！」",
+    "line2": "：「然後讚頌吧！黃金的劇場呀！」",
+    "line3": "：「童女謳歌的榮華帝政（ラウス・セント・クラウディウス）！」",
+    "image": "https://i.imgur.com/W8rYLHX.giff",
+    "duration": 10000
+  },
+  {
+    "name": "FaxCaelestis",
+    "line1": "：「春之暖陽，花之亂舞。五月的風拂過臉頰，祝福直到星辰的彼岸。」",
+    "line2": "：「開啟吧，黃金之結婚禮堂啊！」",
+    "line3": "：「謳歌吧！星馳終幕的薔薇（アロンダイト・オーバーロード）！這份愛，猶如烈焰！」",
+    "image": "https://i.imgur.com/lXJFOKC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "FaxCaelestis2",
+    "line1": "：「春之暖陽，花之亂舞。五月的風拂過臉頰，祝福直到星辰的彼岸。」",
+    "line2": "：「開啟吧，黃金之結婚禮堂啊！」",
+    "line3": "：「謳歌吧！星馳終幕的薔薇（アロンダイト・オーバーロード）！此乃，余的大勝利！」",
+    "image": "https://i.imgur.com/lXJFOKC.gif",
+    "duration": 15000
+  },
+  {
+    "name": "LentumDomusIlusterias1",
+    "line1": "：「劇場，由海而出──豪奢！莊嚴！然而流麗！」",
+    "line2": "：「睜大雙眼看好了！這便是歌唱讚頌的Irusuterias！」",
+    "line3": "：「也就是，余的！黃金劇場！」",
+    "image": "https://i.imgur.com/V32Gble.gif",
+    "duration": 15000
+  },
+  {
+    "name": "LentumDomusIlusterias2",
+    "line1": "：「享受吧，這可是最頂級的Aurora！」",
+    "line2": "：「哼哼哼，那是什麼？美女！？羅馬！？當然，是余囉♪」",
+    "line3": "：「高歌讚頌的黃金劇場（ラウダレントゥム・ドムス・イルステリアス）！」",
+    "image": "https://i.imgur.com/V32Gble.gif",
+    "duration": 15000
+  },
+  {
+    "name": "LentumDomusIlusterias2",
+    "line1": "：「我的征途乃恩仇的彼方。」",
+    "line2": "：「虎啊，煌煌燎燃（アンフェル・シャトー・ディフ）！」",
+    "line3": "",
+    "image": "https://i.imgur.com/jeL4sCj.gif",
+    "duration": 15000
+  }
+  ]
+}

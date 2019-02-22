@@ -1,0 +1,175 @@
+{
+  "member":[
+  {
+    "name": "Bomb",
+    "line": "使用炸彈作成EX，",
+    "image": "https://i.imgur.com/1gzdXzq.gif",
+    "basicDamage": 300,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 17000
+  },
+  {
+    "name": "Thunder",
+    "line": "使出十萬伏特電吉他，效果十分顯著！",
+    "image": "https://i.imgur.com/nJ2NBQW.gif",
+    "basicDamage": 200,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "StarBrustStream",
+    "line": "越來越快使出星爆氣流斬！",
+    "image": "http://i.imgur.com/fREyYSQ.gif",
+    "basicDamage": 200,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 2500
+  },
+  {
+    "name": "AirBomb",
+    "line": "丟出巨大的氣彈，",
+    "image": "https://66.media.tumblr.com/b7bc0fe2870b9ebb01eb5c86d6f10e7d/tumblr_pixbclRZoh1r2hy3ro1_400.gif",
+    "basicDamage": 200,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "BallsShot",
+    "line": "對蛋蛋造成爆擊！",
+    "image": "https://i.imgur.com/l6z0yAw.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "DeathBattle",
+    "line": "打得火熱不分上下！",
+    "image": "https://i.imgur.com/PkLFycX.gif",
+    "basicDamage": 125,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "ORA",
+    "line": "歐拉歐拉歐拉歐拉！",
+    "image": "https://i.imgur.com/1wb4XCj.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "MUDA",
+    "line": "無駄無駄無駄無駄！",
+    "image": "https://i.imgur.com/oNcHdPX.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "Bite",
+    "line": "咬住對方的頭不放，",
+    "image": "https://i.imgur.com/JfTGLno.gif",
+    "basicDamage": 75,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "EnumaElish",
+    "line": "大喊「雜種你還是下去吧」，乖離劍橫掃全場，",
+    "image": "https://i.imgur.com/5sdEDkX.gif",
+    "basicDamage": 200,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "BiteTheDust1",
+    "line": "使用敗者成塵（バイツァ・ダスト），讓對方變成剩粉，",
+    "image": "https://i.imgur.com/v5RHkdd.gif",
+    "basicDamage": 300,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "MouthBlast",
+    "line": "發出嘴砲，",
+    "image": "https://vignette.wikia.nocookie.net/powerlisting/images/0/01/Broly_Gigantic_Breath.gif",
+    "basicDamage": 150,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 4000
+  },
+  {
+    "name": "MouthBlast",
+    "line": "射出突穿死翔之槍！",
+    "image": "https://i.imgur.com/TQgRiwr.gif",
+    "basicDamage": 150,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 4000
+  },
+    {
+    "name": "MUDA",
+    "line": "無駄無駄無駄無駄！",
+    "image": "http://i.imgur.com/dXV1j17.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
+    "duration": 3000
+  },
+  {
+    "name": "BiteTheDust2",
+    "line": "使用敗者成塵（バイツァ・ダスト），讓對方變成剩粉，",
+    "image": "https://i.imgur.com/V8wpr0m.gif",
+    "basicDamage": 300,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "KAMEHAMEHA",
+    "line": "發出龜派氣功！",
+    "image": "https://i.gifer.com/Gdpd.gif",
+    "basicDamage": 175,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "KAMEHAMEHA",
+    "line": "發出龜派氣功！",
+    "image": "https://i.gifer.com/Gdpd.gif",
+    "basicDamage": 175,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+  {
+    "name": "punch",
+    "line": "一發重拳打在臉上！",
+    "image": "https://i.imgur.com/6lCWQ.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  },
+    {
+    "name": "sunlightYellowOverdrive",
+    "line": "金黃色波紋疾走！",
+    "image": "https://i.imgur.com/nB3UD4c.gif",
+    "basicDamage": 100,
+    "maximumCorrection": 100,
+    "minimumCorrection": 50,
+    "duration": 3000
+  }
+  ]
+}
