@@ -17,6 +17,7 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
+const embedA = new Discord.RichEmbed();
 
 const express = require('express')
 var port = process.env.PORT || 5000;
