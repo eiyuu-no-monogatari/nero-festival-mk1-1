@@ -12,7 +12,6 @@ var embedB;
 var healthA;
 var healthB;
 var Damage;
-var Roll;
 var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
@@ -69,7 +68,7 @@ client.on('message', msg => {
                             embedA.setDescription("");
 
                         } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
+                            var embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -91,7 +90,7 @@ client.on('message', msg => {
                             embedA.setDescription("");
 
                         } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
+                            var embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -139,14 +138,14 @@ client.on('message', msg => {
                         embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                         embedB.setDescription("");
                     } else if (arr.length == 2) {
-                        embedB = new Discord.RichEmbed();
+                        var embedB = new Discord.RichEmbed();
                         embedB.setColor(0xFF0000);
                         embedB.addBlankField();
                         embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
                         embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
                         embedB.setDescription(action);
                     } else if (arr.length == 1) {
-                        embedB = new Discord.RichEmbed();
+                        var embedB = new Discord.RichEmbed();
                         embedB.setColor(0xFF0000);
                         embedB.addBlankField();
                         embedB.addField(msg.author.username, healthB + "/750", true);
@@ -730,7 +729,7 @@ client.on('message', msg => {
                 var Battle_loop = function () {
                     var skillOrAttack = Math.random() * 100 + 1;
                     if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                        var data = require("./NeroFes/noble_phantasm.json");
+                        const data = require("./NeroFes/noble_phantasm.json");
                         var Datalength = data["member"].length;
                         X = Math.floor(Math.random() * Datalength);
                         var A = data["member"][X].line1;
@@ -747,7 +746,7 @@ client.on('message', msg => {
                     } else if (skillOrAttack < 20 && skillOrAttack > 0) {
                         SpecialSkill();
                     } else {
-                        var data = require("./NeroFes/skill.json");
+                        const data = require("./NeroFes/skill.json");
                         var Datalength = data["member"].length;
                         X = Math.floor(Math.random() * Datalength);
                         var F = data["member"][X].line;
