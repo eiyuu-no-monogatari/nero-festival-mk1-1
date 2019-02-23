@@ -264,7 +264,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 1;
+                                    Round += 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -295,7 +295,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 1;
+                                    Round += 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -698,7 +698,7 @@ client.on('message', msg => {
         }
     }
 
-    if (!msg.author.bot) {
+    if (!msg.author.bot) {                    
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
             MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
             console.log(MatchData);
