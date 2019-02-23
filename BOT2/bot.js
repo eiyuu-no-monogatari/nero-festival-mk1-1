@@ -44,8 +44,10 @@ client.on('message', msg => {
     if (!msg.author.bot) {
 
         var Jesus_fucking_long = function () {
+
+
             client.setTimeout(function () {
-                if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
+                if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
                         userWhoGotTagged = msg.mentions.users.last(); //2nd
@@ -96,7 +98,7 @@ client.on('message', msg => {
                     } else {
                         msg.channel.send("ERROR(1).");
                     }
-                } else if (msg.content === "--NeroFes") {
+                } else if (msg.content == "--NeroFes") {
                     Y = msg.guild.members.random();
                     userWhoGotTagged = Y;
                     userWhoGotTagged_COPY = Y.user.username;
@@ -120,12 +122,7 @@ client.on('message', msg => {
                         msg.channel.send(embedB);
                     }
                 } else {
-                    const embedA = new Discord.RichEmbed();
-                    embedA.setColor(0xFF0000);
-                    embedA.addBlankField();
-                    embedA.addField(msg.author.username, 750 + "/750", true);
-                    embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                    embedA.setDescription("");
+                    msg.channel.send("ERROR(3)");
                 }
             msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
                 var Damage_caculate = function (a, b, c) {
@@ -768,8 +765,6 @@ client.on('message', msg => {
                     healthB = 750;
                 }, 1000);
         };
-
-
         if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
             Jesus_fucking_long();
         } else if (msg.content == "--NeroFes") {
