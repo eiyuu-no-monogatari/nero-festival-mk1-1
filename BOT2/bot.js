@@ -116,9 +116,16 @@ client.on('message', msg => {
 
                 } else if (switchA == false) {
                     const embedB = new Discord.RichEmbed()
-                    .setDescription('有決鬥正在進行，請耐心等候。');
+                        .setDescription('有決鬥正在進行，請耐心等候。');
                     msg.channel.send(embedB);
                 }
+            } else {
+                const embedA = new Discord.RichEmbed();
+                embedA.setColor(0xFF0000);
+                embedA.addBlankField();
+                embedA.addField(msg.author.username, 750 + "/750", true);
+                embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                embedA.setDescription("");
             }
             client.setTimeout(function () {
             msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
