@@ -40,8 +40,6 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        Jesus_fucking_long();
-
         var Battle_loop = function () {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
