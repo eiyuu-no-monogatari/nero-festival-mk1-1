@@ -17,6 +17,7 @@ var worldTimes = 0;
 var np_switch = true;
 var msgA;
 var msgB;
+var switchB = false;
 
 
 const express = require('express')
@@ -41,8 +42,7 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        Battle_loop = function () {
-            if (AA() && np() && SpecialAttack()) {
+        while (switchB == true) {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                 const data = require("./NeroFes/noble_phantasm.json");
@@ -74,7 +74,6 @@ client.on('message', msg => {
                 AA(F, G, H, J, K, L);
             }
         }
-        };
 
         function Jesus_fucking_long() {
 
@@ -99,7 +98,7 @@ client.on('message', msg => {
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            Battle_loop();
+                            switchB = true;
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -122,7 +121,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            Battle_loop();
+                            switchB = true;
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -149,7 +148,7 @@ client.on('message', msg => {
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
-                        Battle_loop();
+                        switchB = true;
 
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed()
@@ -200,7 +199,7 @@ client.on('message', msg => {
                         };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
-                            Battle_loop();
+
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
@@ -214,6 +213,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
@@ -226,6 +226,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
 
                                     }, 2500);
                                 } else {
@@ -234,6 +235,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 }
                             }, 2500);
@@ -250,6 +252,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
@@ -262,6 +265,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else {
                                     client.setTimeout(function () {
@@ -269,6 +273,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 }
                             }, 2500);
@@ -373,7 +378,6 @@ client.on('message', msg => {
                             }
                         } else {
                             Round += 1;
-                            Battle_loop();
                         }
                     };
 
@@ -403,7 +407,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
@@ -435,11 +438,9 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -457,7 +458,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -468,7 +468,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
@@ -485,7 +484,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -496,7 +494,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
@@ -517,7 +514,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -528,7 +524,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -545,7 +540,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
+                                       
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -556,7 +551,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -577,7 +572,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
+                                       
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -588,7 +583,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -605,7 +600,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
+                                       
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -616,7 +611,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -636,7 +631,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                        Battle_loop();
+                                       
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -647,7 +642,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
@@ -663,7 +658,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                        Battle_loop();
+                                       
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -674,7 +669,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
@@ -693,7 +688,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         embedB.setImage("");
-                                        Battle_loop();
+                                       
                                         console.log(Round);
                                     }, 3000);
                                 }, 1500);
@@ -705,7 +700,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                 }
@@ -719,7 +714,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         embedB.setImage("");
-                                        Battle_loop();
+                                       
                                         console.log(Round);
                                     }, 3000);
                                 }, 1500);
@@ -731,7 +726,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                   
                                 } else {
                                     worldTimes += 1;
                                 }
@@ -745,26 +740,26 @@ client.on('message', msg => {
                             if (world_First != true && world_Second != true) {
                                 za_warudo();
                             } else {
-                                Battle_loop();
+                               
                             }
                         } else if (RandomSkill == 2) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo2();
                             } else {
-                                Battle_loop();
+                               
                             }
                         } else if (RandomSkill == 3) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo3();
                             } else {
-                                Battle_loop();
+                               
                             }
                         } else if (RandomSkill == 4) {
                             liar_no_taste();
                         }
                     };
 
-                    Battle_loop();
+                   
                 });
                 healthA = 750;
                 healthB = 750;
