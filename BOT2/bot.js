@@ -122,7 +122,7 @@ client.on('message', msg => {
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
-                if (switchA == true) {
+
                     msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
                         var Damage_caculate = function (a, b, c) {
                             Damage = a + Math.floor(Math.random() * b) - c;
@@ -695,7 +695,7 @@ client.on('message', msg => {
                     });
                     healthA = 750;
                     healthB = 750;
-                }
+
             }, 1000);
         }
    
