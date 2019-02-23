@@ -17,7 +17,7 @@ var np_switch = true;
 var msgA;
 var msgB;
 var switchB = false;
-var embedB;
+var embedB = new Discord.RichEmbed();
 
 
 const express = require('express')
