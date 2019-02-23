@@ -17,6 +17,7 @@ var np_switch = true;
 var msgA;
 var msgB;
 var switchB = false;
+var embedB;
 
 
 const express = require('express')
