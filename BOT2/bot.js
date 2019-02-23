@@ -42,6 +42,7 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
+        if (((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes"))|| msg.content == "--NeroFes") {
         function Jesus_fucking_long() {
 
             client.setTimeout(function () {
@@ -731,11 +732,6 @@ client.on('message', msg => {
                 }
             }, 1000);
         };
-
-        if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-            Jesus_fucking_long();
-        } else if (msg.content == "--NeroFes") {
-            Jesus_fucking_long();
         }
 
         while (switchB == true && switchA == false) {
@@ -769,8 +765,8 @@ client.on('message', msg => {
                 var L = data["member"][X].duration;
                 AA(F, G, H, J, K, L);
             }
+            console.log("無限迴圈判定。")
         }
-
     }
 
     if (!msg.author.bot) {
