@@ -173,6 +173,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
@@ -185,7 +186,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
-
+                                        switchB = false;
                                     }, 2500);
                                 } else {
                                     client.setTimeout(function () {
@@ -193,6 +194,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 }
                             }, 2500);
@@ -209,6 +211,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
@@ -221,6 +224,7 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 } else {
                                     client.setTimeout(function () {
@@ -228,13 +232,14 @@ client.on('message', msg => {
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
+                                        switchB = false;
                                     }, 2500);
                                 }
                             }, 2500);
                         }
                     };
 
-                    var np = function (string1, string2, string3, string4, duration) {
+                    np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
                             if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
@@ -335,7 +340,7 @@ client.on('message', msg => {
                         }
                     }; //需求：healthTest、Embed_battle、Damage_caculate
 
-                    var AA = function (line, image, basic, maximum, minimum, duration) {
+                    AA = function (line, image, basic, maximum, minimum, duration) {
                         if (Round % 2 != 0) { //奇數 A的回合
                             if (world_First != true) { //如果A的時間沒被暫停
                                 client.setTimeout(function () {
@@ -633,7 +638,7 @@ client.on('message', msg => {
                         }
                     }; 
 
-                    var SpecialSkill = function () {
+                    SpecialSkill = function () {
                         var RandomSkill = Math.floor(Math.random() * 4) + 1;
                         if (RandomSkill == 1) {
                             if (world_First != true && world_Second != true) {
