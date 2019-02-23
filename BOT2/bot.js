@@ -3,18 +3,19 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
 var switchA = true;
+var switchB = false;
 var Round = 1;
 var X;
 var first_attack;
 var second_attack;
 var string;
-var healthA;
-var healthB;
 var Damage;
 var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
+var healthB = 0;
+var healthA = 0;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -657,9 +658,12 @@ client.on('message', msg => {
                 });
 
             }, 1000);
+            switchB = true;
         };
 
-        while (healthA > 0 && healthB > 0 && switchA == true) {
+        Jesus_fucking_long();
+
+        while (healthA > 0 && healthB > 0 && switchB == true) {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                 var data = require("./NeroFes/noble_phantasm.json");
@@ -754,5 +758,7 @@ client.on('message', msg => {
 
     }
 });
+
+
 
 client.login('NTQ3MzkzMTI0Mjg5MjE2NTUy.D02JYQ.rvALpoMXxLDk7MLu2WFgLmTXTkI'); //2號機
