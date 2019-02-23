@@ -69,7 +69,6 @@ client.on('message', msg => {
             } else if (stringA = 1) {
                 ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
             }
-            ResultStr = strA + " 擲出 " + stringA;
             msg.channel.send(ResultStr);
         }
     }
