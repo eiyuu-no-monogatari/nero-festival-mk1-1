@@ -77,6 +77,7 @@ client.on('message', msg => {
             msg.channel.send(ResultStr);
         }
     }
+}
 
     if (!msg.author.bot) {
         if (msg.content === "--Dice ?") {
