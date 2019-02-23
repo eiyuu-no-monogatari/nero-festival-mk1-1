@@ -350,7 +350,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    function AA (line, image, basic, maximum, minimum, duration) {
+                    function AA(line, image, basic, maximum, minimum, duration) {
                         if (Round % 2 != 0) { //奇數 A的回合
                             if (world_First != true) { //如果A的時間沒被暫停
                                 client.setTimeout(function () {
@@ -671,68 +671,85 @@ client.on('message', msg => {
                             if (world_First != true && world_Second != true) {
                                 za_warudo();
                             } else {
-                               
+
                             }
                         } else if (RandomSkill == 2) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo2();
                             } else {
-                               
+
                             }
                         } else if (RandomSkill == 3) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo3();
                             } else {
-                               
+
                             }
                         } else if (RandomSkill == 4) {
                             liar_no_taste();
                         }
-                    };  
+                    };
 
                     while (switchA == false && switchB == true) {
-                        client.setTimeout(function () {
-                            var skillOrAttack = Math.random() * 100 + 1;
-                            if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                                const data = require("./NeroFes/noble_phantasm.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var A = data["member"][X].line1;
-                                var B = data["member"][X].line2;
-                                if (data["member"][X].line3 == "") {
-                                    var C = "";
-                                } else {
-                                    var C = data["member"][X].line3;
-                                }
-                                var D = data["member"][X].image;
-                                var E = data["member"][X].duration;
-                                np(A, B, C, D, E);
-                            } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                                SpecialSkill();
+                        var skillOrAttack = Math.random() * 100 + 1;
+                        if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                            const data = require("./NeroFes/noble_phantasm.json");
+                            var Datalength = data["member"].length;
+                            X = Math.floor(Math.random() * Datalength);
+                            var A = data["member"][X].line1;
+                            var B = data["member"][X].line2;
+                            if (data["member"][X].line3 == "") {
+                                var C = "";
                             } else {
-                                const data = require("./NeroFes/skill.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var F = data["member"][X].line;
-                                var G = data["member"][X].image;
-                                var H = data["member"][X].basicDamage;
-                                var J = data["member"][X].maximumCorrection;
-                                var K = data["member"][X].minimumCorrection;
-                                var L = data["member"][X].duration;
-                                AA(F, G, H, J, K, L);
+                                var C = data["member"][X].line3;
                             }
-                            console.log("無限迴圈判定。")
-                        }, 500);
+                            var D = data["member"][X].image;
+                            var E = data["member"][X].duration;
+                            np(A, B, C, D, E);
+                        } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                            SpecialSkill();
+                        } else {
+                            const data = require("./NeroFes/skill.json");
+                            var Datalength = data["member"].length;
+                            X = Math.floor(Math.random() * Datalength);
+                            var F = data["member"][X].line;
+                            var G = data["member"][X].image;
+                            var H = data["member"][X].basicDamage;
+                            var J = data["member"][X].maximumCorrection;
+                            var K = data["member"][X].minimumCorrection;
+                            var L = data["member"][X].duration;
+                            AA(F, G, H, J, K, L);
+                        }
+                        if (healthB <= 0) {
+                            if (world_Second == true) {
+                                healthTest();
+                                break;
+                            } else if (world_First == true) {
+                                healthTest();
+                                break;
+                            } else {
+                                healthTest();
+                                break;
+                            }
+                        } else if (healthA <= 0) {
+                            healthTest();
+                            break;
+                        } else if (world_First == true) {
+                            healthTest();
+                            break;
+                        } else {
+                            healthTest();
+                            break;
+                        }
                     }
                 }
                 );
-            healthA = 750;
-            healthB = 750;
+                healthA = 750;
+                healthB = 750;
 
-        }, 1000);
+            }, 1000);
+        }
     }
-    }
-
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
             MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
