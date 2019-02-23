@@ -16,10 +16,6 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
-var SpecialSkill = null;
-var healthTest = null;
-var AA = null;
-var np = null;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -46,10 +42,9 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        var Jesus_fucking_long = function () { //需求：Battle_Loop
+        Jesus_fucking_long = function () { //需求：Battle_Loop
 
-            var Battle_loop = function () {
-                if (SpecialSkill != null && healthTest != null && AA != null && np != null) {
+           Battle_loop = function () {
                     var skillOrAttack = Math.random() * 100 + 1;
                     if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                         var data = require("./NeroFes/noble_phantasm.json");
@@ -81,7 +76,6 @@ client.on('message', msg => {
                         var L = data["member"][X].duration;
                         AA(F, G, H, J, K, L);
                     }
-                }
             }; //需求：SpecialSkill、healthTest、AA、np
 
             client.setTimeout(function () {
@@ -167,11 +161,11 @@ client.on('message', msg => {
                 }
                 msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
 
-                    var Damage_caculate = function (a, b, c) {
+                    Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
                     }; //需求：無
 
-                    var Embed_battle = function (action) {
+                    Embed_battle = function (action) {
                         var arr = msg.mentions.users.array();
                         if (msg.content == "--NeroFes") {
                             var embedB = new Discord.RichEmbed();
@@ -199,8 +193,7 @@ client.on('message', msg => {
                         }
                     }; //需求：無
 
-                    var healthTest = function () {
-                        if (Battle_loop() != null) {
+                    healthTest = function () {
                             if (world_First == true || world_Second == true) {
                                 Round += 1
                             };
@@ -280,10 +273,9 @@ client.on('message', msg => {
                                     }
                                 }, 2500);
                             }
-                        }
                     };
 
-                    var np = function (string1, string2, string3, string4, duration) {
+                    np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
                             if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
@@ -385,7 +377,7 @@ client.on('message', msg => {
                         }
                     }; //需求：healthTest、Embed_battle、Damage_caculate、Battle_loop
 
-                    var AA = function (line, image, basic, maximum, minimum, duration) {
+                    AA = function (line, image, basic, maximum, minimum, duration) {
                         if (Round % 2 != 0) { //奇數 A的回合
                             if (world_First != true) { //如果A的時間沒被暫停
                                 client.setTimeout(function () {
@@ -453,7 +445,7 @@ client.on('message', msg => {
                         }
                     };  //需求：healthTest、Embed_battle、Damage_caculate、Battle_loop
 
-                    var za_warudo = function () {
+                    za_warudo = function () {
                         if (Round % 2 == 0) { //偶數
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -513,7 +505,7 @@ client.on('message', msg => {
                         }
                     }; //需求：Battle_loop();
 
-                    var za_warudo2 = function () {
+                    za_warudo2 = function () {
                         if (Round % 2 == 0) { //奇數回合
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -573,7 +565,7 @@ client.on('message', msg => {
                         }
                     }; //需求：Battle_loop();
 
-                    var za_warudo3 = function () {
+                    za_warudo3 = function () {
                         if (Round % 2 == 0) { //奇數
                             if (world_First != true) { //第一行動者沒被暫停
                                 client.setTimeout(function () {
@@ -633,7 +625,7 @@ client.on('message', msg => {
                         }
                     }; //需求：Battle_loop();
 
-                    var liar_no_taste = function () {  //需求：Battle_loop
+                    liar_no_taste = function () {  //需求：Battle_loop
                         if (Round % 2 != 0) { //偶數
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -691,7 +683,7 @@ client.on('message', msg => {
                         }
                     }; //需求：Battle_loop();
 
-                    var SpecialSkill = function () {
+                    SpecialSkill = function () {
                         var RandomSkill = Math.floor(Math.random() * 4) + 1;
                         if (RandomSkill == 1) {
                             if (world_First != true && world_Second != true) {
