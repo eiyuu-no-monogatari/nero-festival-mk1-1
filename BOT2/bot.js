@@ -16,6 +16,7 @@ var worldTimes = 0;
 var np_switch = true;
 var msgA;
 var msgB;
+var switchB = true;
 
 
 const express = require('express')
@@ -671,7 +672,7 @@ client.on('message', msg => {
                         }
                     };  
 
-                    for (i = 0; (switchA == false && switchB == true); i++) {
+                    while (switchA == false && switchB == true) {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             const data = require("./NeroFes/noble_phantasm.json");
