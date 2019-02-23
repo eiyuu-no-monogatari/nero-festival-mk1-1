@@ -59,7 +59,7 @@ client.on('message', msg => {
                 } else {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
                 }
-                if (varD = 0) {
+                if (varD = 1) {
             if (stringA >= 90 && string < 100) {
                 ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
             } else if (stringA == 100) {
