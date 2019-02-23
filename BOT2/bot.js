@@ -42,7 +42,7 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        const Jesus_fucking_long = function () {
+        const Jesus_fucking_long = async function () {
 
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
@@ -115,7 +115,7 @@ client.on('message', msg => {
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
-                        SkillOrAttack();
+                        Battle_loop();
 
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed()
@@ -126,11 +126,11 @@ client.on('message', msg => {
                     msg.channel.send("ERROR(3)");
                 }
                 msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
-                    const Damage_caculate = function (a, b, c) {
+                    const Damage_caculate = async function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
                     };
 
-                    const Embed_battle = function (action) {
+                    const Embed_battle = async function (action) {
                         var arr = msg.mentions.users.array();
                         if (msg.content == "--NeroFes") {
                             var embedB = new Discord.RichEmbed();
@@ -158,13 +158,13 @@ client.on('message', msg => {
                         }
                     };
 
-                    const healthTest = function () {
+                    const healthTest = async function () {
                         if (world_First == true || world_Second == true) {
                             Round += 1
                         };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
-                            SkillOrAttack();
+                            Battle_loop();
 
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
@@ -240,7 +240,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const Battle_loop = function () {
+                    const Battle_loop = async function () {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             const data = require("./NeroFes/noble_phantasm.json");
@@ -274,7 +274,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const np = function (string1, string2, string3, string4, duration) {
+                    const np = async function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
                             if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
@@ -376,7 +376,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const AA = function (line, image, basic, maximum, minimum, duration) {
+                    const AA = async function (line, image, basic, maximum, minimum, duration) {
                         if (Round % 2 != 0) { //奇數 A的回合
                             if (world_First != true) { //如果A的時間沒被暫停
                                 client.setTimeout(function () {
@@ -444,7 +444,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const za_warudo = function () {
+                    const za_warudo = async function () {
                         if (Round % 2 == 0) { //偶數
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -504,7 +504,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const za_warudo2 = function () {
+                    const za_warudo2 = async function () {
                         if (Round % 2 == 0) { //奇數回合
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -564,7 +564,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const za_warudo3 = function () {
+                    const za_warudo3 = async function () {
                         if (Round % 2 == 0) { //奇數
                             if (world_First != true) { //第一行動者沒被暫停
                                 client.setTimeout(function () {
@@ -624,7 +624,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const liar_no_taste = function () {
+                    const liar_no_taste = async function () {
                         if (Round % 2 != 0) { //偶數
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -682,7 +682,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const STELLAAAAAAAAAAAAAAAAAAAA = function () {
+                    const STELLAAAAAAAAAAAAAAAAAAAA = async function () {
                         if (Round % 2 == 0) { //偶數
                             if (world_First != true) {
                                 client.setTimeout(function () {
@@ -738,7 +738,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    const SpecialSkill = function () {
+                    const SpecialSkill = async function () {
                         var RandomSkill = Math.floor(Math.random() * 4) + 1;
                         if (RandomSkill == 1) {
                             if (world_First != true && world_Second != true) {
