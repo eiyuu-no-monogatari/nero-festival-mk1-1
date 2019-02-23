@@ -763,14 +763,14 @@ client.on('message', msg => {
                     healthB = 750;
                 }, 1000);
             };
-            if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-                Jesus_fucking_long();
-            } else if (msg.content == "--NeroFes") {
-                Jesus_fucking_long();
-            }
-            if (msg.content == "--NeroFes") {
-                Jesus_fucking_long();
-            }
+        };
+        if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
+            Jesus_fucking_long();
+        } else if (msg.content == "--NeroFes") {
+            Jesus_fucking_long();
+        }
+        if (msg.content == "--NeroFes") {
+            Jesus_fucking_long();
         }
 
         if (!msg.author.bot) {
