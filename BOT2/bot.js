@@ -17,7 +17,7 @@ var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
 var np = function () { };
-var aa = function () { };
+var AA = function () { };
 
 const express = require('express')
 var port = process.env.PORT || 5000;
