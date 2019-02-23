@@ -16,7 +16,7 @@ var worldTimes = 0;
 var np_switch = true;
 var msgA;
 var msgB;
-var switchB = true;
+var switchB = false;
 
 
 const express = require('express')
