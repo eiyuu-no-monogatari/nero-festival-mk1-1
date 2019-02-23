@@ -176,6 +176,8 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
+
                                         }, 2500);
                                     } else if (world_First == true) {
                                         string = second_attack + "：「時間恢復流動。」";
@@ -188,6 +190,7 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
 
                                         }, 2500);
                                     } else {
@@ -196,6 +199,8 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
+
                                         }, 2500);
                                     }
                                 }, 2500);
@@ -212,6 +217,8 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
+
                                         }, 2500);
                                     } else if (world_First == true) {
                                         string = second_attack + "：「時間恢復流動。」";
@@ -224,6 +231,8 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
+
                                         }, 2500);
                                     } else {
                                         client.setTimeout(function () {
@@ -231,6 +240,8 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
+                                            switchB = false;
+
                                         }, 2500);
                                     }
                                 }, 2500);
@@ -660,7 +671,7 @@ client.on('message', msg => {
                             }
                         };  
 
-                        while (switchA == false) {
+                        while (switchA == false && switchB == true) {
                             var skillOrAttack = Math.random() * 100 + 1;
                             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                                 const data = require("./NeroFes/noble_phantasm.json");
