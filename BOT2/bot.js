@@ -76,7 +76,7 @@ client.on('message', msg => {
             msg.channel.send(ResultStr);
         }
     } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
-        MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
+        MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/);
         strA = MatchData[1];
         var varA = parseInt(MatchData[2]);
         var varB = parseInt(MatchData[3]);
