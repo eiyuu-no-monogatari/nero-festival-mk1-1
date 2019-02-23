@@ -120,7 +120,6 @@ client.on('message', msg => {
             }
 
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
-
                 client.setTimeout(function () {
                     msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
                         var Damage_caculate = function (a, b, c) {
@@ -766,8 +765,6 @@ client.on('message', msg => {
         };
 
         if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-            Jesus_fucking_long();
-        } else if (msg.content == "--NeroFes") {
             Jesus_fucking_long();
         } else if (msg.content == "--NeroFes") {
             Jesus_fucking_long();
