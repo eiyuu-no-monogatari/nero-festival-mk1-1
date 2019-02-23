@@ -376,9 +376,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
+                                    healthTest();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -407,9 +409,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
+                                    healthTest();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
+                                    healthTest();
                                 }
                             }
                         }
@@ -427,6 +431,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -437,9 +442,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
+                                    healthTest();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -453,6 +460,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -463,9 +471,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
+                                    healthTest();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
+                                    healthTest();
                                 }
                             }
                         }
@@ -483,6 +493,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -493,9 +504,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -509,7 +522,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                       
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -520,10 +533,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                   
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
+                                    healthTest();
                                 }
                             }
                         }
@@ -541,7 +555,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                       
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -552,10 +566,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                   
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -569,7 +584,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                       
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -580,10 +595,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                   
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
+                                    healthTest();
                                 }
                             }
                         }
@@ -600,7 +616,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                       
+                                        healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -611,10 +627,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                   
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -627,7 +644,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                       
+                                        healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -638,10 +655,11 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                   
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
+                                    healthTest();
                                 }
                             }
                         }
