@@ -59,7 +59,7 @@ client.on('message', msg => {
                 } else {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
                 }
-            }
+                if (varD = 0) {
             if (stringA >= 90 && string < 99) {
                 ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
             } else if (stringA = 100) {
@@ -68,6 +68,8 @@ client.on('message', msg => {
                 ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
             } else if (stringA = 1) {
                 ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+            }
+            }
             }
             msg.channel.send(ResultStr);
         }
