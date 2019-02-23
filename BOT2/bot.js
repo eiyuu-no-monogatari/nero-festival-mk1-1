@@ -59,12 +59,12 @@ client.on('message', msg => {
                         msgB = (msg.mentions.users.first() //1st
                             + ' ＶＳ ' + userWhoGotTagged//2nd
                             + "！");
-                        const embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription("");
+                        const embedA = new Discord.RichEmbed()
+                            .setColor(0xFF0000)
+                            .addBlankField()
+                            .addField(msg.mentions.users.first().username, 750 + "/750", true)
+                            .addField(userWhoGotTagged_COPY, 750 + "/750", true)
+                            .setDescription("");
 
                     } else if (switchA == false) {
                         const embedB = new Discord.RichEmbed()
@@ -81,12 +81,12 @@ client.on('message', msg => {
                         second_attack = msg.mentions.users.first().username;
                         msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                         msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        const embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(msg.author.username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription("");
+                        const embedA = new Discord.RichEmbed()
+                            .setColor(0xFF0000)
+                            .addBlankField()
+                            .addField(msg.author.username, 750 + "/750", true)
+                            .addField(userWhoGotTagged_COPY, 750 + "/750", true)
+                            .setDescription("");
 
                     } else if (switchA == false) {
                         const embedB = new Discord.RichEmbed()
@@ -107,12 +107,12 @@ client.on('message', msg => {
                     second_attack = msg.author.username;
                     msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                     msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                    const embedA = new Discord.RichEmbed();
-                    embedA.setColor(0xFF0000);
-                    embedA.addBlankField();
-                    embedA.addField(msg.author.username, 750 + "/750", true);
-                    embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                    embedA.setDescription("");
+                    const embedA = new Discord.RichEmbed()
+                        .setColor(0xFF0000)
+                        .addBlankField()
+                        .addField(msg.author.username, 750 + "/750", true)
+                        .addField(userWhoGotTagged_COPY, 750 + "/750", true)
+                        .setDescription("");
 
                 } else if (switchA == false) {
                     const embedB = new Discord.RichEmbed()
