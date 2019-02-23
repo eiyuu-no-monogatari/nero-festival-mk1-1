@@ -16,9 +16,6 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
-var Noble = false;
-var aA = false;
-var SS = false;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -85,7 +82,7 @@ client.on('message', msg => {
                                 var E = data["member"][X].duration;
                                 np(A, B, C, D, E);
                             } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                                SS = true;
+                                SpecialSkill();
 
                             } else {
                                 const data = require("./NeroFes/skill.json");
@@ -138,7 +135,7 @@ client.on('message', msg => {
                                 var E = data["member"][X].duration;
                                 np(A, B, C, D, E);
                             } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                                SS = true;
+                                SpecialSkill();
 
                             } else {
                                 const data = require("./NeroFes/skill.json");
@@ -195,7 +192,7 @@ client.on('message', msg => {
                             var E = data["member"][X].duration;
                             np(A, B, C, D, E);
                         } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                            SS = true;
+                            SpecialSkill();
 
                         } else {
                             const data = require("./NeroFes/skill.json");
@@ -274,7 +271,7 @@ client.on('message', msg => {
                                 var E = data["member"][X].duration;
                                 np(A, B, C, D, E);
                             } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                                SS = true;
+                                SpecialSkill();
 
                             } else {
                                 const data = require("./NeroFes/skill.json");
@@ -380,7 +377,7 @@ client.on('message', msg => {
                             var E = data["member"][X].duration;
                             np(A, B, C, D, E);
                         } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                            SS = true;
+                            SpecialSkill();
 
                         } else {
                             const data = require("./NeroFes/skill.json");
@@ -799,62 +796,6 @@ client.on('message', msg => {
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
-                                }
-                            }
-                        }
-                    };
-
-                    var STELLAAAAAAAAAAAAAAAAAAAA = function () {
-                        if (Round % 2 == 0) { //偶數
-                            if (world_First != true) {
-                                client.setTimeout(function () {
-                                    string = second_attack + "" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        Battle_loop();
-                                        console.log(Round);
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                    Battle_loop();
-                                } else {
-                                    worldTimes += 1;
-                                }
-                            }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        Battle_loop();
-                                        console.log(Round);
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                    Battle_loop();
-                                } else {
-                                    worldTimes += 1;
                                 }
                             }
                         }
