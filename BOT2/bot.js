@@ -17,12 +17,6 @@ var worldTimes = 0;
 var np_switch = true;
 var msgA;
 var msgB;
-var AA = function (line, image, basic, maximum, minimum, duration) {
-
-};
-var np = function(string1, string2, string3, string4, duration) {
-
-}
 
 
 const express = require('express')
@@ -48,6 +42,7 @@ client.on('message', msg => {
     if (!msg.author.bot) {
 
         Battle_loop = function () {
+            if (AA() != null && np() != null && SpecialAttack() != null) {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                 const data = require("./NeroFes/noble_phantasm.json");
@@ -78,6 +73,7 @@ client.on('message', msg => {
                 var L = data["member"][X].duration;
                 AA(F, G, H, J, K, L);
             }
+        }
         };
 
         function Jesus_fucking_long() {
