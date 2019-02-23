@@ -60,15 +60,19 @@ client.on('message', msg => {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
                 }
                 if (varD = 0) {
-            if (stringA >= 90 && string < 99) {
+            if (stringA >= 90 && string < 100) {
                 ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-            } else if (stringA = 100) {
+            } else if (stringA == 100) {
                 ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-            } else if (stringA <= 10) {
+            } else if (stringA <= 10 && stringA > 1) {
                 ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-            } else if (stringA = 1) {
+            } else if (stringA == 1) {
                 ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-            }
+            } else {
+                ResultStr = strA + " 擲出 " + stringA
+                }
+            } else{
+                ResultStr = strA + " 擲出 " + stringA
             }
             }
             msg.channel.send(ResultStr);
