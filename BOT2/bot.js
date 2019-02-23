@@ -659,7 +659,7 @@ client.on('message', msg => {
                 healthB = 750;
             }, 1000);
         };
-        if (msg.content.includes("--NeroFes") && msg.mentions.users != null) {
+        if (msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content !== "--NeroFes") {
             userWhoGotTagged = msg.mentions.users.first();
             first_attack = msg.mentions.users.first().username;
             userWhoGotTagged_COPY = msg.mentions.users.first().username;
