@@ -40,40 +40,40 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        var Battle_loop = function () {
-            var skillOrAttack = Math.random() * 100 + 1;
-            if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                const data = require("./NeroFes/noble_phantasm.json");
-                var Datalength = data["member"].length;
-                X = Math.floor(Math.random() * Datalength);
-                var A = data["member"][X].line1;
-                var B = data["member"][X].line2;
-                if (data["member"][X].line3 == "") {
-                    var C = "";
-                } else {
-                    var C = data["member"][X].line3;
-                }
-                var D = data["member"][X].image;
-                var E = data["member"][X].duration;
-                np(A, B, C, D, E);
-            } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                Jesus_fucking_long();
-                SpecialSkill();
-            } else {
-                const data = require("./NeroFes/skill.json");
-                var Datalength = data["member"].length;
-                X = Math.floor(Math.random() * Datalength);
-                var F = data["member"][X].line;
-                var G = data["member"][X].image;
-                var H = data["member"][X].basicDamage;
-                var J = data["member"][X].maximumCorrection;
-                var K = data["member"][X].minimumCorrection;
-                var L = data["member"][X].duration;
-                AA(F, G, H, J, K, L);
-            }
-        };
-
         function Jesus_fucking_long() {
+
+            var Battle_loop = function () {
+                var skillOrAttack = Math.random() * 100 + 1;
+                if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                    const data = require("./NeroFes/noble_phantasm.json");
+                    var Datalength = data["member"].length;
+                    X = Math.floor(Math.random() * Datalength);
+                    var A = data["member"][X].line1;
+                    var B = data["member"][X].line2;
+                    if (data["member"][X].line3 == "") {
+                        var C = "";
+                    } else {
+                        var C = data["member"][X].line3;
+                    }
+                    var D = data["member"][X].image;
+                    var E = data["member"][X].duration;
+                    np(A, B, C, D, E);
+                } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                    Jesus_fucking_long();
+                    SpecialSkill();
+                } else {
+                    const data = require("./NeroFes/skill.json");
+                    var Datalength = data["member"].length;
+                    X = Math.floor(Math.random() * Datalength);
+                    var F = data["member"][X].line;
+                    var G = data["member"][X].image;
+                    var H = data["member"][X].basicDamage;
+                    var J = data["member"][X].maximumCorrection;
+                    var K = data["member"][X].minimumCorrection;
+                    var L = data["member"][X].duration;
+                    AA(F, G, H, J, K, L);
+                }
+            };
 
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
