@@ -17,7 +17,7 @@ var np_switch = true;
 var msgA;
 var msgB;
 var switchB = false;
-var embedB = new Discord.RichEmbed();
+const embedB = new Discord.RichEmbed();
 
 
 const express = require('express')
@@ -67,8 +67,7 @@ client.on('message', msg => {
                             switchB = true;
 
                         } else if (switchA == false) {
-                            var embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
+                                embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
                     } else if (arr.length == 1) {
@@ -90,8 +89,7 @@ client.on('message', msg => {
                             switchB = true;
 
                         } else if (switchA == false) {
-                            var embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
+                                embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
                     } else {
@@ -117,8 +115,7 @@ client.on('message', msg => {
                         switchB = true;
 
                     } else if (switchA == false) {
-                        var embedB = new Discord.RichEmbed()
-                            .setDescription('有決鬥正在進行，請耐心等候。');
+                            embedB.setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
                     }
                 } else {
@@ -133,7 +130,6 @@ client.on('message', msg => {
                     function Embed_battle(action) {
                         var arr = msg.mentions.users.array();
                         if (msg.content == "--NeroFes") {
-                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.author.username, healthB + "/750", true);
@@ -141,7 +137,6 @@ client.on('message', msg => {
                             embedB.setDescription("");
                             return embedB;
                         } else if (arr.length == 2) {
-                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
@@ -149,7 +144,6 @@ client.on('message', msg => {
                             embedB.setDescription(action);
                             return embedB;
                         } else if (arr.length == 1) {
-                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.author.username, healthB + "/750", true);
@@ -772,57 +766,57 @@ client.on('message', msg => {
                 } else {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
                 }
-            if (varD = 1) {
-            if (stringA >= 90 && stringA < 100) {
-                ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-            } else if (stringA == 100) {
-                ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-            } else if (stringA <= 10 && stringA > 1) {
-                ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-            } else if (stringA == 1) {
-                ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-            } else {
-                ResultStr = strA + " 擲出 " + stringA
+                if (varD = 1) {
+                    if (stringA >= 90 && stringA < 100) {
+                        ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+                    } else if (stringA == 100) {
+                        ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+                    } else if (stringA <= 10 && stringA > 1) {
+                        ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+                    } else if (stringA == 1) {
+                        ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+                    } else {
+                        ResultStr = strA + " 擲出 " + stringA
+                    }
+                } else {
+                    ResultStr = strA + " 擲出 " + stringA
+                }
+                msg.channel.send(ResultStr);
             }
-        } else {
-                ResultStr = strA + " 擲出 " + stringA
-            }
-            msg.channel.send(ResultStr);
-        }
-    } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
-        MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
-        strA = MatchData[1];
-        var varA = parseInt(MatchData[2]);
-        var varB = parseInt(MatchData[3]);
-        var varC = parseInt(MatchData[4]);
-        var varD = parseInt(MatchData[5]);
+        } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
+            MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
+            strA = MatchData[1];
+            var varA = parseInt(MatchData[2]);
+            var varB = parseInt(MatchData[3]);
+            var varC = parseInt(MatchData[4]);
+            var varD = parseInt(MatchData[5]);
 
-        var stringA = "";
+            var stringA = "";
 
-        for (i = 0; i < varD; i++) {
-            if (i == varD - 1) {
-                stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
-            } else {
-                stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
+            for (i = 0; i < varD; i++) {
+                if (i == varD - 1) {
+                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
+                } else {
+                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
+                }
+                if (varD = 1) {
+                    if (stringA >= 90 && stringA < 100) {
+                        ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+                    } else if (stringA == 100) {
+                        ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+                    } else if (stringA <= 10 && stringA > 1) {
+                        ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+                    } else if (stringA == 1) {
+                        ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+                    } else {
+                        ResultStr = strA + " 擲出 " + stringA
+                    }
+                } else {
+                    ResultStr = strA + " 擲出 " + stringA
+                }
+                msg.channel.send(ResultStr);
             }
-        if (varD = 1) {
-        if (stringA >= 90 && stringA < 100) {
-            ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-        } else if (stringA == 100) {
-            ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-        } else if (stringA <= 10 && stringA > 1) {
-            ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-        } else if (stringA == 1) {
-            ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-        } else {
-            ResultStr = strA + " 擲出 " + stringA
         }
-    } else {
-            ResultStr = strA + " 擲出 " + stringA
-        }
-        msg.channel.send(ResultStr);
-    }
-    }
     }
 
     if (!msg.author.bot) {
