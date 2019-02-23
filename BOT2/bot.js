@@ -41,8 +41,7 @@ setInterval(function () {
 
 client.on('message', msg => {
     if (!msg.author.bot) {
-
-        if (((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes"))|| msg.content == "--NeroFes") {
+        if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
 
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
