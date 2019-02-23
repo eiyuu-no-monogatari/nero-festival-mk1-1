@@ -17,7 +17,6 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
-const embedA = new Discord.RichEmbed();
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -62,7 +61,7 @@ client.on('message', msg => {
                             msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
-                            const embedA = new Discord.RichEmbed();
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
@@ -84,7 +83,7 @@ client.on('message', msg => {
                             second_attack = msg.mentions.users.first().username;
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                            const embedA = new Discord.RichEmbed();
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.author.username, 750 + "/750", true);
@@ -110,7 +109,7 @@ client.on('message', msg => {
                         second_attack = msg.author.username;
                         msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                         msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        const embedA = new Discord.RichEmbed();
+                        var embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
@@ -118,7 +117,7 @@ client.on('message', msg => {
                         embedA.setDescription("");
 
                     } else if (switchA == false) {
-                        const embedB = new Discord.RichEmbed()
+                        var embedB = new Discord.RichEmbed()
                             .setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
                     }
@@ -133,7 +132,7 @@ client.on('message', msg => {
                 var Embed_battle = function (action) {
                     var arr = msg.mentions.users.array();
                     if (msg.content == "--NeroFes") {
-                        const embedB = new Discord.RichEmbed();
+                        var embedB = new Discord.RichEmbed();
                         embedB.setColor(0xFF0000);
                         embedB.addBlankField();
                         embedB.addField(msg.author.username, healthB + "/750", true);
@@ -731,7 +730,7 @@ client.on('message', msg => {
                 var Battle_loop = function () {
                     var skillOrAttack = Math.random() * 100 + 1;
                     if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                        const data = require("./NeroFes/noble_phantasm.json");
+                        var data = require("./NeroFes/noble_phantasm.json");
                         var Datalength = data["member"].length;
                         X = Math.floor(Math.random() * Datalength);
                         var A = data["member"][X].line1;
@@ -748,7 +747,7 @@ client.on('message', msg => {
                     } else if (skillOrAttack < 20 && skillOrAttack > 0) {
                         SpecialSkill();
                     } else {
-                        const data = require("./NeroFes/skill.json");
+                        var data = require("./NeroFes/skill.json");
                         var Datalength = data["member"].length;
                         X = Math.floor(Math.random() * Datalength);
                         var F = data["member"][X].line;
