@@ -139,6 +139,7 @@ client.on('message', msg => {
                             embedB.addField(msg.author.username, healthB + "/750", true);
                             embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedB.setDescription("");
+                            return embedB;
                         } else if (arr.length == 2) {
                             var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
@@ -146,6 +147,7 @@ client.on('message', msg => {
                             embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
                             embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
                             embedB.setDescription(action);
+                            return embedB;
                         } else if (arr.length == 1) {
                             var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
@@ -153,6 +155,7 @@ client.on('message', msg => {
                             embedB.addField(msg.author.username, healthB + "/750", true);
                             embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedB.setDescription(action);
+                            return embedB;
                         } else {
                             msg.channel.send("ERROR(3).");
                         }
