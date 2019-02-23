@@ -46,7 +46,43 @@ setInterval(function () {
 client.on('message', msg => {
     if (!msg.author.bot) {
 
-        var Jesus_fucking_long = function () { //需求：Battle_Loop、
+        var Jesus_fucking_long = function () { //需求：Battle_Loop
+
+            var Battle_loop = function () {
+                if (SpecialSkill != null && healthTest != null && AA != null && np != null) {
+                    var skillOrAttack = Math.random() * 100 + 1;
+                    if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                        var data = require("./NeroFes/noble_phantasm.json");
+                        var Datalength = data["member"].length;
+                        X = Math.floor(Math.random() * Datalength);
+                        var A = data["member"][X].line1;
+                        var B = data["member"][X].line2;
+                        if (data["member"][X].line3 == "") {
+                            var C = "";
+                        } else {
+                            var C = data["member"][X].line3;
+                        }
+
+                        var D = data["member"][X].image;
+                        var E = data["member"][X].duration;
+                        np(A, B, C, D, E);
+                    } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                        SpecialSkill();
+
+                    } else {
+                        var data = require("./NeroFes/skill.json");
+                        var Datalength = data["member"].length;
+                        X = Math.floor(Math.random() * Datalength);
+                        var F = data["member"][X].line;
+                        var G = data["member"][X].image;
+                        var H = data["member"][X].basicDamage;
+                        var J = data["member"][X].maximumCorrection;
+                        var K = data["member"][X].minimumCorrection;
+                        var L = data["member"][X].duration;
+                        AA(F, G, H, J, K, L);
+                    }
+                }
+            }; //需求：SpecialSkill、healthTest、AA、np
 
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
@@ -246,42 +282,6 @@ client.on('message', msg => {
                             }
                         }
                     };
-
-                    var Battle_loop = function () {
-                        if (SpecialSkill != null && healthTest != null && AA != null && np != null) {
-                            var skillOrAttack = Math.random() * 100 + 1;
-                            if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                                var data = require("./NeroFes/noble_phantasm.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var A = data["member"][X].line1;
-                                var B = data["member"][X].line2;
-                                if (data["member"][X].line3 == "") {
-                                    var C = "";
-                                } else {
-                                    var C = data["member"][X].line3;
-                                }
-
-                                var D = data["member"][X].image;
-                                var E = data["member"][X].duration;
-                                np(A, B, C, D, E);
-                            } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                                SpecialSkill();
-
-                            } else {
-                                var data = require("./NeroFes/skill.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var F = data["member"][X].line;
-                                var G = data["member"][X].image;
-                                var H = data["member"][X].basicDamage;
-                                var J = data["member"][X].maximumCorrection;
-                                var K = data["member"][X].minimumCorrection;
-                                var L = data["member"][X].duration;
-                                AA(F, G, H, J, K, L);
-                            }
-                        }
-                    }; //需求：SpecialSkill、healthTest、AA、np
 
                     var np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
