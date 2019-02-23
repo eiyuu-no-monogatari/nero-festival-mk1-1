@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
@@ -16,15 +15,14 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
+var msgA;
+var msgB;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
 express().listen(port, "0.0.0.0", function () {
     console.log("Listening on Port 5000");
 });
-
-
-
 
 client.on('ready', () => {
     console.log("以" + client.user.tag + "登入");
@@ -160,10 +158,12 @@ client.on('message', msg => {
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
-                msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
-                    var Damage_caculate = function (a, b, c) {
-                        Damage = a + Math.floor(Math.random() * b) - c;
-                    };
+                if (switchA == true){
+                    msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
+                        var Damage_caculate = function (a, b, c) {
+                            Damage = a + Math.floor(Math.random() * b) - c;
+                        };
+
 
                     function Embed_battle(action) {
                         var arr = msg.mentions.users.array();
@@ -767,6 +767,7 @@ client.on('message', msg => {
                 });
                 healthA = 750;
                 healthB = 750;
+                }
             }, 1000);
         };
 
