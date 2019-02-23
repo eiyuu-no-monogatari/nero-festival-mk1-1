@@ -14,8 +14,8 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
-var msgA;
-var msgB;
+msgA = "";
+msgB = "";
 var switchB = false;
 const embedB = new Discord.RichEmbed();
 
