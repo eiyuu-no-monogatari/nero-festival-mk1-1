@@ -66,7 +66,7 @@ client.on('message', msg => {
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-
+                            Battle_loop();
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
@@ -88,6 +88,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
+                            Battle_loop();
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -114,6 +115,7 @@ client.on('message', msg => {
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
+                        Battle_loop();
 
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed()
@@ -764,6 +766,7 @@ client.on('message', msg => {
                     healthB = 750;
                 }, 1000);
         };
+
         if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
             Jesus_fucking_long();
         } else if (msg.content == "--NeroFes") {
