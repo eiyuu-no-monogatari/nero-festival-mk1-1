@@ -45,7 +45,7 @@ client.on('message', msg => {
 
         var Jesus_fucking_long = function () {
 
-            if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
+            if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
                 var arr = msg.mentions.users.array();
                 if (arr.length == 2) {
                     userWhoGotTagged = msg.mentions.users.last(); //2nd
@@ -84,7 +84,7 @@ client.on('message', msg => {
                 } else {
                     msg.channel.send("ERROR(1).");
                 }
-            } else if (msg.content == "--NeroFes") {
+            } else if (msg.content === "--NeroFes") {
                 Y = msg.guild.members.random();
                 userWhoGotTagged = Y;
                 userWhoGotTagged_COPY = Y.user.username;
@@ -103,7 +103,8 @@ client.on('message', msg => {
                 }
             }
 
-            var arr = msg.mentions.users.array();
+                client.setTimeout(function () {
+                                var arr = msg.mentions.users.array();
             if (msg.content == "--NeroFes") {
                 const embedA = new Discord.RichEmbed();
                 embedA.setColor(0xFF0000);
@@ -128,8 +129,6 @@ client.on('message', msg => {
             } else {
                 msg.channel.send("ERROR(2).");
             }
-
-                client.setTimeout(function () {
                     msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
                         var Damage_caculate = function (a, b, c) {
                             Damage = a + Math.floor(Math.random() * b) - c;
