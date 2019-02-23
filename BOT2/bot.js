@@ -251,7 +251,7 @@ client.on('message', msg => {
                         if (SpecialSkill != null && healthTest != null && AA != null && np != null) {
                             var skillOrAttack = Math.random() * 100 + 1;
                             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                                var = require("./NeroFes/noble_phantasm.json");
+                                var data = require("./NeroFes/noble_phantasm.json");
                                 var Datalength = data["member"].length;
                                 X = Math.floor(Math.random() * Datalength);
                                 var A = data["member"][X].line1;
