@@ -65,6 +65,7 @@ client.on('message', msg => {
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
+                            Battle_loop();
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -87,6 +88,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
+                            Battle_loop();
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -113,6 +115,7 @@ client.on('message', msg => {
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
+                        Battle_loop();
 
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed()
