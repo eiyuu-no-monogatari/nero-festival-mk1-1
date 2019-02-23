@@ -42,7 +42,7 @@ client.on('message', msg => {
     if (!msg.author.bot) {
 
         Battle_loop = function () {
-            if (AA() != null && np() != null && SpecialAttack() != null) {
+            if (AA() && np() && SpecialAttack()) {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                 const data = require("./NeroFes/noble_phantasm.json");
