@@ -44,7 +44,7 @@ client.on('message', msg => {
 
         function Jesus_fucking_long() {
 
-            function Battle_loop() {
+            var Battle_loop = function() {
                 var skillOrAttack = Math.random() * 100 + 1;
                 if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                     const data = require("./NeroFes/noble_phantasm.json");
