@@ -132,134 +132,153 @@ client.on('message', msg => {
                         };
 
 
-                    function Embed_battle(action) {
-                        var arr = msg.mentions.users.array();
-                        if (msg.content == "--NeroFes") {
-                            var embedB = new Discord.RichEmbed();
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.author.username, healthB + "/750", true);
-                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            embedB.setDescription("");
-                        } else if (arr.length == 2) {
-                            var embedB = new Discord.RichEmbed();
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
-                            embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
-                            embedB.setDescription(action);
-                        } else if (arr.length == 1) {
-                            var embedB = new Discord.RichEmbed();
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.author.username, healthB + "/750", true);
-                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            embedB.setDescription(action);
-                        } else {
-                            msg.channel.send("ERROR(3).");
-                        }
-                    };
-
-                    function healthTest() {
-                        if (world_First == true || world_Second == true) {
-                            Round += 1
+                        function Embed_battle(action) {
+                            var arr = msg.mentions.users.array();
+                            if (msg.content == "--NeroFes") {
+                                var embedB = new Discord.RichEmbed();
+                                embedB.setColor(0xFF0000);
+                                embedB.addBlankField();
+                                embedB.addField(msg.author.username, healthB + "/750", true);
+                                embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                                embedB.setDescription("");
+                            } else if (arr.length == 2) {
+                                var embedB = new Discord.RichEmbed();
+                                embedB.setColor(0xFF0000);
+                                embedB.addBlankField();
+                                embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
+                                embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
+                                embedB.setDescription(action);
+                            } else if (arr.length == 1) {
+                                var embedB = new Discord.RichEmbed();
+                                embedB.setColor(0xFF0000);
+                                embedB.addBlankField();
+                                embedB.addField(msg.author.username, healthB + "/750", true);
+                                embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                                embedB.setDescription(action);
+                            } else {
+                                msg.channel.send("ERROR(3).");
+                            }
                         };
-                        if (healthA > 0 && healthB > 0) {
-                            Round += 1;
 
-                        } else if (healthB <= 0) {
-                            client.setTimeout(function () {
-                                if (world_Second == true) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + first_attack + "獲勝！";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
-                                    }, 2500);
-                                } else if (world_First == true) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
+                        function healthTest() {
+                            if (world_First == true || world_Second == true) {
+                                Round += 1
+                            };
+                            if (healthA > 0 && healthB > 0) {
+                                Round += 1;
 
-                                    }, 2500);
-                                } else {
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + first_attack + "獲勝！";
+                            } else if (healthB <= 0) {
+                                client.setTimeout(function () {
+                                    if (world_Second == true) {
+                                        string = first_attack + "：「時間恢復流動。」";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
-                                    }, 2500);
-                                }
-                            }, 2500);
-                        } else if (healthA <= 0) {
-                            client.setTimeout(function () {
-                                if (world_Second == true) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + first_attack + "獲勝！";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
-                                    }, 2500);
-                                } else if (world_First == true) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
-                                    }, 2500);
-                                } else {
-                                    client.setTimeout(function () {
-                                        string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        switchA = true;
-                                        switchB = false;
-                                    }, 2500);
-                                }
-                            }, 2500);
-                        }
-                    };
-
-                    function np(string1, string2, string3, string4, duration) {
-                        if (np_switch != false) {
-                            if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
-                                string = second_attack + string1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                if (string3 != "") {
-                                    client.setTimeout(function () {
-                                        string = second_attack + string2;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
                                         client.setTimeout(function () {
-                                            string = second_attack + string3;
+                                            string = "戰鬥結束，" + first_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+                                        }, 2500);
+                                    } else if (world_First == true) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                        client.setTimeout(function () {
+                                            string = "戰鬥結束，" + second_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+
+                                        }, 2500);
+                                    } else {
+                                        client.setTimeout(function () {
+                                            string = "戰鬥結束，" + first_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+                                        }, 2500);
+                                    }
+                                }, 2500);
+                            } else if (healthA <= 0) {
+                                client.setTimeout(function () {
+                                    if (world_Second == true) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                        client.setTimeout(function () {
+                                            string = "戰鬥結束，" + first_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+                                        }, 2500);
+                                    } else if (world_First == true) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                        client.setTimeout(function () {
+                                            string = "戰鬥結束，" + second_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+                                        }, 2500);
+                                    } else {
+                                        client.setTimeout(function () {
+                                            string = "戰鬥結束，" + second_attack + "獲勝！";
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            switchA = true;
+                                            switchB = false;
+                                        }, 2500);
+                                    }
+                                }, 2500);
+                            }
+                        };
+
+                        function np(string1, string2, string3, string4, duration) {
+                            if (np_switch != false) {
+                                if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
+                                    string = second_attack + string1;
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    if (string3 != "") {
+                                        client.setTimeout(function () {
+                                            string = second_attack + string2;
+                                            Embed_battle(string);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            client.setTimeout(function () {
+                                                string = second_attack + string3;
+                                                Embed_battle(string);
+                                                embedB.setImage(string4);
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                client.setTimeout(function () {
+                                                    Damage_caculate(200000, 100000, 50000);
+                                                    healthA = 0;
+                                                    string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                                    Embed_battle(string);
+                                                    embedB.setImage();
+                                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                    client.setTimeout(function () {
+                                                        healthTest();
+                                                    }, 2500);
+                                                }, duration);
+                                            }, 2500);
+                                        }, 2500);
+                                    } else {
+                                        client.setTimeout(function () {
+                                            string = second_attack + string2;
                                             Embed_battle(string);
                                             embedB.setImage(string4);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -275,45 +294,45 @@ client.on('message', msg => {
                                                 }, 2500);
                                             }, duration);
                                         }, 2500);
-                                    }, 2500);
-                                } else {
-                                    client.setTimeout(function () {
-                                        string = second_attack + string2;
-                                        Embed_battle(string);
-                                        embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    }
+                                } else { //奇數回合，即為第一位攻擊者的回合
+                                    string = first_attack + string1;
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    if (string3 != "") {
                                         client.setTimeout(function () {
-                                            Damage_caculate(200000, 100000, 50000);
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                            string = first_attack + string2;
                                             Embed_battle(string);
-                                            embedB.setImage();
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
-                                                healthTest();
+                                                string = first_attack + string3;
+                                                Embed_battle(string);
+                                                embedB.setImage(string4);
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                client.setTimeout(function () {
+                                                    Damage_caculate(200000, 100000, 50000);
+                                                    console.log(Damage);
+                                                    string = "對" + second_attack + "造成" + Damage + "點傷害。";
+                                                    healthB = 0;
+                                                    Embed_battle(string);
+                                                    embedB.setImage();
+                                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                    client.setTimeout(function () {
+                                                        healthTest();
+                                                    }, 2500);
+                                                }, duration);
                                             }, 2500);
-                                        }, duration);
-                                    }, 2500);
-                                }
-                            } else { //奇數回合，即為第一位攻擊者的回合
-                                string = first_attack + string1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                if (string3 != "") {
-                                    client.setTimeout(function () {
-                                        string = first_attack + string2;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        }, 2500);
+                                    } else {
                                         client.setTimeout(function () {
-                                            string = first_attack + string3;
+                                            string = second_attack + string2;
                                             Embed_battle(string);
                                             embedB.setImage(string4);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
-                                                console.log(Damage);
-                                                string = "對" + second_attack + "造成" + Damage + "點傷害。";
-                                                healthB = 0;
+                                                healthA = 0;
+                                                string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                                 Embed_battle(string);
                                                 embedB.setImage();
                                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -322,412 +341,393 @@ client.on('message', msg => {
                                                 }, 2500);
                                             }, duration);
                                         }, 2500);
-                                    }, 2500);
-                                } else {
+                                    }
+                                }
+                            } else {
+                                Round += 1;
+                            }
+                        };
+
+                        function AA (line, image, basic, maximum, minimum, duration) {
+                            if (Round % 2 != 0) { //奇數 A的回合
+                                if (world_First != true) { //如果A的時間沒被暫停
                                     client.setTimeout(function () {
-                                        string = second_attack + string2;
+                                        Damage_caculate(basic, maximum, minimum);
+                                        healthB = healthB - Damage;
+                                        if (healthB <= 0) {
+                                            healthB = 0;
+                                        }
+                                        string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
                                         Embed_battle(string);
-                                        embedB.setImage(string4);
+                                        embedB.setImage(image);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
-                                            Damage_caculate(200000, 100000, 50000);
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                            Embed_battle(string);
+                                            healthTest();
                                             embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                healthTest();
-                                            }, 2500);
                                         }, duration);
-                                    }, 2500);
-                                }
-                            }
-                        } else {
-                            Round += 1;
-                        }
-                    };
-
-                    function AA (line, image, basic, maximum, minimum, duration) {
-                        if (Round % 2 != 0) { //奇數 A的回合
-                            if (world_First != true) { //如果A的時間沒被暫停
-                                client.setTimeout(function () {
-                                    Damage_caculate(basic, maximum, minimum);
-                                    healthB = healthB - Damage;
-                                    if (healthB <= 0) {
-                                        healthB = 0;
+                                    }, 1500);
+                                } else { //如果A的時間被暫停
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                    } else {
+                                        Round += 2;
+                                        worldTimes += 1;
                                     }
-                                    string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage(image);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        healthTest();
-                                        embedB.setImage();
-                                    }, duration);
-                                }, 1500);
-                            } else { //如果A的時間被暫停
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                } else {
-                                    Round += 2;
-                                    worldTimes += 1;
                                 }
-                            }
-                        } else {
-                            if (world_Second != true) { //如果B的時間沒被暫停
-                                client.setTimeout(function () {
-                                    Damage_caculate(basic, maximum, minimum);
-                                    healthA = healthA - Damage;
-                                    if (healthA <= 0) {
-                                        healthA = 0;
+                            } else {
+                                if (world_Second != true) { //如果B的時間沒被暫停
+                                    client.setTimeout(function () {
+                                        Damage_caculate(basic, maximum, minimum);
+                                        healthA = healthA - Damage;
+                                        if (healthA <= 0) {
+                                            healthA = 0;
+                                        }
+                                        string = line + "對" + first_attack + "造成" + Damage + "點傷害。";
+                                        Embed_battle(string);
+                                        embedB.setImage(image);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            Round += 1;
+                                            healthTest();
+                                            embedB.setImage();
+                                        }, duration);
+                                    }, 1500);
+                                } else { //如果B的時間被暫停
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                    } else {
+                                        Round += 2;
+                                        worldTimes += 1;
                                     }
-                                    string = line + "對" + first_attack + "造成" + Damage + "點傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage(image);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                }
+                            }
+                        };
+
+                        function za_warudo() {
+                            if (Round % 2 == 0) { //偶數
+                                if (world_First != true) {
                                     client.setTimeout(function () {
+                                        string = second_attack + "用「世界（ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_First = true;
+                                            Round += 2;
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                    } else {
                                         Round += 1;
-                                        healthTest();
-                                        embedB.setImage();
-                                    }, duration);
-                                }, 1500);
-                            } else { //如果B的時間被暫停
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                } else {
-                                    Round += 2;
-                                    worldTimes += 1;
+                                        worldTimes += 1;
+                                    }
                                 }
-                            }
-                        }
-                    };
-
-                    function za_warudo() {
-                        if (Round % 2 == 0) { //偶數
-                            if (world_First != true) {
-                                client.setTimeout(function () {
-                                    string = second_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_First = true;
-                                        Round += 2;
-                                    }, 3000);
-                                }, 1500);
                             } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                } else {
-                                    Round += 1;
-                                    worldTimes += 1;
-                                }
-                            }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                if (world_Second != true) {
                                     client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_Second = true;
-                                        Round += 2;
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
+                                        string = first_attack + "用「世界（ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_Second = true;
+                                            Round += 2;
+                                        }, 3000);
+                                    }, 1500);
                                 } else {
-                                    Round += 1;
-                                    worldTimes += 1;
-                                }
-                            }
-                        }
-                    };
-
-                    function za_warudo2() {
-                        if (Round % 2 == 0) { //奇數回合
-                            if (world_First != true) {
-                                client.setTimeout(function () {
-                                    string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_First = true;
-                                        Round += 2;
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 2;
-                                }
-                            }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_Second = true;
-                                        Round += 2;
-                                       
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 2;
-                                }
-                            }
-                        }
-                    };
-
-                    function za_warudo3() {
-                        if (Round % 2 == 0) { //奇數
-                            if (world_First != true) { //第一行動者沒被暫停
-                                client.setTimeout(function () {
-                                    string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_First = true;
-                                        Round += 2;
-                                       
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 2;
-                                }
-                            }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                        world_Second = true;
-                                        Round += 2;
-                                       
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 2;
-                                }
-                            }
-                        }
-                    };
-
-                    function liar_no_taste() {
-                        if (Round % 2 != 0) { //偶數
-                            if (world_First != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                    } else {
                                         Round += 1;
-                                       
-                                    }, 6000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 1;
+                                        worldTimes += 1;
+                                    }
                                 }
                             }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = second_attack + "舔了" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                        };
+
+                        function za_warudo2() {
+                            if (Round % 2 == 0) { //奇數回合
+                                if (world_First != true) {
                                     client.setTimeout(function () {
-                                        embedB.setImage("");
+                                        string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_First = true;
+                                            Round += 2;
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                    } else {
+                                        worldTimes += 1;
+                                        Round += 2;
+                                    }
+                                }
+                            } else {
+                                if (world_Second != true) {
+                                    client.setTimeout(function () {
+                                        string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_Second = true;
+                                            Round += 2;
+                                       
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                        Round += 2;
+                                    }
+                                }
+                            }
+                        };
+
+                        function za_warudo3() {
+                            if (Round % 2 == 0) { //奇數
+                                if (world_First != true) { //第一行動者沒被暫停
+                                    client.setTimeout(function () {
+                                        string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_First = true;
+                                            Round += 2;
+                                       
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                        Round += 2;
+                                    }
+                                }
+                            } else {
+                                if (world_Second != true) {
+                                    client.setTimeout(function () {
+                                        string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            world_Second = true;
+                                            Round += 2;
+                                       
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                        Round += 2;
+                                    }
+                                }
+                            }
+                        };
+
+                        function liar_no_taste() {
+                            if (Round % 2 != 0) { //偶數
+                                if (world_First != true) {
+                                    client.setTimeout(function () {
+                                        string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            Round += 1;
+                                       
+                                        }, 6000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
                                         Round += 1;
-                                       
-                                    }, 6000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                    Round += 1;
+                                    }
                                 }
-                            }
-                        }
-                    };
-
-                    function STELLAAAAAAAAAAAAAAAAAAA() {
-                        if (Round % 2 == 0) { //偶數
-                            if (world_First != true) {
-                                client.setTimeout(function () {
-                                    string = second_attack + "" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                            } else {
+                                if (world_Second != true) {
                                     client.setTimeout(function () {
-                                        embedB.setImage("");
+                                        string = second_attack + "舔了" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                            Round += 1;
                                        
-                                        console.log(Round);
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3) {
-                                    string = first_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_First = false;
-                                    worldTimes = 0;
-                                   
+                                        }, 6000);
+                                    }, 1500);
                                 } else {
-                                    worldTimes += 1;
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                        Round += 1;
+                                    }
                                 }
                             }
-                        } else {
-                            if (world_Second != true) {
-                                client.setTimeout(function () {
-                                    string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    Embed_battle(string);
-                                    embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        embedB.setImage("");
-                                       
-                                        console.log(Round);
-                                    }, 3000);
-                                }, 1500);
-                            } else {
-                                var the_end_of_world = Math.random() * 100 + 1;
-                                if (the_end_of_world > 30 || worldTimes >= 3) {
-                                    string = second_attack + "：「時間恢復流動。」";
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    world_Second = false;
-                                    worldTimes = 0;
-                                   
-                                } else {
-                                    worldTimes += 1;
-                                }
-                            }
-                        }
-                    };
+                        };
 
-                    function SpecialSkill() {
-                        var RandomSkill = Math.floor(Math.random() * 4) + 1;
-                        if (RandomSkill == 1) {
-                            if (world_First != true && world_Second != true) {
-                                za_warudo();
+                        function STELLAAAAAAAAAAAAAAAAAAA() {
+                            if (Round % 2 == 0) { //偶數
+                                if (world_First != true) {
+                                    client.setTimeout(function () {
+                                        string = second_attack + "" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                       
+                                            console.log(Round);
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3) {
+                                        string = first_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_First = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                    }
+                                }
                             } else {
-                               
+                                if (world_Second != true) {
+                                    client.setTimeout(function () {
+                                        string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
+                                        Embed_battle(string);
+                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            embedB.setImage("");
+                                       
+                                            console.log(Round);
+                                        }, 3000);
+                                    }, 1500);
+                                } else {
+                                    var the_end_of_world = Math.random() * 100 + 1;
+                                    if (the_end_of_world > 30 || worldTimes >= 3) {
+                                        string = second_attack + "：「時間恢復流動。」";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        world_Second = false;
+                                        worldTimes = 0;
+                                   
+                                    } else {
+                                        worldTimes += 1;
+                                    }
+                                }
                             }
-                        } else if (RandomSkill == 2) {
-                            if (world_First != true && world_Second != true) {
-                                za_warudo2();
-                            } else {
+                        };
+
+                        function SpecialSkill() {
+                            var RandomSkill = Math.floor(Math.random() * 4) + 1;
+                            if (RandomSkill == 1) {
+                                if (world_First != true && world_Second != true) {
+                                    za_warudo();
+                                } else {
                                
-                            }
-                        } else if (RandomSkill == 3) {
-                            if (world_First != true && world_Second != true) {
-                                za_warudo3();
-                            } else {
+                                }
+                            } else if (RandomSkill == 2) {
+                                if (world_First != true && world_Second != true) {
+                                    za_warudo2();
+                                } else {
                                
+                                }
+                            } else if (RandomSkill == 3) {
+                                if (world_First != true && world_Second != true) {
+                                    za_warudo3();
+                                } else {
+                               
+                                }
+                            } else if (RandomSkill == 4) {
+                                liar_no_taste();
                             }
-                        } else if (RandomSkill == 4) {
-                            liar_no_taste();
-                        }
-                    };      
-                });
-                healthA = 750;
-                healthB = 750;
+                        };      
+                    });
+                    healthA = 750;
+                    healthB = 750;
                 }
             }, 1000);
         };
