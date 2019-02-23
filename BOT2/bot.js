@@ -43,7 +43,6 @@ client.on('message', msg => {
     if (!msg.author.bot) {
 
         if (((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes"))|| msg.content == "--NeroFes") {
-        function Jesus_fucking_long() {
 
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
@@ -181,7 +180,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
                                         }, 2500);
                                     } else if (world_First == true) {
                                         string = second_attack + "：「時間恢復流動。」";
@@ -194,7 +192,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
 
                                         }, 2500);
                                     } else {
@@ -203,7 +200,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
                                         }, 2500);
                                     }
                                 }, 2500);
@@ -220,7 +216,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
                                         }, 2500);
                                     } else if (world_First == true) {
                                         string = second_attack + "：「時間恢復流動。」";
@@ -233,7 +228,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
                                         }, 2500);
                                     } else {
                                         client.setTimeout(function () {
@@ -241,7 +235,6 @@ client.on('message', msg => {
                                             Embed_battle(string);
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             switchA = true;
-                                            switchB = false;
                                         }, 2500);
                                     }
                                 }, 2500);
@@ -731,10 +724,9 @@ client.on('message', msg => {
                     healthB = 750;
                 }
             }, 1000);
-        };
         }
 
-        while (switchB == true && switchA == false) {
+        while (switchA == false) {
             var skillOrAttack = Math.random() * 100 + 1;
             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                 const data = require("./NeroFes/noble_phantasm.json");
@@ -751,7 +743,6 @@ client.on('message', msg => {
                 var E = data["member"][X].duration;
                 np(A, B, C, D, E);
             } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                Jesus_fucking_long();
                 SpecialSkill();
             } else {
                 const data = require("./NeroFes/skill.json");
@@ -803,6 +794,7 @@ client.on('message', msg => {
         if (switchA == true) {
             a = 0;
             switchA = true;
+            switchB = false;
             Round = 1;
             healthA = 750;
             healthB = 750;
