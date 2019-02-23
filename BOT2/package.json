@@ -1,0 +1,15 @@
+{
+  "name": "Nero's-Golden-Theater",
+  "version": "1.0.0",
+  "description": "Just a discord bot.",
+  "main": "bot.js",
+  "author": "Roger Lo",
+  "dependencies": {
+    "delay": "^4.1.0",
+    "discord-rich-presence": "0.0.8",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.4.2",
+    "request-promise": "^4.2.4",
+    "winston": "^3.2.1"
+  }
+}
