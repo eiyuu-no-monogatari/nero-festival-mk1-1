@@ -264,7 +264,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    Round += 1;
                                     worldTimes += 1;
                                 }
                             }
@@ -295,7 +295,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    Round += 1;
                                     worldTimes += 1;
                                 }
                             }
