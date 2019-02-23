@@ -8,7 +8,6 @@ var X;
 var first_attack;
 var second_attack;
 var string;
-var embedB;
 var healthA;
 var healthB;
 var Damage;
@@ -22,9 +21,6 @@ var port = process.env.PORT || 5000;
 express().listen(port, "0.0.0.0", function () {
     console.log("Listening on Port 5000");
 });
-
-
-
 
 client.on('ready', () => {
     console.log("以" + client.user.tag + "登入");
@@ -40,44 +36,10 @@ setInterval(function () {
 }, 600000);
 
 client.on('message', msg => {
+
     if (!msg.author.bot) {
 
-        Jesus_fucking_long = function () { //需求：Battle_Loop
-
-           Battle_loop = function () {
-                    var skillOrAttack = Math.random() * 100 + 1;
-                    if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                        var data = require("./NeroFes/noble_phantasm.json");
-                        var Datalength = data["member"].length;
-                        X = Math.floor(Math.random() * Datalength);
-                        var A = data["member"][X].line1;
-                        var B = data["member"][X].line2;
-                        if (data["member"][X].line3 == "") {
-                            var C = "";
-                        } else {
-                            var C = data["member"][X].line3;
-                        }
-
-                        var D = data["member"][X].image;
-                        var E = data["member"][X].duration;
-                        np(A, B, C, D, E);
-                    } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                        SpecialSkill();
-
-                    } else {
-                        var data = require("./NeroFes/skill.json");
-                        var Datalength = data["member"].length;
-                        X = Math.floor(Math.random() * Datalength);
-                        var F = data["member"][X].line;
-                        var G = data["member"][X].image;
-                        var H = data["member"][X].basicDamage;
-                        var J = data["member"][X].maximumCorrection;
-                        var K = data["member"][X].minimumCorrection;
-                        var L = data["member"][X].duration;
-                        AA(F, G, H, J, K, L);
-                    }
-            }; //需求：SpecialSkill、healthTest、AA、np
-
+        Jesus_fucking_long = function () {
             client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
@@ -99,7 +61,6 @@ client.on('message', msg => {
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            Battle_loop();
 
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed()
@@ -149,7 +110,6 @@ client.on('message', msg => {
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
-                        Battle_loop();
 
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed()
@@ -194,85 +154,83 @@ client.on('message', msg => {
                     }; //需求：無
 
                     healthTest = function () {
-                            if (world_First == true || world_Second == true) {
-                                Round += 1
-                            };
-                            if (healthA > 0 && healthB > 0) {
-                                Round += 1;
-                                Battle_loop();
+                        if (world_First == true || world_Second == true) {
+                            Round += 1
+                        };
+                        if (healthA > 0 && healthB > 0) {
+                            Round += 1;
+                        } else if (healthB <= 0) {
+                            client.setTimeout(function () {
+                                if (world_Second == true) {
+                                    string = first_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_Second = false;
+                                    worldTimes = 0;
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + first_attack + "獲勝！";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        switchA = true;
+                                    }, 2500);
+                                } else if (world_First == true) {
+                                    string = second_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_First = false;
+                                    worldTimes = 0;
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + second_attack + "獲勝！";
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        switchA = true;
 
-                            } else if (healthB <= 0) {
-                                client.setTimeout(function () {
-                                    if (world_Second == true) {
-                                        string = first_attack + "：「時間恢復流動。」";
+                                    }, 2500);
+                                } else {
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else if (world_First == true) {
-                                        string = second_attack + "：「時間恢復流動。」";
+                                        switchA = true;
+                                    }, 2500);
+                                }
+                            }, 2500);
+                        } else if (healthA <= 0) {
+                            client.setTimeout(function () {
+                                if (world_Second == true) {
+                                    string = first_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_Second = false;
+                                    worldTimes = 0;
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-
-                                        }, 2500);
-                                    } else {
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    }
-                                }, 2500);
-                            } else if (healthA <= 0) {
-                                client.setTimeout(function () {
-                                    if (world_Second == true) {
-                                        string = first_attack + "：「時間恢復流動。」";
+                                        switchA = true;
+                                    }, 2500);
+                                } else if (world_First == true) {
+                                    string = second_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_First = false;
+                                    worldTimes = 0;
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else if (world_First == true) {
-                                        string = second_attack + "：「時間恢復流動。」";
+                                        switchA = true;
+                                    }, 2500);
+                                } else {
+                                    client.setTimeout(function () {
+                                        string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else {
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    }
-                                }, 2500);
-                            }
+                                        switchA = true;
+                                    }, 2500);
+                                }
+                            }, 2500);
+                        }
                     };
 
                     np = function (string1, string2, string3, string4, duration) {
@@ -373,9 +331,8 @@ client.on('message', msg => {
                             }
                         } else {
                             Round += 1;
-                            Battle_loop();
                         }
-                    }; //需求：healthTest、Embed_battle、Damage_caculate、Battle_loop
+                    }; //需求：healthTest、Embed_battle、Damage_caculate
 
                     AA = function (line, image, basic, maximum, minimum, duration) {
                         if (Round % 2 != 0) { //奇數 A的回合
@@ -403,7 +360,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
@@ -435,15 +391,13 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 2;
                                     worldTimes += 1;
-                                    Battle_loop();
                                 }
                             }
                         }
-                    };  //需求：healthTest、Embed_battle、Damage_caculate、Battle_loop
+                    };  //需求：healthTest、Embed_battle、Damage_caculate
 
                     za_warudo = function () {
                         if (Round % 2 == 0) { //偶數
@@ -457,7 +411,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -468,7 +421,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
@@ -485,7 +437,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -496,14 +447,13 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
                                 } else {
                                     Round += 1;
                                     worldTimes += 1;
                                 }
                             }
                         }
-                    }; //需求：Battle_loop();
+                    };
 
                     za_warudo2 = function () {
                         if (Round % 2 == 0) { //奇數回合
@@ -517,7 +467,6 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -528,7 +477,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -545,7 +494,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
+
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -556,14 +505,14 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
                                 }
                             }
                         }
-                    }; //需求：Battle_loop();
+                    }
 
                     za_warudo3 = function () {
                         if (Round % 2 == 0) { //奇數
@@ -577,7 +526,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round += 2;
-                                        Battle_loop();
+
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -588,7 +537,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
@@ -605,7 +554,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round += 2;
-                                        Battle_loop();
+
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -616,14 +565,14 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 2;
                                 }
                             }
                         }
-                    }; //需求：Battle_loop();
+                    };
 
                     liar_no_taste = function () {  //需求：Battle_loop
                         if (Round % 2 != 0) { //偶數
@@ -636,7 +585,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                        Battle_loop();
+
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -647,7 +596,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
@@ -663,7 +612,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
-                                        Battle_loop();
+
                                     }, 6000);
                                 }, 1500);
                             } else {
@@ -674,14 +623,14 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+
                                 } else {
                                     worldTimes += 1;
                                     Round += 1;
                                 }
                             }
                         }
-                    }; //需求：Battle_loop();
+                    }; 
 
                     SpecialSkill = function () {
                         var RandomSkill = Math.floor(Math.random() * 4) + 1;
@@ -689,39 +638,71 @@ client.on('message', msg => {
                             if (world_First != true && world_Second != true) {
                                 za_warudo();
                             } else {
-                                Battle_loop();
+
                             }
                         } else if (RandomSkill == 2) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo2();
                             } else {
-                                Battle_loop();
                             }
                         } else if (RandomSkill == 3) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo3();
                             } else {
-                                Battle_loop();
                             }
                         } else if (RandomSkill == 4) {
                             liar_no_taste();
                         }
-                    }; //需求：Batlle_loop、za_warudo、za_warudo2、za_warudo3、liar_no_taste
-
-
-                    Battle_loop();
+                    };
                 });
-                healthA = 750;
-                healthB = 750;
+
             }, 1000);
-
-
         };
+
+        while (healthA > 0 && healthB > 0 && switchA == true) {
+            var skillOrAttack = Math.random() * 100 + 1;
+            if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                var data = require("./NeroFes/noble_phantasm.json");
+                var Datalength = data["member"].length;
+                X = Math.floor(Math.random() * Datalength);
+                var A = data["member"][X].line1;
+                var B = data["member"][X].line2;
+                if (data["member"][X].line3 == "") {
+                    var C = "";
+                } else {
+                    var C = data["member"][X].line3;
+                }
+
+                var D = data["member"][X].image;
+                var E = data["member"][X].duration;
+                np(A, B, C, D, E);
+            } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                SpecialSkill();
+
+            } else {
+                var data = require("./NeroFes/skill.json");
+                var Datalength = data["member"].length;
+                X = Math.floor(Math.random() * Datalength);
+                var F = data["member"][X].line;
+                var G = data["member"][X].image;
+                var H = data["member"][X].basicDamage;
+                var J = data["member"][X].maximumCorrection;
+                var K = data["member"][X].minimumCorrection;
+                var L = data["member"][X].duration;
+                AA(F, G, H, J, K, L);
+            }
+        }
 
         if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
             Jesus_fucking_long();
+            switchA = true;
+            healthA = 750;
+            healthB = 750;
         } else if (msg.content == "--NeroFes") {
             Jesus_fucking_long();
+            switchA = true;
+            healthB = 750;
+            healthA = 750;
         }
     }
 
