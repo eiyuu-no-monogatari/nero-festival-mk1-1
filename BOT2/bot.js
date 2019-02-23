@@ -44,7 +44,6 @@ client.on('message', msg => {
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
             MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
-            console.log(MatchData);
             strA = MatchData[1];
             var varA = parseInt(MatchData[2]);
             var varB = parseInt(MatchData[3]);
@@ -78,7 +77,6 @@ client.on('message', msg => {
         }
     } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
         MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
-        console.log(MatchData);
         strA = MatchData[1];
         var varA = parseInt(MatchData[2]);
         var varB = parseInt(MatchData[3]);
