@@ -17,6 +17,7 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
+const embedA = new Discord.RichEmbed();
 const embedB = new Discord.RichEmbed();
 
 
@@ -58,7 +59,6 @@ client.on('message', msg => {
                             msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
-                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
@@ -80,7 +80,6 @@ client.on('message', msg => {
                             second_attack = msg.mentions.users.first().username;
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.author.username, 750 + "/750", true);
@@ -106,7 +105,6 @@ client.on('message', msg => {
                         second_attack = msg.author.username;
                         msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                         msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        var embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
@@ -721,23 +719,36 @@ client.on('message', msg => {
                         if (healthB <= 0) {
                             if (world_Second == true) {
                                 healthTest();
-                                break;
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
                             } else if (world_First == true) {
                                 healthTest();
-                                break;
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
+                                
                             } else {
                                 healthTest();
-                                break;
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
                             }
                         } else if (healthA <= 0) {
                             healthTest();
-                            break;
+                            if (healthA == 0 || healthB == 0) {
+                                break;
+                            }
                         } else if (world_First == true) {
                             healthTest();
-                            break;
+                            if (healthA == 0 || healthB == 0) {
+                                break;
+                            }
                         } else {
                             healthTest();
-                            break;
+                            if (healthA == 0 || healthB == 0) {
+                                break;
+                            }
                         }
                     }
                 }
