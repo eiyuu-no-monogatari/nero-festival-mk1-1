@@ -17,8 +17,8 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
-const embedA = new Discord.RichEmbed();
-const embedB = new Discord.RichEmbed();
+embedA = new Discord.RichEmbed();
+embedB = new Discord.RichEmbed();
 
 
 const express = require('express')
@@ -59,6 +59,7 @@ client.on('message', msg => {
                             msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
@@ -80,6 +81,7 @@ client.on('message', msg => {
                             second_attack = msg.mentions.users.first().username;
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.author.username, 750 + "/750", true);
@@ -105,6 +107,7 @@ client.on('message', msg => {
                         second_attack = msg.author.username;
                         msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                         msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                        var embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
@@ -128,6 +131,7 @@ client.on('message', msg => {
                     function Embed_battle(action) {
                         var arr = msg.mentions.users.array();
                         if (msg.content == "--NeroFes") {
+                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.author.username, healthB + "/750", true);
@@ -135,6 +139,7 @@ client.on('message', msg => {
                             embedB.setDescription("");
                             return embedB;
                         } else if (arr.length == 2) {
+                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
@@ -142,6 +147,7 @@ client.on('message', msg => {
                             embedB.setDescription(action);
                             return embedB;
                         } else if (arr.length == 1) {
+                            var embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
                             embedB.addField(msg.author.username, healthB + "/750", true);
