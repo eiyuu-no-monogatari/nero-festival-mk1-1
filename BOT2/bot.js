@@ -68,7 +68,7 @@ client.on('message', msg => {
                             }
 
                         } else if (switchA == false) {
-                            gloembedB = new Discord.RichEmbed();
+                            global.embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -93,7 +93,7 @@ client.on('message', msg => {
                             }
 
                         } else if (switchA == false) {
-                            embedB = new Discord.RichEmbed();
+                            global.embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -121,7 +121,7 @@ client.on('message', msg => {
                             battle_loop();
                         }
                     } else if (switchA == false) {
-                        embedB = new Discord.RichEmbed();
+                        global.embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
                     }
