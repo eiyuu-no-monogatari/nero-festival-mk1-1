@@ -133,7 +133,7 @@ client.on('message', msg => {
                             embedB.addBlankField();
                             embedB.addField(msg.author.username, healthB + "/750", true);
                             embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            embedB.setDescription("");
+                            embedB.setDescription(action);
                         } else if (arr.length == 2) {
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
