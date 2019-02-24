@@ -684,7 +684,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    while (switchA == false && switchB == true) {
+                    //while (switchA == false && switchB == true) {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             const data = require("./NeroFes/noble_phantasm.json");
@@ -714,42 +714,8 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
-                        if (healthB <= 0) {
-                            if (world_Second == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else if (world_First == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            }
-                        } else if (healthA <= 0) {
-                            if (world_First == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else if (world_Second == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            }
-                        }
-                    }
+
+                    //}
 
                 }); 
 
