@@ -752,11 +752,11 @@ client.on('message', msg => {
                     }
 
                 }); 
-                healthA = 750;
-                healthB = 750;
+
             }, 1000);
         }
     }
+
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
             MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
