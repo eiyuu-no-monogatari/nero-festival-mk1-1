@@ -138,25 +138,25 @@ client.on('message', msg => {
 
                     function Embed_battle(action) {
                         var arr = msg.mentions.users.array();
-                        var embedB = new Discord.RichEmbed();
+                        var embedC = new Discord.RichEmbed();
                         if (msg.content == "--NeroFes") {
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.author.username, healthB + "/750", true);
-                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            embedB.setDescription(action);
+                            embedC.setColor(0xFF0000);
+                            embedC.addBlankField();
+                            embedC.addField(msg.author.username, healthB + "/750", true);
+                            embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                            embedC.setDescription(action);
                         } else if (arr.length == 2) {
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
-                            embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
-                            embedB.setDescription(action);
+                            embedC.setColor(0xFF0000);
+                            embedC.addBlankField();
+                            embedC.addField(msg.mentions.users.first().username, healthB + "/750", true);
+                            embedC.addField(msg.mentions.users.last().username, healthA + "/750", true);
+                            embedC.setDescription(action);
                         } else if (arr.length == 1) {
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.author.username, healthB + "/750", true);
-                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            embedB.setDescription(action);
+                            embedC.setColor(0xFF0000);
+                            embedC.addBlankField();
+                            embedC.addField(msg.author.username, healthB + "/750", true);
+                            embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                            embedC.setDescription(action);
                         } else {
                             msg.channel.send("ERROR(3).");
                         }
