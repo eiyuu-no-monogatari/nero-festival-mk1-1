@@ -17,10 +17,6 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
-function battle_loop() {
-    Round = Round;
-    return 0;
-}
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -66,7 +62,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (battle_loop() != 0) {
+                                if (typeof client.functionX === 'undefined') {
                                     battle_loop();
                                 }
 
