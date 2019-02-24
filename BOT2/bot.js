@@ -18,6 +18,7 @@ msgA = "";
 msgB = "";
 var switchB = false;
 function battle_loop() {
+    Round = Round;
     return 0;
 }
 
