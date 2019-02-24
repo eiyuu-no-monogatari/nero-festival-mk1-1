@@ -700,6 +700,7 @@ client.on('message', msg => {
                 });
             
                 if (typeof global.battle_loop !== 'undefined') {
+                    Test();
                     var battle_loop = function () {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
@@ -731,7 +732,6 @@ client.on('message', msg => {
                             AA(F, G, H, J, K, L);
                         }
                     }
-                    Test();
                 }
 
 
