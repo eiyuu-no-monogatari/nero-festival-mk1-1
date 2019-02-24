@@ -684,7 +684,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    while (switchA == false && switchB == true) {
+                    do {
                         client.setTimeout(function () {
                             var skillOrAttack = Math.random() * 100 + 1;
                             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
@@ -716,42 +716,42 @@ client.on('message', msg => {
                                 AA(F, G, H, J, K, L);
                             }
                         }, 500);
-                            if (healthB <= 0) {
-                                if (world_Second == true) {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
-                                } else if (world_First == true) {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
-                                } else {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
+                        if (healthB <= 0) {
+                            if (world_Second == true) {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
                                 }
-                            } else if (healthA <= 0) {
-                                if (world_First == true) {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
-                                } else if (world_Second == true) {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
-                                } else {
-                                    healthTest();
-                                    if (healthA == 0 || healthB == 0) {
-                                        break;
-                                    }
+                            } else if (world_First == true) {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
+                            } else {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
                                 }
                             }
-                    }
+                        } else if (healthA <= 0) {
+                            if (world_First == true) {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
+                            } else if (world_Second == true) {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
+                            } else {
+                                healthTest();
+                                if (healthA == 0 || healthB == 0) {
+                                    break;
+                                }
+                            }
+                        }
+                    } while (switchA == false && switchB == true);
 
                 });
 
