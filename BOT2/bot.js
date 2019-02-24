@@ -58,19 +58,19 @@ client.on('message', msg => {
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
                             embedA = new Discord.RichEmbed();
-                            global.embedA.setColor(0xFF0000);
-                            global.embedA.addBlankField();
-                            global.embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                            global.embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            global.embedA.setDescription("");
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
 
                         } else if (switchA == false) {
-                            embedB = new Discord.RichEmbed();
-                            global.embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(global.embedB);
+                            gloembedB = new Discord.RichEmbed();
+                            embedB.setDescription('有決鬥正在進行，請耐心等候。');
+                            msg.channel.send(embedB);
                         }
                     } else if (arr.length == 1) {
                         userWhoGotTagged = msg.mentions.users.first();
@@ -83,19 +83,19 @@ client.on('message', msg => {
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                             embedA = new Discord.RichEmbed();
-                            global.embedA.setColor(0xFF0000);
-                            global.embedA.addBlankField();
-                            global.embedA.addField(msg.author.username, 750 + "/750", true);
-                            global.embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            global.embedA.setDescription("");
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.author.username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
 
                         } else if (switchA == false) {
                             embedB = new Discord.RichEmbed();
-                            global.embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(global.embedB);
+                            embedB.setDescription('有決鬥正在進行，請耐心等候。');
+                            msg.channel.send(embedB);
                         }
                     } else {
                         msg.channel.send("ERROR(1).");
@@ -112,25 +112,25 @@ client.on('message', msg => {
                         msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                         msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                         embedA = new Discord.RichEmbed();
-                        global.embedA.setColor(0xFF0000);
-                        global.embedA.addBlankField();
-                        global.embedA.addField(msg.author.username, 750 + "/750", true);
-                        global.embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        global.embedA.setDescription("");
+                        embedA.setColor(0xFF0000);
+                        embedA.addBlankField();
+                        embedA.addField(msg.author.username, 750 + "/750", true);
+                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.setDescription("");
                         if (typeof global.battle_loop !== 'undefined') {
                             battle_loop();
                         }
                     } else if (switchA == false) {
                         embedB = new Discord.RichEmbed();
-                        global.embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                        msg.channel.send(global.embedB);
+                        embedB.setDescription('有決鬥正在進行，請耐心等候。');
+                        msg.channel.send(embedB);
                     }
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
             }
 
-                msg.channel.send(msgA + '\n' + msgB + '\n', global.embedA).then(msgBOT => {
+                msg.channel.send(msgA + '\n' + msgB + '\n', embedA).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
                     };
@@ -139,23 +139,23 @@ client.on('message', msg => {
                         var arr = msg.mentions.users.array();
                         embedB = new Discord.RichEmbed();
                         if (msg.content == "--NeroFes") {
-                            global.embedB.setColor(0xFF0000);
-                            global.embedB.addBlankField();
-                            global.embedB.addField(msg.author.username, healthB + "/750", true);
-                            global.embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            global.embedB.setDescription(action);
+                            embedB.setColor(0xFF0000);
+                            embedB.addBlankField();
+                            embedB.addField(msg.author.username, healthB + "/750", true);
+                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                            embedB.setDescription(action);
                         } else if (arr.length == 2) {
-                            global.embedB.setColor(0xFF0000);
-                            global.embedB.addBlankField();
-                            global.embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
-                            global.embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
-                            global.embedB.setDescription(action);
+                            embedB.setColor(0xFF0000);
+                            embedB.addBlankField();
+                            embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
+                            embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
+                            embedB.setDescription(action);
                         } else if (arr.length == 1) {
-                            global.embedB.setColor(0xFF0000);
-                            global.embedB.addBlankField();
-                            global.embedB.addField(msg.author.username, healthB + "/750", true);
-                            global.embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
-                            global.embedB.setDescription(action);
+                            embedB.setColor(0xFF0000);
+                            embedB.addBlankField();
+                            embedB.addField(msg.author.username, healthB + "/750", true);
+                            embedB.addField(userWhoGotTagged_COPY, healthA + "/750", true);
+                            embedB.setDescription(action);
                         } else {
                             msg.channel.send("ERROR(3).");
                         }
@@ -175,13 +175,13 @@ client.on('message', msg => {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -189,13 +189,13 @@ client.on('message', msg => {
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -204,7 +204,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -216,13 +216,13 @@ client.on('message', msg => {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -230,13 +230,13 @@ client.on('message', msg => {
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -245,7 +245,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
                                         switchB = false;
 
@@ -260,24 +260,24 @@ client.on('message', msg => {
                             if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
                                 Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                 if (string3 != "") {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
                                             string = second_attack + string3;
                                             Embed_battle(string);
-                                            global.embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                            embedB.setImage(string4);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
                                                 healthA = 0;
                                                 string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                                 Embed_battle(string);
-                                                global.embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                                embedB.setImage();
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                                 client.setTimeout(function () {
                                                     healthTest();
                                                 }, 2500);
@@ -288,15 +288,15 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
                                         Embed_battle(string);
-                                        global.embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        embedB.setImage(string4);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
                                             Damage_caculate(200000, 100000, 50000);
                                             healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
-                                            global.embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                            embedB.setImage();
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 healthTest();
                                             }, 2500);
@@ -306,25 +306,25 @@ client.on('message', msg => {
                             } else { //奇數回合，即為第一位攻擊者的回合
                                 string = first_attack + string1;
                                 Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                 if (string3 != "") {
                                     client.setTimeout(function () {
                                         string = first_attack + string2;
                                         Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
                                             string = first_attack + string3;
                                             Embed_battle(string);
-                                            global.embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                            embedB.setImage(string4);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
                                                 console.log(Damage);
                                                 string = "對" + second_attack + "造成" + Damage + "點傷害。";
                                                 healthB = 0;
                                                 Embed_battle(string);
-                                                global.embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                                embedB.setImage();
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                                 client.setTimeout(function () {
                                                     healthTest();
                                                 }, 2500);
@@ -335,15 +335,15 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
                                         Embed_battle(string);
-                                        global.embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                        embedB.setImage(string4);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
                                             Damage_caculate(200000, 100000, 50000);
                                             healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
-                                            global.embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                            embedB.setImage();
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 healthTest();
                                             }, 2500);
@@ -367,11 +367,11 @@ client.on('message', msg => {
                                     }
                                     string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
                                     Embed_battle(string);
-                                    global.embedB.setImage(image);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', global.embedB);
+                                    embedB.setImage(image);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         healthTest();
-                                        global.embedB.setImage();
+                                        embedB.setImage();
                                     }, duration);
                                 }, 1500);
                             } else { //如果A的時間被暫停
