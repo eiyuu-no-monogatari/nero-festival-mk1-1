@@ -175,24 +175,28 @@ client.on('message', msg => {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle();
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
@@ -200,8 +204,8 @@ client.on('message', msg => {
                                 } else {
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
@@ -212,28 +216,28 @@ client.on('message', msg => {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + first_attack + "獲勝！";
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
                                     }, 2500);
                                 } else if (world_First == true) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
@@ -241,8 +245,8 @@ client.on('message', msg => {
                                 } else {
                                     client.setTimeout(function () {
                                         string = "戰鬥結束，" + second_attack + "獲勝！";
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         switchA = true;
                                         switchB = false;
 
@@ -256,25 +260,25 @@ client.on('message', msg => {
                         if (np_switch != false) {
                             if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
-                                
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                Embed_battle(string);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                 if (string3 != "") {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         client.setTimeout(function () {
                                             string = second_attack + string3;
-                                            
+                                            Embed_battle(string);
                                             embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
                                                 healthA = 0;
                                                 string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                                
+                                                Embed_battle(string);
                                                 embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                                 client.setTimeout(function () {
                                                     healthTest();
                                                 }, 2500);
@@ -284,16 +288,16 @@ client.on('message', msg => {
                                 } else {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
-                                        
+                                        Embed_battle(string);
                                         embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         client.setTimeout(function () {
                                             Damage_caculate(200000, 100000, 50000);
                                             healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                            
+                                            Embed_battle(string);
                                             embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                             client.setTimeout(function () {
                                                 healthTest();
                                             }, 2500);
@@ -302,26 +306,26 @@ client.on('message', msg => {
                                 }
                             } else { //奇數回合，即為第一位攻擊者的回合
                                 string = first_attack + string1;
-                                
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                Embed_battle(string);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                 if (string3 != "") {
                                     client.setTimeout(function () {
                                         string = first_attack + string2;
-                                        
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         client.setTimeout(function () {
                                             string = first_attack + string3;
-                                            
+                                            Embed_battle(string);
                                             embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
                                                 console.log(Damage);
                                                 string = "對" + second_attack + "造成" + Damage + "點傷害。";
                                                 healthB = 0;
-                                                
+                                                Embed_battle(string);
                                                 embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                                 client.setTimeout(function () {
                                                     healthTest();
                                                 }, 2500);
@@ -331,16 +335,16 @@ client.on('message', msg => {
                                 } else {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
-                                        
+                                        Embed_battle(string);
                                         embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                         client.setTimeout(function () {
                                             Damage_caculate(200000, 100000, 50000);
                                             healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                            
+                                            Embed_battle(string);
                                             embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                             client.setTimeout(function () {
                                                 healthTest();
                                             }, 2500);
@@ -363,9 +367,9 @@ client.on('message', msg => {
                                         healthB = 0;
                                     }
                                     string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage(image);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         healthTest();
                                         embedB.setImage();
@@ -375,8 +379,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -395,9 +399,9 @@ client.on('message', msg => {
                                         healthA = 0;
                                     }
                                     string = line + "對" + first_attack + "造成" + Damage + "點傷害。";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage(image);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         Round += 1;
                                         healthTest();
@@ -408,8 +412,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -427,9 +431,9 @@ client.on('message', msg => {
                             if (world_First != true) {
                                 client.setTimeout(function () {
                                     string = second_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
@@ -441,8 +445,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -456,9 +460,9 @@ client.on('message', msg => {
                             if (world_Second != true) {
                                 client.setTimeout(function () {
                                     string = first_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
@@ -470,8 +474,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -489,9 +493,9 @@ client.on('message', msg => {
                             if (world_First != true) {
                                 client.setTimeout(function () {
                                     string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
@@ -503,8 +507,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -518,9 +522,9 @@ client.on('message', msg => {
                             if (world_Second != true) {
                                 client.setTimeout(function () {
                                     string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
@@ -532,8 +536,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -551,9 +555,9 @@ client.on('message', msg => {
                             if (world_First != true) { //第一行動者沒被暫停
                                 client.setTimeout(function () {
                                     string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
@@ -565,8 +569,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -580,9 +584,9 @@ client.on('message', msg => {
                             if (world_Second != true) {
                                 client.setTimeout(function () {
                                     string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
@@ -594,8 +598,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -613,9 +617,9 @@ client.on('message', msg => {
                             if (world_First != true) {
                                 client.setTimeout(function () {
                                     string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
@@ -626,8 +630,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_First = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -641,9 +645,9 @@ client.on('message', msg => {
                             if (world_Second != true) {
                                 client.setTimeout(function () {
                                     string = second_attack + "舔了" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                    
+                                    Embed_battle(string);
                                     embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         Round += 1;
@@ -654,8 +658,8 @@ client.on('message', msg => {
                                 var the_end_of_world = Math.random() * 100 + 1;
                                 if (the_end_of_world > 30 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
-                                    
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle(string));
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', Embed_battle());
                                     world_Second = false;
                                     worldTimes = 0;
                                     healthTest();
@@ -761,10 +765,10 @@ client.on('message', msg => {
                     } else if (stringA == 1) {
                         ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
                     } else {
-                        ResultStr = strA + " 擲出 " + stringA
+                        ResultStr = strA + " 擲出 " + stringA;
                     }
                 } else {
-                    ResultStr = strA + " 擲出 " + stringA
+                    ResultStr = strA + " 擲出 " + stringA;
                 }
                 msg.channel.send(ResultStr);
             }
