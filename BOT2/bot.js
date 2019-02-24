@@ -693,7 +693,7 @@ client.on('message', msg => {
                     };
                 });
                 if (typeof global.battle_loop !== 'undefined') {
-                    var battle_loop = function () {
+                    battle_loop = function () {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             const data = require("./NeroFes/noble_phantasm.json");
