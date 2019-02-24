@@ -90,7 +90,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.author.username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (battle_loop() != 0) {
+                                if (battle_loop != 0) {
                                     battle_loop();
                                 }
 
@@ -118,7 +118,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            if (battle_loop() != 0) {
+                            if (battle_loop != 0) {
                                 battle_loop();
                             }
 
