@@ -14,8 +14,6 @@ var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
-msgA = "";
-msgB = "";
 var switchB = false;
 
 const express = require('express')
