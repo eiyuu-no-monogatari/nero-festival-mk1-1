@@ -17,6 +17,8 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
+var battle_loop = function () {
+    return null; }
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -157,7 +159,9 @@ client.on('message', msg => {
                         };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
-
+                            if (battle_loop() != null) {
+                                battle_loop();
+                            }
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
@@ -684,8 +688,7 @@ client.on('message', msg => {
                         }
                     };
 
-                    do {
-                        client.setTimeout(function () {
+                    var battle_loop = function() {
                             var skillOrAttack = Math.random() * 100 + 1;
                             if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                                 const data = require("./NeroFes/noble_phantasm.json");
@@ -715,43 +718,7 @@ client.on('message', msg => {
                                 var L = data["member"][X].duration;
                                 AA(F, G, H, J, K, L);
                             }
-                        }, 500);
-                        if (healthB <= 0) {
-                            if (world_Second == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else if (world_First == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            }
-                        } else if (healthA <= 0) {
-                            if (world_First == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else if (world_Second == true) {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            } else {
-                                healthTest();
-                                if (healthA == 0 || healthB == 0) {
-                                    break;
-                                }
-                            }
-                        }
-                    } while (switchA == false && switchB == true);
+                    }
 
                 });
 
