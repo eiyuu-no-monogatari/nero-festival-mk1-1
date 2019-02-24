@@ -160,7 +160,7 @@ client.on('message', msg => {
                         } else {
                             msg.channel.send("ERROR(3).");
                         }
-                        return embedB;
+                        return embedC;
                     };
 
                     function healthTest() {
