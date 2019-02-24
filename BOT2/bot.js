@@ -62,7 +62,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (typeof client.functionX === 'undefined') {
+                                if (typeof global.battle_loop !== 'undefined') {
                                     battle_loop();
                                 }
 
@@ -86,7 +86,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.author.username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (battle_loop != 0) {
+                                if (typeof global.battle_loop !== 'undefined') {
                                     battle_loop();
                                 }
 
@@ -114,7 +114,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            if (battle_loop != 0) {
+                            if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
 
@@ -163,7 +163,7 @@ client.on('message', msg => {
                         };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
-                            if (battle_loop() != 0) {
+                            if (typeof client.battle_loop != 'undefined' != 0) {
                                 battle_loop();
                             }
                         } else if (healthB <= 0) {
