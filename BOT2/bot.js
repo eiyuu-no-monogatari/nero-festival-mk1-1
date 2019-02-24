@@ -70,7 +70,7 @@ client.on('message', msg => {
                         } else if (switchA == false) {
                             gloembedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(global.embedB);
+                            msg.channel.send(embedB);
                         }
                     } else if (arr.length == 1) {
                         userWhoGotTagged = msg.mentions.users.first();
@@ -95,7 +95,7 @@ client.on('message', msg => {
                         } else if (switchA == false) {
                             embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(global.embedB);
+                            msg.channel.send(embedB);
                         }
                     } else {
                         msg.channel.send("ERROR(1).");
@@ -123,7 +123,7 @@ client.on('message', msg => {
                     } else if (switchA == false) {
                         embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                        msg.channel.send(global.embedB);
+                        msg.channel.send(embedB);
                     }
                 } else {
                     msg.channel.send("ERROR(3)");
