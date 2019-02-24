@@ -17,8 +17,9 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
-var battle_loop = function () {
-    return null; }
+battle_loop = function () {
+    return 0;
+}
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -64,7 +65,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (battle_loop() != null) {
+                                if (battle_loop() != 0) {
                                     battle_loop();
                                 }
 
@@ -88,7 +89,7 @@ client.on('message', msg => {
                                 embedA.addField(msg.author.username, 750 + "/750", true);
                                 embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                                 embedA.setDescription("");
-                                if (battle_loop() != null) {
+                                if (battle_loop() != 0) {
                                     battle_loop();
                                 }
 
@@ -116,7 +117,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                            if (battle_loop() != null) {
+                            if (battle_loop() != 0) {
                                 battle_loop();
                             }
 
@@ -165,7 +166,7 @@ client.on('message', msg => {
                         };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
-                            if (battle_loop() != null) {
+                            if (battle_loop() != 0) {
                                 battle_loop();
                             }
                         } else if (healthB <= 0) {
