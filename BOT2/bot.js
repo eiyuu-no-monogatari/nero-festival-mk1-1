@@ -41,7 +41,7 @@ client.on('message', msg => {
 
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
-            client.setTimeout(function Test() {
+            client.setTimeout(function () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                         var arr = msg.mentions.users.array();
                         if (arr.length == 2) {
@@ -67,6 +67,7 @@ client.on('message', msg => {
                                 }
 
                             } else if (switchA == false) {
+                                embedB = new Discord.RichEmbed();
                                 embedB.setDescription('有決鬥正在進行，請耐心等候。');
                                 msg.channel.send(embedB);
                             }
@@ -91,6 +92,7 @@ client.on('message', msg => {
                                 }
 
                             } else if (switchA == false) {
+                                embedB = new Discord.RichEmbed();
                                 embedB.setDescription('有決鬥正在進行，請耐心等候。');
                                 msg.channel.send(embedB);
                             }
@@ -119,6 +121,7 @@ client.on('message', msg => {
                             }
 
                         } else if (switchA == false) {
+                            embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
