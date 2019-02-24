@@ -91,7 +91,6 @@ client.on('message', msg => {
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
-
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
@@ -694,44 +693,42 @@ client.on('message', msg => {
                         }
                     };
                 });
-            
-                if (typeof global.battle_loop !== 'undefined') {
-                    Test();
-                    var battle_loop = function () {
-                        var skillOrAttack = Math.random() * 100 + 1;
-                        if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                            const data = require("./NeroFes/noble_phantasm.json");
-                            var Datalength = data["member"].length;
-                            X = Math.floor(Math.random() * Datalength);
-                            var A = data["member"][X].line1;
-                            var B = data["member"][X].line2;
-                            if (data["member"][X].line3 == "") {
-                                var C = "";
-                            } else {
-                                var C = data["member"][X].line3;
-                            }
-                            var D = data["member"][X].image;
-                            var E = data["member"][X].duration;
-                            np(A, B, C, D, E);
-                        } else if (skillOrAttack < 20 && skillOrAttack > 0) {
-                            SpecialSkill();
-                        } else {
-                            const data = require("./NeroFes/skill.json");
-                            var Datalength = data["member"].length;
-                            X = Math.floor(Math.random() * Datalength);
-                            var F = data["member"][X].line;
-                            var G = data["member"][X].image;
-                            var H = data["member"][X].basicDamage;
-                            var J = data["member"][X].maximumCorrection;
-                            var K = data["member"][X].minimumCorrection;
-                            var L = data["member"][X].duration;
-                            AA(F, G, H, J, K, L);
-                        }
-                    }
-                }
-
-
             }, 1000);
+
+            if (typeof global.battle_loop !== 'undefined') {
+                Test();
+            }
+            var battle_loop = function () {
+                var skillOrAttack = Math.random() * 100 + 1;
+                if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                    const data = require("./NeroFes/noble_phantasm.json");
+                    var Datalength = data["member"].length;
+                    X = Math.floor(Math.random() * Datalength);
+                    var A = data["member"][X].line1;
+                    var B = data["member"][X].line2;
+                    if (data["member"][X].line3 == "") {
+                        var C = "";
+                    } else {
+                        var C = data["member"][X].line3;
+                    }
+                    var D = data["member"][X].image;
+                    var E = data["member"][X].duration;
+                    np(A, B, C, D, E);
+                } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                    SpecialSkill();
+                } else {
+                    const data = require("./NeroFes/skill.json");
+                    var Datalength = data["member"].length;
+                    X = Math.floor(Math.random() * Datalength);
+                    var F = data["member"][X].line;
+                    var G = data["member"][X].image;
+                    var H = data["member"][X].basicDamage;
+                    var J = data["member"][X].maximumCorrection;
+                    var K = data["member"][X].minimumCorrection;
+                    var L = data["member"][X].duration;
+                    AA(F, G, H, J, K, L);
+                }
+            }
 
         }
     }
