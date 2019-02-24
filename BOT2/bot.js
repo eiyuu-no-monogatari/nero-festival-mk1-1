@@ -15,6 +15,8 @@ var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
 var switchB = false;
+var msgA = "";
+var msgB = "";
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -51,8 +53,8 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.first().username; //2nd
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.mentions.users.first() //1st
+                            global.msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            global.msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
                             embedA = new Discord.RichEmbed();
@@ -78,8 +80,8 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.first().username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                            global.msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            global.msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                             embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
@@ -107,8 +109,8 @@ client.on('message', msg => {
                         switchA = false;
                         a = a + 1;
                         second_attack = msg.author.username;
-                        msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                        msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                        global.msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                        global.msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                         embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
