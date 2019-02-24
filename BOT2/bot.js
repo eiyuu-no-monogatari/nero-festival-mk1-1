@@ -51,8 +51,8 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.first().username; //2nd
-                            var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            var msgB = (msg.mentions.users.first() //1st
+                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
                             embedA = new Discord.RichEmbed();
@@ -78,8 +78,8 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.first().username;
-                            var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                             embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
@@ -107,8 +107,8 @@ client.on('message', msg => {
                         switchA = false;
                         a = a + 1;
                         second_attack = msg.author.username;
-                        var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                        var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                        msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                        msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                         embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
@@ -128,7 +128,7 @@ client.on('message', msg => {
                 }
             }
 
-                msg.channel.send(msgA + '\n' + msgB + '\n', global.embedA).then(msgBOT => {
+                msg.channel.send(global.msgA + '\n' + global.msgB + '\n', global.embedA).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
                     };
