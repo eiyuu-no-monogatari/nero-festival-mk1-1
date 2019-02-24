@@ -17,6 +17,8 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
+var embedA = new Discord.RichEmbed();
+var embedB = new Discord.RichEmbed();
 
 const express = require('express')
 var port = process.env.PORT || 5000;
