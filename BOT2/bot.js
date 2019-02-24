@@ -57,7 +57,7 @@ client.on('message', msg => {
                             var msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
-                            embedA = new Discord.RichEmbed();
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
@@ -68,7 +68,7 @@ client.on('message', msg => {
                             }
 
                         } else if (switchA == false) {
-                            global.embedB = new Discord.RichEmbed();
+                            var embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -82,7 +82,7 @@ client.on('message', msg => {
                             second_attack = msg.mentions.users.first().username;
                             var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                            embedA = new Discord.RichEmbed();
+                            var embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
                             embedA.addField(msg.author.username, 750 + "/750", true);
@@ -93,7 +93,7 @@ client.on('message', msg => {
                             }
 
                         } else if (switchA == false) {
-                            global.embedB = new Discord.RichEmbed();
+                            var embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
@@ -121,7 +121,7 @@ client.on('message', msg => {
                             battle_loop();
                         }
                     } else if (switchA == false) {
-                        global.embedB = new Discord.RichEmbed();
+                        var embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
                     }
@@ -138,7 +138,7 @@ client.on('message', msg => {
 
                     function Embed_battle(action) {
                         var arr = msg.mentions.users.array();
-                        embedB = new Discord.RichEmbed();
+                        var embedB = new Discord.RichEmbed();
                         if (msg.content == "--NeroFes") {
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
