@@ -42,7 +42,7 @@ client.on('message', msg => {
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
             client.setTimeout(function () {
-                Test = function() {
+                var Test = function() {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
