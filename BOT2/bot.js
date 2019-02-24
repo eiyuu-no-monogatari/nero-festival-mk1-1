@@ -17,7 +17,7 @@ var np_switch = true;
 msgA = "";
 msgB = "";
 var switchB = false;
-battle_loop = function () {
+function battle_loop() {
     return 0;
 }
 
