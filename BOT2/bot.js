@@ -41,8 +41,7 @@ client.on('message', msg => {
 
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
-            client.setTimeout(function () {
-                var Test = function() {
+            client.setTimeout(Battle_Prepare () {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
@@ -126,10 +125,9 @@ client.on('message', msg => {
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
-                return [msgA + '\n' + msgB + '\n', embedA];
-            }
+                
 
-                msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
+                msg.channel.send(Battle_Prepare()[0], Battle_Prepare()[1]).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
                     };
@@ -696,6 +694,7 @@ client.on('message', msg => {
                         }
                     };
                 });
+            return [msgA + '\n' + msgB + '\n', embedA];
             }, 1000);
 
             var battle_loop = function () {
@@ -729,9 +728,8 @@ client.on('message', msg => {
                     AA(F, G, H, J, K, L);
                 }
             }
-
         }
-    }
+        }
 
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
