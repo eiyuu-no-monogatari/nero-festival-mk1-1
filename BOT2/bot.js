@@ -705,6 +705,7 @@ client.on('message', msg => {
             }, 1000);
 
             var battle_loop = function () {
+                Test();
                 var skillOrAttack = Math.random() * 100 + 1;
                 if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                     const data = require("./NeroFes/noble_phantasm.json");
