@@ -132,7 +132,7 @@ client.on('message', msg => {
                 }
                 
             }
-
+Test();
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
