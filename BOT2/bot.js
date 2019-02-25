@@ -111,21 +111,21 @@ client.on('message', msg => {
                 var Embed_A = function () {
                     var arr = msg.mentions.users.array();
                     if (msg.content == "--NeroFes") {
-                        const embedA = new Discord.RichEmbed();
+                        embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 2) {
-                        const embedA = new Discord.RichEmbed();
+                        embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
-                        const embedA = new Discord.RichEmbed();
+                        embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
