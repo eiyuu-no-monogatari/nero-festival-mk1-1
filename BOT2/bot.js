@@ -441,7 +441,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 1;
+                                    Round += 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -469,7 +469,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 1;
+                                    Round += 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -502,7 +502,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         } else {
@@ -530,7 +530,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         }
@@ -562,7 +562,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         } else {
@@ -590,7 +590,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         }
@@ -621,7 +621,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         } else {
@@ -648,7 +648,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 1;
+                                    Round += 2;
                                 }
                             }
                         }
