@@ -253,7 +253,7 @@ client.on('message', msg => {
 
                     var np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
-                            if (Round % 2 != 0) { //偶數回合，即為第二位攻擊者的回合
+                            if (Round % 2 == 0) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
                                 Embed_battle(string);
                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
