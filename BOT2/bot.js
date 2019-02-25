@@ -745,7 +745,7 @@ client.on('message', msg => {
                     if (i == varD) {
                         stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
                     } else {
-                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
+                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) & " ,";
                     }
                     if (varD = 1) {
                         if (stringA >= 90 && stringA < 100) {
@@ -764,7 +764,7 @@ client.on('message', msg => {
                     }
                     msg.channel.send(ResultStr);
                 }
-            } else {
+            } else if (varD == 1) {
                 stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
                 if (stringA >= 90 && stringA < 100) {
                     ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
@@ -777,6 +777,7 @@ client.on('message', msg => {
                 } else {
                     ResultStr = strA + " 擲出 " + stringA;
                 }
+                msg.channel.send(ResultStr);
             }
             
         } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
