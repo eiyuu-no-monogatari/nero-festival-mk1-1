@@ -42,43 +42,72 @@ client.on('message', msg => {
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
             client.setTimeout(function Test() {
-                if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-                    var arr = msg.mentions.users.array();
-                    if (arr.length == 2) {
-                        userWhoGotTagged = msg.mentions.users.last(); //2nd
-                        first_attack = msg.mentions.users.first(); //1st
-                        userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
-                        if (switchA == true) {
-                            switchA = false;
-                            a = a + 1;
-                            second_attack = msg.mentions.users.first().username; //2nd
-                            var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            var msgB = (msg.mentions.users.first() //1st
-                                + ' ＶＳ ' + userWhoGotTagged//2nd
-                                + "！");
-                            var embedA = new Discord.RichEmbed();
-                            embedA.setColor(0xFF0000);
-                            embedA.addBlankField();
-                            embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            embedA.setDescription("");
-                            return [msgA + '\n' + msgB + '\n', embedA];
-                            if (typeof global.battle_loop !== 'undefined') {
-                                battle_loop();
+                    if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
+                        var arr = msg.mentions.users.array();
+                        if (arr.length == 2) {
+                            userWhoGotTagged = msg.mentions.users.last(); //2nd
+                            first_attack = msg.mentions.users.first(); //1st
+                            userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
+                            if (switchA == true) {
+                                switchA = false;
+                                a = a + 1;
+                                second_attack = msg.mentions.users.first().username; //2nd
+                                var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                                var msgB = (msg.mentions.users.first() //1st
+                                    + ' ＶＳ ' + userWhoGotTagged//2nd
+                                    + "！");
+                                var embedA = new Discord.RichEmbed();
+                                embedA.setColor(0xFF0000);
+                                embedA.addBlankField();
+                                embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
+                                embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                                embedA.setDescription("");
+                                return [msgA + '\n' + msgB + '\n', embedA];
+                                if (typeof global.battle_loop !== 'undefined') {
+                                    battle_loop();
+                                }
+                            } else if (switchA == false) {
+                                var embedB = new Discord.RichEmbed();
+                                embedB.setDescription('有決鬥正在進行，請耐心等候。');
+                                msg.channel.send(embedB);
                             }
-                        } else if (switchA == false) {
-                            var embedB = new Discord.RichEmbed();
-                            embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(embedB);
+                        } else if (arr.length == 1) {
+                            userWhoGotTagged = msg.mentions.users.first();
+                            first_attack = msg.author.username;
+                            userWhoGotTagged_COPY = msg.mentions.users.first().username;
+                            if (switchA == true) {
+                                switchA = false;
+                                a = a + 1;
+                                second_attack = msg.mentions.users.first().username;
+                                var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                                var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
+                                var embedA = new Discord.RichEmbed();
+                                embedA.setColor(0xFF0000);
+                                embedA.addBlankField();
+                                embedA.addField(msg.author.username, 750 + "/750", true);
+                                embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                                embedA.setDescription("");
+                                return [msgA + '\n' + msgB + '\n', embedA];
+                                if (typeof global.battle_loop !== 'undefined') {
+                                    battle_loop();
+                                }
+                            } else if (switchA == false) {
+                                var embedB = new Discord.RichEmbed();
+                                embedB.setDescription('有決鬥正在進行，請耐心等候。');
+                                msg.channel.send(embedB);
+                            }
+                        } else {
+                            msg.channel.send("ERROR(1).");
                         }
-                    } else if (arr.length == 1) {
-                        userWhoGotTagged = msg.mentions.users.first();
-                        first_attack = msg.author.username;
-                        userWhoGotTagged_COPY = msg.mentions.users.first().username;
+                    } else if (msg.content == "--NeroFes") {
+                        Y = msg.guild.members.random();
+                        userWhoGotTagged = Y;
+                        userWhoGotTagged_COPY = Y.user.username;
+                        first_attack = Y.user.username;
                         if (switchA == true) {
                             switchA = false;
                             a = a + 1;
-                            second_attack = msg.mentions.users.first().username;
+                            second_attack = msg.author.username;
                             var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                             var embedA = new Discord.RichEmbed();
@@ -91,44 +120,16 @@ client.on('message', msg => {
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
+
                         } else if (switchA == false) {
                             var embedB = new Discord.RichEmbed();
                             embedB.setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
+                            return [msgA + '\n' + msgB + '\n', embedA];
                         }
                     } else {
-                        msg.channel.send("ERROR(1).");
+                        msg.channel.send("ERROR(3)");
                     }
-                } else if (msg.content == "--NeroFes") {
-                    Y = msg.guild.members.random();
-                    userWhoGotTagged = Y;
-                    userWhoGotTagged_COPY = Y.user.username;
-                    first_attack = Y.user.username;
-                    if (switchA == true) {
-                        switchA = false;
-                        a = a + 1;
-                        second_attack = msg.author.username;
-                        var msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                        var msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        var embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(msg.author.username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription(""); 
-                        return [msgA + '\n' + msgB + '\n', embedA];
-                        if (typeof global.battle_loop !== 'undefined') {
-                            battle_loop();
-                        }
-
-                    } else if (switchA == false) {
-                        var embedB = new Discord.RichEmbed();
-                        embedB.setDescription('有決鬥正在進行，請耐心等候。');
-                        msg.channel.send(embedB);
-                    }
-                } else {
-                    msg.channel.send("ERROR(3)");
-            }
 
                 Test();
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
@@ -145,24 +146,24 @@ client.on('message', msg => {
                             embedC.addField(msg.author.username, healthB + "/750", true);
                             embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedC.setDescription(action);
-                             return embedC;
+                            return embedC;
                         } else if (arr.length == 2) {
                             embedC.setColor(0xFF0000);
                             embedC.addBlankField();
                             embedC.addField(msg.mentions.users.first().username, healthB + "/750", true);
                             embedC.addField(msg.mentions.users.last().username, healthA + "/750", true);
                             embedC.setDescription(action);
-                             return embedC;
+                            return embedC;
                         } else if (arr.length == 1) {
                             embedC.setColor(0xFF0000);
                             embedC.addBlankField();
                             embedC.addField(msg.author.username, healthB + "/750", true);
                             embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedC.setDescription(action);
-                             return embedC;
+                            return embedC;
                         } else {
                             msg.channel.send("ERROR(3).");
-                       }
+                        }
                     };
 
                     function healthTest() {
@@ -732,8 +733,9 @@ client.on('message', msg => {
                     var K = data["member"][X].minimumCorrection;
                     var L = data["member"][X].duration;
                     AA(F, G, H, J, K, L);
+                }
             }
-}
+
         }
     }
 
