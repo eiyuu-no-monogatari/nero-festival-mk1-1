@@ -63,6 +63,7 @@ client.on('message', msg => {
                             embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
+                            return [msgA + '\n' + msgB + '\n', embedA];
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
@@ -87,6 +88,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
+                            return [msgA + '\n' + msgB + '\n', embedA];
                             if (typeof global.battle_loop !== 'undefined') {
                                 battle_loop();
                             }
@@ -114,10 +116,12 @@ client.on('message', msg => {
                         embedA.addBlankField();
                         embedA.addField(msg.author.username, 750 + "/750", true);
                         embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription("");
+                        embedA.setDescription(""); 
+                        return [msgA + '\n' + msgB + '\n', embedA];
                         if (typeof global.battle_loop !== 'undefined') {
                             battle_loop();
                         }
+
                     } else if (switchA == false) {
                         var embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
@@ -126,7 +130,7 @@ client.on('message', msg => {
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
-                return [msgA + '\n' + msgB + '\n', embedA];
+                
             }
 
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
@@ -143,22 +147,24 @@ client.on('message', msg => {
                             embedC.addField(msg.author.username, healthB + "/750", true);
                             embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedC.setDescription(action);
+                             return embedC;
                         } else if (arr.length == 2) {
                             embedC.setColor(0xFF0000);
                             embedC.addBlankField();
                             embedC.addField(msg.mentions.users.first().username, healthB + "/750", true);
                             embedC.addField(msg.mentions.users.last().username, healthA + "/750", true);
                             embedC.setDescription(action);
+                             return embedC;
                         } else if (arr.length == 1) {
                             embedC.setColor(0xFF0000);
                             embedC.addBlankField();
                             embedC.addField(msg.author.username, healthB + "/750", true);
                             embedC.addField(userWhoGotTagged_COPY, healthA + "/750", true);
                             embedC.setDescription(action);
+                             return embedC;
                         } else {
                             msg.channel.send("ERROR(3).");
-                        }
-                        return embedC;
+                       }
                     };
 
                     function healthTest() {
