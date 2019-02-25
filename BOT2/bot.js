@@ -270,7 +270,7 @@ client.on('message', msg => {
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                             client.setTimeout(function () {
                                                 Damage_caculate(200000, 100000, 50000);
-                                                healthA = 0;
+                                                healthB = 0;
                                                 string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                                 Embed_battle(string);
                                                 embedB.setImage();
@@ -289,7 +289,7 @@ client.on('message', msg => {
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
                                             Damage_caculate(200000, 100000, 50000);
-                                            healthA = 0;
+                                            healthB = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
                                             embedB.setImage();
