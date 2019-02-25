@@ -129,8 +129,6 @@ client.on('message', msg => {
                     }
                 } else {
                     msg.channel.send("ERROR(3)");
-                }
-                
             }
                 Test();
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
