@@ -12,7 +12,6 @@ var embedB;
 var healthA;
 var healthB;
 var Damage;
-var Roll;
 var world_First = false;
 var world_Second = false;
 var worldTimes = 0;
@@ -176,7 +175,7 @@ client.on('message', msg => {
                             Round += 1
                         };
                         if (healthA > 0 && healthB > 0) {
-
+                            Round += 1
                             Battle_loop();
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
