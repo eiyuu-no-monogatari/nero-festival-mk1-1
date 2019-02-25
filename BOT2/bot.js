@@ -23,9 +23,6 @@ express().listen(port, "0.0.0.0", function () {
     console.log("Listening on Port 5000");
 });
 
-
-
-
 client.on('ready', () => {
     console.log("以" + client.user.tag + "登入");
     console.log("Nero C. Version 1.0.0");
@@ -144,7 +141,7 @@ client.on('message', msg => {
 
                     var Embed_battle = function (action) {
                         var arr = msg.mentions.users.array();
-                        if (msg.content == "--NeroFes") {
+                        if (msg.content.includes("--NeroFes") && arr.length == 0) {
                             const embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
