@@ -398,7 +398,6 @@ client.on('message', msg => {
                                     embedB.setImage(image);
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
-                                        Round += 1;
                                         healthTest();
                                         embedB.setImage();
                                     }, duration);
