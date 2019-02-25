@@ -743,9 +743,9 @@ client.on('message', msg => {
             if (varD != 1) {
                 for (i = 0; i < varD; i++) {
                     if (i >= varD - 1) {
-                        stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+                        stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
                     } else if (i <= varD - 1) {
-                        stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + ", ";
+                        stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + ", ";
                     }
                     if (varD = 1) {
                         if (stringA >= 90 && stringA < 100) {
@@ -792,9 +792,9 @@ client.on('message', msg => {
 
             for (i = 0; i < varD; i++) {
                 if (i >= varD - 1) {
-                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
+                    stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
                 } else if (i <= varD - 1) {
-                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
+                    stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
                 }
                 if (varD = 1) {
                     if (stringA >= 90 && stringA < 100) {
