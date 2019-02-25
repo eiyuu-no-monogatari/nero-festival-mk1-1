@@ -743,9 +743,9 @@ client.on('message', msg => {
             if (varD != 1) {
                 for (i = 0; i < varD; i++) {
                     if (i == varD) {
-                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+                        stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
                     } else {
-                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) & " ,";
+                        stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + ", ";
                     }
                     if (varD = 1) {
                         if (stringA >= 90 && stringA < 100) {
@@ -765,7 +765,7 @@ client.on('message', msg => {
                     msg.channel.send(ResultStr);
                 }
             } else if (varD == 1) {
-                stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+                stringA = (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
                 if (stringA >= 90 && stringA < 100) {
                     ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
                 } else if (stringA == 100) {
@@ -781,7 +781,7 @@ client.on('message', msg => {
             }
             
         } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
-            MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
+            MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/);
             strA = MatchData[1];
             var varA = parseInt(MatchData[2]);
             var varB = parseInt(MatchData[3]);
@@ -791,7 +791,7 @@ client.on('message', msg => {
             var stringA = "";
 
             for (i = 0; i < varD; i++) {
-                if (i == varD - 1) {
+                if (i == varD) {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
                 } else {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
@@ -806,10 +806,10 @@ client.on('message', msg => {
                     } else if (stringA == 1) {
                         ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
                     } else {
-                        ResultStr = strA + " 擲出 " + stringA
+                        ResultStr = strA + " 擲出 " + stringA;
                     }
                 } else {
-                    ResultStr = strA + " 擲出 " + stringA
+                    ResultStr = strA + " 擲出 " + stringA;
                 }
                 msg.channel.send(ResultStr);
             }
