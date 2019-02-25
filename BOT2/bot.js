@@ -41,8 +41,7 @@ client.on('message', msg => {
 
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
-            client.setTimeout(function () {
-                Test = function() {
+            client.setTimeout(function Test() {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
@@ -735,7 +734,6 @@ client.on('message', msg => {
                     var K = data["member"][X].minimumCorrection;
                     var L = data["member"][X].duration;
                     AA(F, G, H, J, K, L);
-                }
             }
 
         }
