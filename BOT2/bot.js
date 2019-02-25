@@ -42,7 +42,7 @@ client.on('message', msg => {
     if (!msg.author.bot) {
         if (((msg.content.includes("--NeroFes") && msg.mentions.users != null && msg.content != "--NeroFes")) || msg.content == "--NeroFes") {
             client.setTimeout(function () {
-                var Test = function() {
+                Test = function() {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
@@ -126,13 +126,14 @@ client.on('message', msg => {
                         var embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
+                        return [msgA + '\n' + msgB + '\n', embedA];
                     }
                 } else {
                     msg.channel.send("ERROR(3)");
                 }
                 
             }
-Test();
+                Test();
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         Damage = a + Math.floor(Math.random() * b) - c;
