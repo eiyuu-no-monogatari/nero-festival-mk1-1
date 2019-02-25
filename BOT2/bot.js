@@ -742,9 +742,9 @@ client.on('message', msg => {
 
             if (varD != 1) {
                 for (i = 0; i < varD; i++) {
-                    if (i <= varD - 1) {
+                    if (i >= varD - 1) {
                         stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
-                    } else if (i >= varD - 1) {
+                    } else if (i <= varD - 1) {
                         stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + ", ";
                     }
                     if (varD = 1) {
@@ -791,9 +791,9 @@ client.on('message', msg => {
             var stringA = "";
 
             for (i = 0; i < varD; i++) {
-                if (i <= varD - 1) {
+                if (i >= varD - 1) {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
-                } else if (i >= varD - 1) {
+                } else if (i <= varD - 1) {
                     stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
                 }
                 if (varD = 1) {
