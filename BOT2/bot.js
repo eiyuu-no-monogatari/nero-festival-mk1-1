@@ -740,29 +740,45 @@ client.on('message', msg => {
 
             var stringA = "";
 
-            for (i = 0; i < varD; i++) {
-                if (i == varD - 1) {
-                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
-                } else {
-                    stringA += (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
-                }
-                if (varD = 1) {
-                    if (stringA >= 90 && stringA < 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-                    } else if (stringA == 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-                    } else if (stringA <= 10 && stringA > 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-                    } else if (stringA == 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+            if (varD != 1) {
+                for (i = 0; i < varD; i++) {
+                    if (i == varD) {
+                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+                    } else {
+                        stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + " ,";
+                    }
+                    if (varD = 1) {
+                        if (stringA >= 90 && stringA < 100) {
+                            ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+                        } else if (stringA == 100) {
+                            ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+                        } else if (stringA <= 10 && stringA > 1) {
+                            ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+                        } else if (stringA == 1) {
+                            ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+                        } else {
+                            ResultStr = strA + " 擲出 " + stringA;
+                        }
                     } else {
                         ResultStr = strA + " 擲出 " + stringA;
                     }
+                    msg.channel.send(ResultStr);
+                }
+            } else {
+                stringA &= (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+                if (stringA >= 90 && stringA < 100) {
+                    ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+                } else if (stringA == 100) {
+                    ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+                } else if (stringA <= 10 && stringA > 1) {
+                    ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+                } else if (stringA == 1) {
+                    ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
                 } else {
                     ResultStr = strA + " 擲出 " + stringA;
                 }
-                msg.channel.send(ResultStr);
             }
+            
         } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
             MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
             strA = MatchData[1];
