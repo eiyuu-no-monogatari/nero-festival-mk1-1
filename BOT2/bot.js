@@ -176,7 +176,7 @@ client.on('message', msg => {
                             Round += 1
                         };
                         if (healthA > 0 && healthB > 0) {
-                            Round += 1;
+
                             Battle_loop();
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
@@ -701,10 +701,8 @@ client.on('message', msg => {
                             var D = data["member"][X].image;
                             var E = data["member"][X].duration;
                             np(A, B, C, D, E);
-                            Round += 1;
                         } else if (skillOrAttack < 20 && skillOrAttack > 0) {
                             SpecialSkill();
-                            Round += 1;
                         } else {
                             const data = require("./NeroFes/skill.json");
                             var Datalength = data["member"].length;
@@ -716,7 +714,6 @@ client.on('message', msg => {
                             var K = data["member"][X].minimumCorrection;
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
-                            Round += 1;
                         }
                     };
                     Battle_loop();
