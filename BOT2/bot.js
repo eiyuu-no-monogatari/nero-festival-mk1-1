@@ -125,11 +125,11 @@ client.on('message', msg => {
                         var embedB = new Discord.RichEmbed();
                         embedB.setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
-                        return [msgA + '\n' + msgB + '\n', embedA];
                     }
                 } else {
                     msg.channel.send("ERROR(3)");
             }
+
                 Test();
                 msg.channel.send(Test()[0], Test()[1]).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
@@ -733,7 +733,7 @@ client.on('message', msg => {
                     var L = data["member"][X].duration;
                     AA(F, G, H, J, K, L);
             }
-
+}
         }
     }
 
