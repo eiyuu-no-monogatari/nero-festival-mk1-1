@@ -172,10 +172,10 @@ client.on('message', msg => {
 
                     var healthTest = function () {
                         if (world_First == true || world_Second == true) {
-                            Round += 1
+                            Round += 1;
                         };
                         if (healthA > 0 && healthB > 0) {
-                            Round += 1
+                            Round += 1;
                             Battle_loop();
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
