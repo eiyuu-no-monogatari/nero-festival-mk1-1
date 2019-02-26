@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
 var switchA = true;
+var switchC = false;
 var Round = 1;
 var X;
 var first_attack;
@@ -717,15 +718,17 @@ client.on('message', msg => {
                 healthB = 750;
             }, 1000);
         }
+        if (switchC == false) {
+            if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
+                Jesus_fucking_long();
+                switchC = true;
+            } else if (msg.content == "--NeroFes") {
+                Jesus_fucking_long();
+                switchC = true;
+            }
+        }
     };
-    if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-        Jesus_fucking_long();
-    } else if (msg.content == "--NeroFes") {
-        Jesus_fucking_long();
-    }
-    if (msg.content == "--NeroFes") {
-        Jesus_fucking_long();
-    }
+
 
 
     if (!msg.author.bot) {
