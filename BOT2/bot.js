@@ -1,3 +1,4 @@
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
@@ -203,10 +204,10 @@ client.on('message', msg => {
                             BC_COUNT_B = 0;
                         }
                         if (world_First == true) {
-                            Round = 1;
+                            Round = 2;
                             Battle_loop();
                         } else if (world_Second == true) {
-                            Round = 2;
+                            Round = 1;
                             Battle_loop();
                         } else if (healthA > 0 && healthB > 0) {
                             if (Round == 1 && !(healthA <= 0)) {
@@ -447,7 +448,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Battle_loop();
@@ -483,7 +484,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     Battle_loop();
@@ -514,6 +515,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
+                                    Round = 2;
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
