@@ -186,7 +186,7 @@ client.on('message', msg => {
                     };
 
                     var healthTest = function () {
-                        if (healthA == 0&& BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
+                        if (healthA <= 0 && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
                             string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthA = Math.floor(Math.random() * 10) + 1;
                             Embed_battle(string);
@@ -195,7 +195,7 @@ client.on('message', msg => {
                             np_switch = false;
                             BC_COUNT_A = 0;
                             Battle_loop();
-                        } else if (healthB == 0 && BC_B == true && BC_COUNT_B >= Turn_count && BC_COUNT_B != 0) {
+                        } else if (healthB <= 0 && BC_B == true && BC_COUNT_B >= Turn_count && BC_COUNT_B != 0) {
                             string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthB = Math.floor(Math.random() * 10) + 1;
                             Embed_battle(string);
@@ -204,13 +204,15 @@ client.on('message', msg => {
                             np_switch = false;
                             BC_COUNT_B = 0;
                             Battle_loop();
-                        } else if (world_First == true) {
+                        }
+                        if (world_First == true) {
                             Round = 2;
                             Battle_loop();
                         } else if (world_Second == true) {
                             Round = 1;
                             Battle_loop();
-                        } else if (healthA > 0 && healthB > 0) {
+                        }
+                        if (healthA > 0 && healthB > 0) {
                             if (Round == 1 && !(healthA <= 0)) {
                                 Round = 2;
                                 Battle_loop();
@@ -218,7 +220,8 @@ client.on('message', msg => {
                                 Round = 1;
                                 Battle_loop();
                             }
-                        } else if (healthB <= 0) {
+                        }
+                        if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
