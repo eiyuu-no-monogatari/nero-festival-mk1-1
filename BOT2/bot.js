@@ -238,7 +238,7 @@ client.on('message', msg => {
                                     world_First = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
-                                        string = "戰鬥結束，" + second_attack + "獲勝！";
+                                        string = "戰鬥結束，" + first_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
@@ -256,13 +256,13 @@ client.on('message', msg => {
                         } else if (healthA <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
-                                    string = first_attack + "：「時間恢復流動。」";
+                                    string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
                                     client.setTimeout(function () {
-                                        string = "戰鬥結束，" + first_attack + "獲勝！";
+                                        string = "戰鬥結束，" + second_attack + "獲勝！";
                                         Embed_battle(string);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         switchA = true;
