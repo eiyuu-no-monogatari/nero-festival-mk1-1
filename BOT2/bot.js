@@ -260,7 +260,7 @@ client.on('message', msg => {
 
                     var np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
-                            if (Round == 2) { //偶數回合，即為第二位攻擊者的回合
+                            if (switchC == true) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
                                 Embed_battle(string);
                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -306,7 +306,7 @@ client.on('message', msg => {
                                         }, duration);
                                     }, 2500);
                                 }
-                            } else { //奇數回合，即為第一位攻擊者的回合
+                            } else if (switchC == false) { //奇數回合，即為第一位攻擊者的回合
                                 string = first_attack + string1;
                                 Embed_battle(string);
                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -689,6 +689,12 @@ client.on('message', msg => {
                     var Battle_loop = function () {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
+                            if (healthA <= 100) {
+                                switchC = true;
+                            }
+                            if (healthB <= 100) {
+                                switchC = false;
+                            }
                             const data = require("./NeroFes/noble_phantasm.json");
                             var Datalength = data["member"].length;
                             X = Math.floor(Math.random() * Datalength);
@@ -699,7 +705,6 @@ client.on('message', msg => {
                             } else {
                                 var C = data["member"][X].line3;
                             }
-
                             var D = data["member"][X].image;
                             var E = data["member"][X].duration;
                             np(A, B, C, D, E);
