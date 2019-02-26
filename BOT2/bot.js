@@ -1082,7 +1082,7 @@ client.on('message', msg => {
                             var D = data["member"][X].image;
                             var E = data["member"][X].duration;
                             np(A, B, C, D, E);
-                        } else if (skillOrAttack < 20 && skillOrAttack > 0) {
+                        } else if (skillOrAttack <= 40 && skillOrAttack > 0) {
                             SpecialSkill();
                         } else {
                             const data = require("./NeroFes/skill.json");
