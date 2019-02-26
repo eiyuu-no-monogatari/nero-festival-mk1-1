@@ -730,7 +730,7 @@ client.on('message', msg => {
             }, 1000);
         }
 
-        if (switchC == false) {
+        if (switchA != false) {
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                 Jesus_fucking_long();
                 switchC = true;
