@@ -445,8 +445,6 @@ client.on('message', msg => {
                                 }, 1500);
                             } else { //如果A的時間被暫停
                                 the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                console(the_end_of_world);
-                                console(worldTimes);
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
