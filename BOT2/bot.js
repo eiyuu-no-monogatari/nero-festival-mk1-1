@@ -169,12 +169,18 @@ client.on('message', msg => {
                     };
 
                     var healthTest = function () {
-                        if (world_First == true || world_Second == true) {
-                            Round += 1;
-                        };
-                        if (healthA > 0 && healthB > 0) {
-                            Round += 1;
-                            Battle_loop();
+                        if (world_First == true) {
+                            Round = 2;
+                        } else if (world_Second == true) {
+                            Round = 1;
+                        } else if (healthA > 0 && healthB > 0) {
+                            if (Round == 1) {
+                                Round = 2;
+                                Battle_loop();
+                            } else if (Round == 2) {
+                                Round = 1;
+                                Battle_loop();
+                            }
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
@@ -346,8 +352,13 @@ client.on('message', msg => {
                                 }
                             }
                         } else {
-                            Round += 1;
-                            Battle_loop();
+                            if (Round == 1) {
+                                Round = 2;
+                                Battle_loop();
+                            } else if (Round == 2) {
+                                Round = 1;
+                                Battle_loop();
+                            }
                         }
                     };
 
@@ -379,7 +390,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    Round = 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -410,7 +421,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    healthTest();
                                     worldTimes += 1;
                                 }
                             }
@@ -428,7 +439,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round += 1;
+                                        Round = 2;
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -442,7 +453,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    healthTest();
                                     worldTimes += 1;
                                 }
                             }
@@ -456,7 +467,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -470,7 +481,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round += 2;
+                                    Round = 2;
                                     worldTimes += 1;
                                 }
                             }
@@ -488,7 +499,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -503,7 +514,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -516,7 +527,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -531,7 +542,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    Round = 2;
                                 }
                             }
                         }
@@ -548,7 +559,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -563,7 +574,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -576,7 +587,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -591,7 +602,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    healthTest();
                                 }
                             }
                         }
@@ -607,7 +618,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         embedB.setImage("");
-                                        Round += 1;
+                                        Round = 2;
                                         Battle_loop();
                                     }, 6000);
                                 }, 1500);
@@ -622,7 +633,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    Round = 2;
                                 }
                             }
                         } else {
@@ -634,7 +645,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         embedB.setImage("");
-                                        Round += 1;
+                                        healthTest();
                                         Battle_loop();
                                     }, 6000);
                                 }, 1500);
@@ -649,7 +660,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round += 2;
+                                    healthTest();
                                 }
                             }
                         }
