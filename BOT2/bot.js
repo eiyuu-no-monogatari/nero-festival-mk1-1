@@ -507,6 +507,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
+                                        Round = 2;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
@@ -535,6 +536,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
+                                        Round = 1;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
@@ -568,6 +570,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
+                                        Round = 2;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
@@ -597,6 +600,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
+                                        Round = 1;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
@@ -630,6 +634,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
+                                        Round = 2;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
@@ -659,6 +664,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
+                                        Round = 1;
                                         healthTest();
                                     }, 3000);
                                 }, 1500);
