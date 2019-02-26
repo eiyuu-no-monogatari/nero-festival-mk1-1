@@ -311,6 +311,7 @@ client.on('message', msg => {
                                                 if (evade_A == true) {
                                                     Buff_B = 0;
                                                     Damage_caculate(0, 0, 0);
+                                                    evade_A = false;
                                                 } else {
                                                     Damage_caculate(200000, 100000, 50000);
                                                 }
@@ -335,6 +336,7 @@ client.on('message', msg => {
                                             if (evade_A == true) {
                                                 Buff_B = 0;
                                                 Damage_caculate(0, 0, 0);
+                                                evade_A = false;
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
@@ -367,6 +369,7 @@ client.on('message', msg => {
                                                 if (evade_B == true) {
                                                     Buff_A = 0;
                                                     Damage_caculate(0, 0, 0);
+                                                    evade_B = false;
                                                 } else {
                                                     Damage_caculate(200000, 100000, 50000);
                                                 }
@@ -392,6 +395,7 @@ client.on('message', msg => {
                                             if (evade_B == true) {
                                                 Buff_A = 0;
                                                 Damage_caculate(0, 0, 0);
+                                                evade_B = false;
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
@@ -423,6 +427,7 @@ client.on('message', msg => {
                                     if (evade_A == true) {
                                         Buff_B = 0;
                                         Damage_caculate(0, 0, 0);
+                                        evade_A = false;
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
@@ -461,6 +466,7 @@ client.on('message', msg => {
                                     if (evade_B == true) {
                                         Buff_A = 0;
                                         Damage_caculate(0, 0, 0);
+                                        evade_B = false;
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
