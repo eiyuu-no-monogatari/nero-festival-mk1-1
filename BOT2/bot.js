@@ -353,10 +353,8 @@ client.on('message', msg => {
                             }
                         } else {
                             if (Round == 1) {
-                                Round = 2;
                                 Battle_loop();
                             } else if (Round == 2) {
-                                Round = 1;
                                 Battle_loop();
                             }
                         }
@@ -390,7 +388,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round = 2;
+                                    healthTest();
                                     worldTimes += 1;
                                 }
                             }
@@ -439,7 +437,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round = 2;
+                                        healthTest();
                                         Battle_loop();
                                     }, 3000);
                                 }, 1500);
@@ -481,7 +479,7 @@ client.on('message', msg => {
                                     worldTimes = 0;
                                     Battle_loop();
                                 } else {
-                                    Round = 2;
+                                    healthTest();
                                     worldTimes += 1;
                                 }
                             }
@@ -542,7 +540,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round = 2;
+                                    healthTest();
                                 }
                             }
                         }
@@ -618,7 +616,7 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     client.setTimeout(function () {
                                         embedB.setImage("");
-                                        Round = 2;
+                                        healthTest();
                                         Battle_loop();
                                     }, 6000);
                                 }, 1500);
@@ -633,7 +631,7 @@ client.on('message', msg => {
                                     Battle_loop();
                                 } else {
                                     worldTimes += 1;
-                                    Round = 2;
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -733,11 +731,9 @@ client.on('message', msg => {
         if (switchA != false) {
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                 Jesus_fucking_long();
-                switchC = true;
             }
             if (msg.content == "--NeroFes") {
                 Jesus_fucking_long();
-                switchC = true;
             }
         }
     };
