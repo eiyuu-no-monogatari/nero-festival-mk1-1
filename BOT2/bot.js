@@ -207,8 +207,13 @@ client.on('message', msg => {
                             if (Round == 1 && !(healthA <= 0)) {
                                 Round = 2;
                                 Battle_loop();
-                                
                             } else if (Round == 2 && !(healthB <= 0)) {
+                                Round = 1;
+                                Battle_loop();
+                            } else if (Round == 1 && !(healthA <= 0) && world_First == true) {
+                                Round = 2;
+                                Battle_loop();
+                            } else if (Round == 2 && !(healthB <= 0) && world_Second == true) {
                                 Round = 1;
                                 Battle_loop();
                             }
