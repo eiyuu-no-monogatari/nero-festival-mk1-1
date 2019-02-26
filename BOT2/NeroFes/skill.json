@@ -56,7 +56,7 @@
   },
   {
     "name": "ORA",
-    "line": "歐拉歐拉歐拉歐拉！",
+    "line": "オラオラオラオラ！",
     "image": "https://i.imgur.com/1wb4XCj.gif",
     "basicDamage": 100,
     "maximumCorrection": 50,
@@ -145,15 +145,6 @@
     "duration": 3000
   },
   {
-    "name": "KAMEHAMEHA",
-    "line": "發出龜派氣功！",
-    "image": "https://i.gifer.com/Gdpd.gif",
-    "basicDamage": 175,
-    "maximumCorrection": 100,
-    "minimumCorrection": 50,
-    "duration": 3000
-  },
-  {
     "name": "punch",
     "line": "一發重拳打在臉上！",
     "image": "https://i.imgur.com/6lCWQ.gif",
@@ -163,13 +154,40 @@
     "duration": 3000
   },
     {
-    "name": "sunlightYellowOverdrive",
-    "line": "金黃色波紋疾走！",
-    "image": "https://i.imgur.com/nB3UD4c.gif",
+      "name": "sunlightYellowOverdrive",
+      "line": "金黃色波紋疾走！",
+      "image": "https://i.imgur.com/nB3UD4c.gif",
+      "basicDamage": 100,
+      "maximumCorrection": 100,
+      "minimumCorrection": 50,
+      "duration": 3000
+    },
+    {
+      "name": "HitandKick",
+      "line": "揍一拳再補上一腳！",
+      "image": "https://i.imgur.com/s3PAdNa.gif",
+      "basicDamage": 100,
+      "maximumCorrection": 50,
+      "minimumCorrection": 25,
+      "duration": 3000
+    },
+    {
+      "name": "Arrivederci",
+      "line": "アリアリアリアリ！",
+      "image": "https://i.imgur.com/avkkFBX.gif",
+      "basicDamage": 100,
+      "maximumCorrection": 50,
+      "minimumCorrection": 25,
+      "duration": 6000
+    },
+    {
+    "name": "MUDA3",
+    "line": "無駄無駄無駄無駄！",
+    "image": "https://i.imgur.com/RmZKz4n.gif",
     "basicDamage": 100,
-    "maximumCorrection": 100,
-    "minimumCorrection": 50,
+    "maximumCorrection": 50,
+    "minimumCorrection": 25,
     "duration": 3000
-  }
+    }
   ]
 }
