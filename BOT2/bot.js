@@ -451,6 +451,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -487,6 +488,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -515,7 +517,6 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 2;
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
@@ -546,6 +547,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -577,6 +579,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -604,6 +607,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -635,6 +639,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -662,6 +667,7 @@ client.on('message', msg => {
                                     healthTest();;
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -692,6 +698,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -718,6 +725,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -749,6 +757,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -776,6 +785,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -808,6 +818,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -836,6 +847,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -867,6 +879,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -894,6 +907,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -925,6 +939,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -952,6 +967,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -983,6 +999,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
@@ -1010,6 +1027,7 @@ client.on('message', msg => {
                                     healthTest();
                                 } else {
                                     worldTimes += 1;
+                                    healthTest();
                                     Battle_loop();
                                 }
                             }
