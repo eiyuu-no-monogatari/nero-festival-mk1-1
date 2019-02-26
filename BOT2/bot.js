@@ -186,7 +186,7 @@ client.on('message', msg => {
                     };
 
                     var healthTest = function () {
-                        if (Damage_caculate() >= healthA && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
+                        if (healthA == 0&& BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
                             string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthA = Math.floor(Math.random() * 10) + 1;
                             Embed_battle(string);
@@ -195,7 +195,7 @@ client.on('message', msg => {
                             np_switch = false;
                             BC_COUNT_A = 0;
                             Battle_loop();
-                        } else if (Damage_caculate() >= healthB && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
+                        } else if (healthB == 0 && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
                             string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthB = Math.floor(Math.random() * 10) + 1;
                             Embed_battle(string);
@@ -428,32 +428,10 @@ client.on('message', msg => {
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
-                                    if (Damage_caculate() >= healthA && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
-                                        string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                        healthA = Math.floor(Math.random() * 10) + 1;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        BC_A = false;
-                                        np_switch = false;
-                                        BC_COUNT_A = 0;
-                                        Battle_loop();
-                                    } else if (Damage_caculate() >= healthB && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
-                                        string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                        healthB = Math.floor(Math.random() * 10) + 1;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        BC_B = false;
-                                        np_switch = false;
-                                        BC_COUNT_B = 0;
-                                        Battle_loop();
-                                    } else {
                                         healthB = healthB - Damage;
                                         if (healthB <= 0) {
                                             healthB = 0;
                                         }
-                                    }
-                                    
-                                   
                                     string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
                                     Embed_battle(string);
                                     embedB.setImage(image);
@@ -488,30 +466,10 @@ client.on('message', msg => {
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
-                                    if (Damage_caculate() >= healthA && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
-                                        string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                        healthA = Math.floor(Math.random() * 10) + 1;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        BC_A = false;
-                                        np_switch = false;
-                                        BC_COUNT_A = 0;
-                                        Battle_loop();
-                                    } else if (Damage_caculate() >= healthB && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
-                                        string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                        healthB = Math.floor(Math.random() * 10) + 1;
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        BC_B = false;
-                                        np_switch = false;
-                                        BC_COUNT_B = 0;
-                                        Battle_loop();
-                                    } else {
                                         healthA = healthA - Damage;
                                         if (healthA <= 0) {
                                             healthA = 0;
                                         }
-                                    }
                                     string = line + "對" + first_attack + "造成" + Damage + "點傷害。";
                                     Embed_battle(string);
                                     embedB.setImage(image);
