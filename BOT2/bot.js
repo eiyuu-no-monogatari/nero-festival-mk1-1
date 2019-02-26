@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
@@ -448,7 +447,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -485,7 +485,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -517,7 +518,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     Battle_loop();
@@ -544,7 +546,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -576,7 +579,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -604,7 +608,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -636,7 +641,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -664,7 +670,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();;
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -695,7 +702,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -722,7 +730,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -754,7 +763,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -782,7 +792,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -815,7 +826,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -844,7 +856,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -876,7 +889,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -904,7 +918,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -936,7 +951,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -964,7 +980,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -996,7 +1013,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 1;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
@@ -1024,7 +1042,8 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    healthTest();
+                                    Round = 2;
+                                    Battle_loop();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
