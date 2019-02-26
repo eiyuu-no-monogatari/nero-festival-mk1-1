@@ -18,6 +18,15 @@ var world_Second = false;
 var worldTimes = 0;
 var np_switch = true;
 var the_end_of_world;
+var Buff_A = 0;
+var Buff_B = 0;
+var Debuff_A = 0;
+var Debuff_B = 0;
+var Turn_count = 0;
+var BC_A = false;
+var BC_B = false;
+var BC_COUNT_A = 0;
+var BC_COUNT_B = 0;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -138,7 +147,12 @@ client.on('message', msg => {
 
                 msg.channel.send(God_Damn_Long(), Embed_A()).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
-                        Damage = a + Math.floor(Math.random() * b) - c;
+                        if (Round == 1) {
+                            Damage = a + Math.floor(Math.random() * b) - c + BuffA - DebuffA;
+                        } else if (Round == 2) {
+                            Damage = a + Math.floor(Math.random() * b) - c + BuffB - DebuffB;
+                        }
+                        return Damage;
                     };
 
                     var Embed_battle = function (action) {
@@ -184,6 +198,25 @@ client.on('message', msg => {
                                 Round = 1;
                                 Battle_loop();
                             }
+                        }
+                        if (Damage_caculate() >= healthA && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
+                            string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
+                            healthA = Math.floor(Math.random() * 10) + 1;
+                            Embed_battle(string);
+                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                            BC_A = false;
+                            np_switch = false;
+                            BC_COUNT_A = 0;
+                            Battle_loop();
+                        } else if (Damage_caculate() >= healthB && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
+                            string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
+                            healthB = Math.floor(Math.random() * 10) + 1;
+                            Embed_battle(string);
+                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                            BC_B = false;
+                            np_switch = false;
+                            BC_COUNT_B = 0;
+                            Battle_loop();
                         } else if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
@@ -287,7 +320,7 @@ client.on('message', msg => {
                                             }, duration);
                                         }, 2500);
                                     }, 2500);
-                                } else if (Round == 1) {
+                                } else if (string3 == "") {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
                                         Embed_battle(string);
@@ -334,7 +367,7 @@ client.on('message', msg => {
                                             }, duration);
                                         }, 2500);
                                     }, 2500);
-                                } else {
+                                } else if (string3 == "") {
                                     client.setTimeout(function () {
                                         string = second_attack + string2;
                                         Embed_battle(string);
@@ -661,8 +694,125 @@ client.on('message', msg => {
                         }
                     };
 
+                    var You_have_to_be_stronger = function () {
+                        if (Round % 2 != 0) { //偶數
+                            if (world_First != true) {
+                                client.setTimeout(function () {
+                                    string = first_attack + "：「" + second_attack + "，你要成長啊，不要再用你的『海灘男孩』釣魚了。」，對方的攻擊力上升了。";
+                                    Embed_battle(string);
+                                    Buff_B = 100;
+                                    embedB.setImage("https://i.imgur.com/QHrieRy.gif");
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    client.setTimeout(function () {
+                                        embedB.setImage("");
+                                        healthTest();
+                                    }, 6000);
+                                }, 1500);
+                            } else {
+                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
+                                    string = second_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_First = false;
+                                    worldTimes = 0;
+                                    healthTest();
+                                } else {
+                                    worldTimes += 1;
+                                    Battle_loop();
+                                }
+                            }
+                        } else {
+                            if (world_Second != true) {
+                                client.setTimeout(function () {
+                                    string = second_attack + "：「" + first_attack + "你要成長啊，不要再用你的『海灘男孩』釣魚了。」，對方的攻擊力上升了。";
+                                    Embed_battle(string);
+                                    Buff_A = 100;
+                                    embedB.setImage("https://i.imgur.com/QHrieRy.gif");
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    client.setTimeout(function () {
+                                        embedB.setImage("");
+                                        healthTest();
+                                    }, 6000);
+                                }, 1500);
+                            } else {
+                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
+                                    string = first_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_Second = false;
+                                    worldTimes = 0;
+                                    healthTest();
+                                } else {
+                                    worldTimes += 1;
+                                    Battle_loop();
+                                }
+                            }
+                        }
+                    };
+                    
+                    var Battle_Contiune = function () {
+                        if (Round % 2 != 0) { //偶數
+                            if (world_First != true) {
+                                client.setTimeout(function () {
+                                    string = first_attack + "發動戰鬥續行！";
+                                    Embed_battle(string);
+                                    BC_A = true;
+                                    BC_COUNT_A = Turn_count + 5;
+                                    embedB.setImage("https://i.imgur.com/r5KBPNF.gif");
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    client.setTimeout(function () {
+                                        embedB.setImage("");
+                                        healthTest();
+                                    }, 3000);
+                                }, 1500);
+                            } else {
+                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
+                                    string = second_attack + "「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_First = false;
+                                    worldTimes = 0;
+                                    healthTest();
+                                } else {
+                                    worldTimes += 1;
+                                    Battle_loop();
+                                }
+                            }
+                        } else {
+                            if (world_Second != true) {
+                                client.setTimeout(function () {
+                                    string = second_attack + "發動戰鬥續行！";
+                                    Embed_battle(string);
+                                    BC_B = true;
+                                    BC_COUNT_B = Turn_count + 5;
+                                    embedB.setImage("https://i.imgur.com/r5KBPNF.gif");
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    client.setTimeout(function () {
+                                        embedB.setImage("");
+                                        healthTest();
+                                    }, 3000);
+                                }, 1500);
+                            } else {
+                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
+                                    string = first_attack + "：「時間恢復流動。」";
+                                    Embed_battle(string);
+                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    world_Second = false;
+                                    worldTimes = 0;
+                                    healthTest();
+                                } else {
+                                    worldTimes += 1;
+                                    Battle_loop();
+                                }
+                            }
+                        }
+                    };
                     var SpecialSkill = function () {
-                        var RandomSkill = Math.floor(Math.random() * 4) + 1;
+                        var RandomSkill = Math.floor(Math.random() * 6) + 1;
                         if (RandomSkill == 1) {
                             if (world_First != true && world_Second != true) {
                                 za_warudo();
@@ -683,6 +833,10 @@ client.on('message', msg => {
                             }
                         } else if (RandomSkill == 4) {
                             liar_no_taste();
+                        } else if (RandomSkill == 5) {
+                            You_have_to_be_stronger();
+                        } else if (RandomSkill == 6) {
+                            Battle_Contiune();
                         }
                     };
 
@@ -722,6 +876,15 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
+                        Buff_A = 0;
+                        Buff_B = 0;
+                        Debuff_A = 0;
+                        Debuff_B = 0;
+                        Turn_count = 0;
+                        BC_A = false;
+                        BC_B = false;
+                        BC_COUNT_A = 0;
+                        BC_COUNT_B = 0;
                     };
                     Battle_loop();
                 });
