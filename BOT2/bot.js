@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var a = 0;
 var switchA = true;
-var switchC = false;
+var switchC = 0;
 var Round = 1;
 var X;
 var first_attack;
@@ -260,7 +260,7 @@ client.on('message', msg => {
 
                     var np = function (string1, string2, string3, string4, duration) {
                         if (np_switch != false) {
-                            if (switchC == true) { //偶數回合，即為第二位攻擊者的回合
+                            if (switchC == 1) { //偶數回合，即為第二位攻擊者的回合
                                 string = second_attack + string1;
                                 Embed_battle(string);
                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -306,7 +306,7 @@ client.on('message', msg => {
                                         }, duration);
                                     }, 2500);
                                 }
-                            } else if (switchC == false) { //奇數回合，即為第一位攻擊者的回合
+                            } else if (switchC == 2) { //奇數回合，即為第一位攻擊者的回合
                                 string = first_attack + string1;
                                 Embed_battle(string);
                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -690,10 +690,10 @@ client.on('message', msg => {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             if (healthA <= 100) {
-                                switchC = true;
+                                switchC = 1;
                             }
                             if (healthB <= 100) {
-                                switchC = false;
+                                switchC = 2;
                             }
                             const data = require("./NeroFes/noble_phantasm.json");
                             var Datalength = data["member"].length;
@@ -738,6 +738,7 @@ client.on('message', msg => {
                 Jesus_fucking_long();
             }
         }
+        switchC = 0;
     };
 
     if (!msg.author.bot) {
