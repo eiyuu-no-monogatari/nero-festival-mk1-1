@@ -195,7 +195,7 @@ client.on('message', msg => {
                             np_switch = false;
                             BC_COUNT_A = 0;
                             Battle_loop();
-                        } else if (healthB == 0 && BC_B == true && BC_COUNT_Ｂ >= Turn_count && BC_COUNT_B != 0) {
+                        } else if (healthB == 0 && BC_B == true && BC_COUNT_B >= Turn_count && BC_COUNT_B != 0) {
                             string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthB = Math.floor(Math.random() * 10) + 1;
                             Embed_battle(string);
