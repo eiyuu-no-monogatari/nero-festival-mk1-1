@@ -218,8 +218,7 @@ client.on('message', msg => {
                                 Round = 1;
                                 Battle_loop();
                             }
-                        }
-                        if (healthB <= 0) {
+                        } else if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
