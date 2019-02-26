@@ -168,6 +168,9 @@ client.on('message', msg => {
                     };
 
                     var healthTest = function () {
+                        if (world_First == true || world_Second == true) {
+                            Round += 2;
+                        };
                         if (healthA > 0 && healthB > 0) {
                             Round += 1;
                             Battle_loop();
