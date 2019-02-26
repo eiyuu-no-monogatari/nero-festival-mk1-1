@@ -754,7 +754,7 @@ client.on('message', msg => {
                     
                     var Battle_Contiune = function () {
                         if (Round % 2 != 0) { //偶數
-                            if (world_First != true) {
+                            if (world_First != true && BC_A != true) {
                                 client.setTimeout(function () {
                                     string = first_attack + "發動戰鬥續行！";
                                     Embed_battle(string);
@@ -765,7 +765,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         healthTest();
-                                    }, 3000);
+                                    }, 6000);
                                 }, 1500);
                             } else {
                                 the_end_of_world = Math.floor(Math.random() * 100) + 1;
@@ -782,7 +782,7 @@ client.on('message', msg => {
                                 }
                             }
                         } else {
-                            if (world_Second != true) {
+                            if (world_Second != true && BC_B != true) {
                                 client.setTimeout(function () {
                                     string = second_attack + "發動戰鬥續行！";
                                     Embed_battle(string);
@@ -793,7 +793,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         healthTest();
-                                    }, 3000);
+                                    }, 6000);
                                 }, 1500);
                             } else {
                                 the_end_of_world = Math.floor(Math.random() * 100) + 1;
