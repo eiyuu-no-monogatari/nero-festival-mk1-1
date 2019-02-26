@@ -150,8 +150,12 @@ client.on('message', msg => {
                     var Damage_caculate = function (a, b, c) {
                         if (Round == 1) {
                             Damage = a + Math.floor(Math.random() * b) - c + Buff_A - Debuff_A;
+                            Buff_A = 0;
+                            Debuff_A = 0;
                         } else if (Round == 2) {
                             Damage = a + Math.floor(Math.random() * b) - c + Buff_B - Debuff_B;
+                            Buff_B = 0;
+                            Debuff_B = 0;
                         }
                         return Damage;
                     };
