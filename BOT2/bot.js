@@ -205,19 +205,14 @@ client.on('message', msg => {
                             BC_COUNT_B = 0;
                             Battle_loop();
                             return false;
-                        }
-                        if (healthA > 0 && healthB > 0) {
+                        } else if (healthA > 0 && healthB > 0) {
                             if (Round == 1 && !(healthA <= 0)) {
                                 Round = 2;
-                                if (world_True != true) {
-                                    Battle_loop();
-                                }
+                                Battle_loop();
                                 
                             } else if (Round == 2 && !(healthB <= 0)) {
                                 Round = 1;
-                                if (world_First != true) {
-                                    Battle_loop();
-                                }
+                                Battle_loop();
                             }
                         }
                         if (healthB <= 0) {
