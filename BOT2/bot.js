@@ -508,7 +508,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round = 2;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -537,7 +537,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round = 1;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -571,7 +571,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round = 2;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -601,7 +601,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round = 1;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -635,7 +635,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_First = true;
                                         Round = 2;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -665,7 +665,7 @@ client.on('message', msg => {
                                         embedB.setImage("");
                                         world_Second = true;
                                         Round = 1;
-                                        healthTest();
+                                        Battle_loop();
                                     }, 3000);
                                 }, 1500);
                             } else {
