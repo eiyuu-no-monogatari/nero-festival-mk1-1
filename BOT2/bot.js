@@ -148,9 +148,9 @@ client.on('message', msg => {
                 msg.channel.send(God_Damn_Long(), Embed_A()).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         if (Round == 1) {
-                            Damage = a + Math.floor(Math.random() * b) - c + BuffA - DebuffA;
+                            Damage = a + Math.floor(Math.random() * b) - c + Buff_A - Debuff_A;
                         } else if (Round == 2) {
-                            Damage = a + Math.floor(Math.random() * b) - c + BuffB - DebuffB;
+                            Damage = a + Math.floor(Math.random() * b) - c + Buff_B - Debuff_B;
                         }
                         return Damage;
                     };
@@ -184,21 +184,6 @@ client.on('message', msg => {
                     };
 
                     var healthTest = function () {
-                        if (world_First == true) {
-                            Round = 2;
-                            Battle_loop();
-                        } else if (world_Second == true) {
-                            Round = 1;
-                            Battle_loop();
-                        } else if (healthA > 0 && healthB > 0) {
-                            if (Round == 1) {
-                                Round = 2;
-                                Battle_loop();
-                            } else if (Round == 2) {
-                                Round = 1;
-                                Battle_loop();
-                            }
-                        }
                         if (Damage_caculate() >= healthA && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
                             string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
                             healthA = Math.floor(Math.random() * 10) + 1;
@@ -217,7 +202,22 @@ client.on('message', msg => {
                             np_switch = false;
                             BC_COUNT_B = 0;
                             Battle_loop();
-                        } else if (healthB <= 0) {
+                        } else if (world_First == true) {
+                            Round = 2;
+                            Battle_loop();
+                        } else if (world_Second == true) {
+                            Round = 1;
+                            Battle_loop();
+                        } else if (healthA > 0 && healthB > 0) {
+                            if (Round == 1) {
+                                Round = 2;
+                                Battle_loop();
+                            } else if (Round == 2) {
+                                Round = 1;
+                                Battle_loop();
+                            }
+                        }
+                        if (healthB <= 0) {
                             client.setTimeout(function () {
                                 if (world_Second == true) {
                                     string = first_attack + "：「時間恢復流動。」";
@@ -811,6 +811,7 @@ client.on('message', msg => {
                             }
                         }
                     };
+
                     var SpecialSkill = function () {
                         var RandomSkill = Math.floor(Math.random() * 6) + 1;
                         if (RandomSkill == 1) {
@@ -833,8 +834,10 @@ client.on('message', msg => {
                             }
                         } else if (RandomSkill == 4) {
                             liar_no_taste();
+
                         } else if (RandomSkill == 5) {
                             You_have_to_be_stronger();
+
                         } else if (RandomSkill == 6) {
                             Battle_Contiune();
                         }
@@ -876,18 +879,18 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
-                        Buff_A = 0;
-                        Buff_B = 0;
-                        Debuff_A = 0;
-                        Debuff_B = 0;
-                        Turn_count = 0;
-                        BC_A = false;
-                        BC_B = false;
-                        BC_COUNT_A = 0;
-                        BC_COUNT_B = 0;
                     };
                     Battle_loop();
                 });
+                Buff_A = 0;
+                Buff_B = 0;
+                Debuff_A = 0;
+                Debuff_B = 0;
+                Turn_count = 0;
+                BC_A = false;
+                BC_B = false;
+                BC_COUNT_A = 0;
+                BC_COUNT_B = 0;
                 healthA = 750;
                 healthB = 750;
             }, 1000);
