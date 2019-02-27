@@ -1149,7 +1149,7 @@ client.on('message', msg => {
                                             }, duration);
                                         }, 2500);
                                     }, 2500);
-                        } else if (arr.length == 2 && msg.mentions.users.first().username == "尼祿祭NeroFestival" && msg.mentions.users.first(1).username != "尼祿祭NeroFestival") {
+                        } else if (arr.length == 2 && (msg.mentions.users.first().username == "尼祿祭NeroFestival" && msg.mentions.users.last().username != "尼祿祭NeroFestival")) {
                             const data = require("./NeroFes/Nero_NP.json");
                             var Datalength = data["member"].length;
                             X = Math.floor(Math.random() * Datalength);
