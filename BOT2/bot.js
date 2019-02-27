@@ -56,18 +56,17 @@ client.on('message', msg => {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
-                        userWhoGotTagged = msg.mentions.users.last(); //2nd
-                        first_attack = msg.mentions.users.first().username; //1st
-                        userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
+                        userWhoGotTagged = msg.mentions.users.first(); //2nd
+                        first_attack = msg.mentions.users.last().username; //1st
+                        userWhoGotTagged_COPY = msg.mentions.users.first().username; //2nd
                         if (switchA == true) {
                             switchA = false;
                             a = a + 1;
-                            second_attack = msg.mentions.users.last().username; //2nd
+                            second_attack = msg.mentions.users.first().username; //2nd
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.mentions.users.first() //1st
+                            msgB = (msg.mentions.users.last() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
-
                         } else if (switchA == false) {
                             const embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
@@ -146,8 +145,8 @@ client.on('message', msg => {
                         embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
-                        embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.addField(nameuserWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.addField(msg.mentions.users.first().user, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
                         embedA = new Discord.RichEmbed();
