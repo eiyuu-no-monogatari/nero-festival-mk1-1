@@ -145,7 +145,7 @@ client.on('message', msg => {
                         embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.addField(nameuserWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.addField(msg.mentions.users.first().user, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
@@ -188,8 +188,8 @@ client.on('message', msg => {
                             embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
-                            embedB.addField(msg.mentions.users.first().username, healthA + "/750", true);
-                            embedB.addField(msg.mentions.users.last().username, healthB + "/750", true);
+                            embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
+                            embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
                             embedB.setDescription(action);
                         } else if (arr.length == 1) {
                             embedB = new Discord.RichEmbed();
