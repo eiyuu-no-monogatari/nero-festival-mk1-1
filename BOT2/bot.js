@@ -413,10 +413,10 @@ client.on('message', msg => {
                                         embedB.setImage(string4);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                         client.setTimeout(function () {
-                                            if (evade_B == true) {
-                                                Buff_A = 0;
+                                            if (evade_A == true) {
+                                                Buff_B = 0;
                                                 Damage_caculate(0, 0, 0);
-                                                evade_B = false;
+                                                evade_A = false;
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
@@ -445,10 +445,10 @@ client.on('message', msg => {
                         if (Round % 2 != 0) { //奇數 A的回合
                             if (world_First != true) { //如果A的時間沒被暫停
                                 client.setTimeout(function () {
-                                    if (evade_A == true) {
-                                        Buff_B = 0;
+                                    if (evade_B == true) {
+                                        Buff_A = 0;
                                         Damage_caculate(0, 0, 0);
-                                        evade_A = false;
+                                        evade_B = false;
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
@@ -483,10 +483,10 @@ client.on('message', msg => {
                         } else {
                             if (world_Second != true) { //如果B的時間沒被暫停
                                 client.setTimeout(function () {
-                                    if (evade_B == true) {
-                                        Buff_A = 0;
+                                    if (evade_A == true) {
+                                        Buff_B = 0;
                                         Damage_caculate(0, 0, 0);
-                                        evade_B = false;
+                                        evade_A = false;
                                     } else {
                                         Damage_caculate(basic, maximum, minimum);
                                     }
