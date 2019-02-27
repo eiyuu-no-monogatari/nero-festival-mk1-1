@@ -1157,9 +1157,8 @@ client.on('message', msg => {
                             AA(F, G, H, J, K, L);
                         }
                    }, 1000);
-                } 
-             Battle_loop();
-            }
+                   Battle_loop();
+                }
                 Buff_A = 0;
                 Buff_B = 0;
                 Debuff_A = 0;
