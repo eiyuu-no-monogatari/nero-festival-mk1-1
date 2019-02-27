@@ -1158,6 +1158,7 @@ client.on('message', msg => {
                         }
                     Battle_loop();
             }, 1000);
+        }
                 Buff_A = 0;
                 Buff_B = 0;
                 Debuff_A = 0;
@@ -1174,7 +1175,6 @@ client.on('message', msg => {
                 worldTimes = 0;
                 world_Second = false;
                 world_First = false;
-                }
         if (switchA != false) {
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                 Jesus_fucking_long();
