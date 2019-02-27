@@ -1109,7 +1109,7 @@ client.on('message', msg => {
 
                     var Battle_loop = function () {
                         if(message.author.bot && message.author.username == "尼祿祭NeroFestival") {
-                            const data = require(./NeroFes/Nero_NP.json);
+                            const data = require("./NeroFes/Nero_NP.json");
                              X = Math.floor(Math.random() * Datalength);
                             var A = data["member"][X].line1;
                             var B = data["member"][X].line2;
