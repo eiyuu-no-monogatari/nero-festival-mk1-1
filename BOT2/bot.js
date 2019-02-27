@@ -57,7 +57,7 @@ client.on('message', msg => {
             var Server = require("./NeroFes/Server.json");
             ServerName = [{ id: msg.gulid.id, Battle_switch: true }];
             if (Server.serverList.includes(ServerName) == false) {
-                json.writeFile("Server.json", ServerName, { flag: 'a' }, function (err) {
+                json.writeFile("./NeroFes/Server.json", ServerName, { flag: 'a' }, function (err) {
                     if (err) {
                         throw err;
                     } else {
@@ -1364,5 +1364,4 @@ client.on('message', msg => {
     }
 });
 
-
-client.login('NTQ3MzkzMTI0Mjg5MjE2NTUy.D02JYQ.rvALpoMXxLDk7MLu2WFgLmTXTkI'); //2號機
+client.login('NTQ3MzkzMTI0Mjg5MjE2NTUy.D1gz9A.9R39fXCcoRcF5QJhqHAGPvHdo3s'); //2號機
