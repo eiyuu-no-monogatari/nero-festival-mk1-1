@@ -1109,8 +1109,8 @@ client.on('message', msg => {
 
                     var Battle_loop = function () {
                         if (msg.author.bot == true && msg.author.username == "尼祿祭NeroFestival") {
-                                switchC = 1;
                             const data = require("./NeroFes/Nero_NP.json");
+                            var Datalength = data["member"].length;
                             X = Math.floor(Math.random() * Datalength);
                             var A = data["member"][X].line1;
                             var B = data["member"][X].line2;
@@ -1121,7 +1121,63 @@ client.on('message', msg => {
                             }
                             var D = data["member"][X].image;
                             var E = data["member"][X].duration;
-                            np(A, B, C, D, E);
+                                string = second_attack + string1;
+                                Embed_battle(string);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                if (string3 != "") {
+                                    client.setTimeout(function () {
+                                        string = second_attack + string2;
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            string = second_attack + string3;
+                                            Embed_battle(string);
+                                            embedB.setImage(string4);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            client.setTimeout(function () {
+                                                if (evade_A == true) {
+                                                    Buff_B = 0;
+                                                    Damage_caculate(0, 0, 0);
+                                                    evade_A = false;
+                                                } else {
+                                                    Damage_caculate(200000, 100000, 50000);
+                                                }
+                                                healthA = 0;
+                                                string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                                Embed_battle(string);
+                                                embedB.setImage();
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                client.setTimeout(function () {
+                                                    healthTest();
+                                                }, 2500);
+                                            }, duration);
+                                        }, 2500);
+                                    }, 2500);
+                                } else if (string3 == "") {
+                                    client.setTimeout(function () {
+                                        string = second_attack + string2;
+                                        Embed_battle(string);
+                                        embedB.setImage(string4);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            if (evade_A == true) {
+                                                Buff_B = 0;
+                                                Damage_caculate(0, 0, 0);
+                                                evade_A = false;
+                                            } else {
+                                                Damage_caculate(200000, 100000, 50000);
+                                            }
+                                            healthA = 0;
+                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                            Embed_battle(string);
+                                            embedB.setImage();
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            client.setTimeout(function () {
+                                                healthTest();
+                                            }, 2500);
+                                        }, duration);
+                                    }, 2500);
+                                }
                         } else {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
