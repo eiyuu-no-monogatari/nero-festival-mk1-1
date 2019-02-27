@@ -28,6 +28,8 @@ var BC_COUNT_A = 0;
 var BC_COUNT_B = 0;
 var evade_A = false
 var evade_B = false;
+var world_Count_A = 0;
+var world_Count_B = 0;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -449,7 +451,7 @@ client.on('message', msg => {
                                     }, duration);
                                 }, 1500);
                             } else { //如果A的時間被暫停
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -486,7 +488,7 @@ client.on('message', msg => {
                                     }, duration);
                                 }, 1500);
                             } else { //如果B的時間被暫停
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -517,7 +519,7 @@ client.on('message', msg => {
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -544,7 +546,7 @@ client.on('message', msg => {
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -575,7 +577,7 @@ client.on('message', msg => {
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -602,7 +604,7 @@ client.on('message', msg => {
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -633,7 +635,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -660,7 +662,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -690,7 +692,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                 var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -716,7 +718,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -747,7 +749,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -774,7 +776,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -806,7 +808,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "「時間恢復流動。」";
                                     Embed_battle(string);
@@ -834,7 +836,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -865,7 +867,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -892,7 +894,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -923,7 +925,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -950,7 +952,7 @@ healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -981,7 +983,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = second_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -1008,7 +1010,7 @@ healthTest();
                                     }, 6000);
                                 }, 1500);
                             } else {
-                                the_end_of_world = Math.floor(Math.random() * 100) + 1;
+                                var the_end_of_world = Math.floor(Math.random() * 100) + 1;
                                 if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
                                     string = first_attack + "：「時間恢復流動。」";
                                     Embed_battle(string);
@@ -1117,6 +1119,8 @@ healthTest();
                 healthB = 750;
                 evade_A = false;
                 evade_B = false;
+                world_Count_A = 0;
+                world_Count_B = 0;
             }, 1000);
         }
 
