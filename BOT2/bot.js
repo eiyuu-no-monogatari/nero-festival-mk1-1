@@ -1109,6 +1109,7 @@ client.on('message', msg => {
 
                     var Battle_loop = function () {
                         if (msg.author.bot == true && msg.author.username == "尼祿祭NeroFestival") {
+                                switchC = 1;
                             const data = require("./NeroFes/Nero_NP.json");
                             X = Math.floor(Math.random() * Datalength);
                             var A = data["member"][X].line1;
@@ -1118,6 +1119,8 @@ client.on('message', msg => {
                             } else {
                                 var C = data["member"][X].line3;
                             }
+                            var D = data["member"][X].image;
+                            var E = data["member"][X].duration;
                             np(A, B, C, D, E);
                         } else {
                         var skillOrAttack = Math.random() * 100 + 1;
