@@ -1156,9 +1156,10 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
-                    Battle_loop();
-            }, 1000);
-        }
+                   }, 1000);
+                } 
+             Battle_loop();
+            }
                 Buff_A = 0;
                 Buff_B = 0;
                 Debuff_A = 0;
