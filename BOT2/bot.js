@@ -1108,9 +1108,9 @@ client.on('message', msg => {
                     };
 
                     var Battle_loop = function () {
-                        if (msg.author.bot && msg.author.username == "尼祿祭NeroFestival") {
+                        if (msg.author.bot == true && msg.author.username == "尼祿祭NeroFestival") {
                             const data = require("./NeroFes/Nero_NP.json");
-                             X = Math.floor(Math.random() * Datalength);
+                            X = Math.floor(Math.random() * Datalength);
                             var A = data["member"][X].line1;
                             var B = data["member"][X].line2;
                             if (data["member"][X].line3 == "") {
@@ -1120,7 +1120,7 @@ client.on('message', msg => {
                             }
                             np(A, B, C, D, E);
                         } else {
-                                                    var skillOrAttack = Math.random() * 100 + 1;
+                        var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             if (healthA <= 100) {
                                 switchC = 1;
