@@ -1108,7 +1108,7 @@ client.on('message', msg => {
                     };
 
                     var Battle_loop = function () {
-                        if (msg.mentions.users.first() == "尼祿祭NeroFestival" && msg.mentions.users.first(1) != "尼祿祭NeroFestival") {
+                        if (msg.mentions.users.first().username == "尼祿祭NeroFestival" && msg.mentions.users.first(1).username != "尼祿祭NeroFestival") {
                             const data = require("./NeroFes/Nero_NP.json");
                             var Datalength = data["member"].length;
                             X = Math.floor(Math.random() * Datalength);
