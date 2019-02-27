@@ -145,7 +145,7 @@ client.on('message', msg => {
                         embedA = new Discord.RichEmbed();
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
-                        embedA.addField(nameuserWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.addField(msg.mentions.users.first().user, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
