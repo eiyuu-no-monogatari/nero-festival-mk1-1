@@ -54,7 +54,7 @@ client.on('message', msg => {
     if (!msg.author.bot) {
         
         if (msg.guild.available == true) {
-            Server = require("./NeroFes/Server.json");
+            var Server = require("./NeroFes/Server.json");
             ServerName = [{ id: msg.gulid.id, Battle_switch: true }];
             if (Server.serverList.includes(ServerName) == false) {
                 json.writeFile("Server.json", ServerName, { flag: 'a' }, function (err) {
