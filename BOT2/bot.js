@@ -62,7 +62,7 @@ client.on('message', msg => {
                         if (switchA == true) {
                             switchA = false;
                             a = a + 1;
-                            second_attack = msg.mentions.users.first().username; //2nd
+                            second_attack = msg.mentions.users.last().username; //2nd
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
