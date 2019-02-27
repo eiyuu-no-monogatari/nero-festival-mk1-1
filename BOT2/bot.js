@@ -57,7 +57,7 @@ client.on('message', msg => {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
                         userWhoGotTagged = msg.mentions.users.last(); //2nd
-                        first_attack = msg.mentions.users.first(); //1st
+                        first_attack = msg.mentions.users.first().username; //1st
                         userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
                         if (switchA == true) {
                             switchA = false;
@@ -147,7 +147,7 @@ client.on('message', msg => {
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY.username, 750 + "/750", true);
+                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
                         embedA = new Discord.RichEmbed();
