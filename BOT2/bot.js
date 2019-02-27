@@ -1108,6 +1108,19 @@ client.on('message', msg => {
                     };
 
                     var Battle_loop = function () {
+                        if(message.author.bot && message.author.username == "尼祿祭NeroFestival") {
+                            const data = require(./NeroFes/Nero_NP.json);
+                             X = Math.floor(Math.random() * Datalength);
+                            var A = data["member"][X].line1;
+                            var B = data["member"][X].line2;
+                            if (data["member"][X].line3 == "") {
+                                var C = "";
+                            } else {
+                                var C = data["member"][X].line3;
+                            }
+                            np(A, B, C, D, E);
+                        } else {
+                            client.setTimeout(function() {
                         var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             if (healthA <= 100) {
@@ -1143,9 +1156,8 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
-                    };
                     Battle_loop();
-                });
+            }, 1000);
                 Buff_A = 0;
                 Buff_B = 0;
                 Debuff_A = 0;
@@ -1162,7 +1174,8 @@ client.on('message', msg => {
                 worldTimes = 0;
                 world_Second = false;
                 world_First = false;
-            }, 1000);
+                }
+
         }
 
         if (switchA != false) {
