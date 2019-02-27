@@ -319,7 +319,7 @@ client.on('message', msg => {
                                                 } else {
                                                     Damage_caculate(200000, 100000, 50000);
                                                 }
-                                                healthB = 0;
+                                                healthA = 0;
                                                 string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                                 Embed_battle(string);
                                                 embedB.setImage();
@@ -344,7 +344,7 @@ client.on('message', msg => {
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
-                                            healthB = 0;
+                                            healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
                                             embedB.setImage();
@@ -403,8 +403,8 @@ client.on('message', msg => {
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                            healthB = 0;
+                                            string = "對" + second_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
                                             embedB.setImage();
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
