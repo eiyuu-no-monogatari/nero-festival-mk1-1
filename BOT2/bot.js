@@ -162,7 +162,6 @@ client.on('message', msg => {
                     return embedA;
                 }
 
-
                 msg.channel.send(God_Damn_Long(), Embed_A()).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
                         if (Round == 1) {
@@ -336,7 +335,7 @@ client.on('message', msg => {
                                                 } else {
                                                     Damage_caculate(200000, 100000, 50000);
                                                 }
-                                                healthB = 0;
+                                                healthA = 0;
                                                 string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                                 Embed_battle(string);
                                                 embedB.setImage();
@@ -361,7 +360,7 @@ client.on('message', msg => {
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
-                                            healthB = 0;
+                                            healthA = 0;
                                             string = "對" + first_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
                                             embedB.setImage();
@@ -408,7 +407,7 @@ client.on('message', msg => {
                                     }, 2500);
                                 } else if (string3 == "") {
                                     client.setTimeout(function () {
-                                        string = second_attack + string2;
+                                        string = first_attack + string2;
                                         Embed_battle(string);
                                         embedB.setImage(string4);
                                         msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
@@ -420,8 +419,8 @@ client.on('message', msg => {
                                             } else {
                                                 Damage_caculate(200000, 100000, 50000);
                                             }
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                            healthB = 0;
+                                            string = "對" + second_attack + "造成" + Damage + "點傷害。";
                                             Embed_battle(string);
                                             embedB.setImage();
                                             msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
