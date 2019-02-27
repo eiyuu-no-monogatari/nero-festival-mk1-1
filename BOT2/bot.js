@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const json = require('jsonfile');
 var a = 0;
 var switchA = true;
 var switchC = 0;
@@ -28,6 +29,7 @@ var BC_COUNT_A = 0;
 var BC_COUNT_B = 0;
 var evade_A = false
 var evade_B = false;
+var ServerName;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -50,6 +52,21 @@ setInterval(function () {
 
 client.on('message', msg => {
     if (!msg.author.bot) {
+        
+        if (msg.guild.available == true) {
+            Server = require("./NeroFes/Server.json");
+            ServerName = [{ id: msg.gulid.id, Battle_switch: true }];
+            if (Server.serverList.includes(ServerName) == false) {
+                json.writeFile("Server.json", ServerName, { flag: 'a' }, function (err) {
+                    if (err) {
+                        throw err;
+                    } else {
+                        console.log("成功寫入" + ServerName + "。");
+                    }
+                });
+            }
+        }
+        
 
         var Jesus_fucking_long = function () {
             var God_Damn_Long = function () {
@@ -389,7 +406,6 @@ client.on('message', msg => {
                                                     } else {
                                                         Damage_caculate(200000, 100000, 50000);
                                                     }
-                                                    console.log(Damage);
                                                     string = "對" + second_attack + "造成" + Damage + "點傷害。";
                                                     healthB = 0;
                                                     Embed_battle(string);
@@ -1062,7 +1078,6 @@ client.on('message', msg => {
                             }
                         };
 
-
                         var SpecialSkill = function () {
                             var RandomSkill = Math.floor(Math.random() * 9) + 1;
                             if (RandomSkill == 1) {
@@ -1258,7 +1273,6 @@ client.on('message', msg => {
         if (!msg.author.bot) {
             if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
                 MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
-                console.log(MatchData);
                 strA = MatchData[1];
                 var varA = parseInt(MatchData[2]);
                 var varB = parseInt(MatchData[3]);
