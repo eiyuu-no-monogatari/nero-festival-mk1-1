@@ -1175,9 +1175,6 @@ client.on('message', msg => {
                 world_Second = false;
                 world_First = false;
                 }
-
-        }
-
         if (switchA != false) {
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                 Jesus_fucking_long();
@@ -1188,6 +1185,7 @@ client.on('message', msg => {
         }
         switchC = 0;
     };
+
 
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
