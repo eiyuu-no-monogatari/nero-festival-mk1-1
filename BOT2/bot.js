@@ -56,17 +56,18 @@ client.on('message', msg => {
                 if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
-                        userWhoGotTagged = msg.mentions.users.first(); //2nd
-                        first_attack = msg.mentions.users.last().username; //1st
-                        userWhoGotTagged_COPY = msg.mentions.users.first().username; //2nd
+                        userWhoGotTagged = msg.mentions.users.last(); //2nd
+                        first_attack = msg.mentions.users.first().username; //1st
+                        userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
                         if (switchA == true) {
                             switchA = false;
                             a = a + 1;
-                            second_attack = msg.mentions.users.first().username; //2nd
+                            second_attack = msg.mentions.users.last().username; //2nd
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.mentions.users.last() //1st
+                            msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
+
                         } else if (switchA == false) {
                             const embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
@@ -82,15 +83,11 @@ client.on('message', msg => {
                             second_attack = msg.mentions.users.first().username;
                             msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-
                         } else if (switchA == false) {
                             const embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
-                    } else {
-                        msg.channel.send("ERROR(1).");
-                    }
                 } else if (msg.content === "--NeroFes") {
                     Y = msg.guild.members.random();
                     userWhoGotTagged = Y;
@@ -108,7 +105,7 @@ client.on('message', msg => {
                             .setDescription('有決鬥正在進行，請耐心等候。');
                         msg.channel.send(embedB);
                     }
-                } else if (arr.length == 0) {
+                } else if (msg.content.includes("--NeroFes"&& arr.length != 1 && arr.length != 2) ) {
                     Y = msg.guild.members.random();
                     userWhoGotTagged = Y;
                     userWhoGotTagged_COPY = Y.user.username;
@@ -131,35 +128,40 @@ client.on('message', msg => {
 
 
 
-            client.setTimeout(function () {
-                var Embed_A = function () {
-                    var arr = msg.mentions.users.array();
-                    if (msg.content == "--NeroFes") {
-                        embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(msg.author.username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription("");
-                    } else if (arr.length == 2) {
-                        embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.addField(msg.mentions.users.first().user, 750 + "/750", true);
-                        embedA.setDescription("");
-                    } else if (arr.length == 1) {
-                        embedA = new Discord.RichEmbed();
-                        embedA.setColor(0xFF0000);
-                        embedA.addBlankField();
-                        embedA.addField(msg.author.username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                        embedA.setDescription("");
-                    } else {
-                        msg.channel.send("ERROR(2).");
+                client.setTimeout(function () {
+                    var Embed_A = function () {
+                        var arr = msg.mentions.users.array();
+                        if (msg.content == "--NeroFes") {
+                            embedA = new Discord.RichEmbed();
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.author.username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
+                        } else if (arr.length == 2) {
+                            embedA = new Discord.RichEmbed();
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
+                        } else if (arr.length == 1) {
+                            embedA = new Discord.RichEmbed();
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.author.username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
+                        } else if (msg.content.includes("--NeroFes") && arr.length != 1 && arr.length != 2) {
+                            embedA = new Discord.RichEmbed();
+                            embedA.setColor(0xFF0000);
+                            embedA.addBlankField();
+                            embedA.addField(msg.author.username, 750 + "/750", true);
+                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                            embedA.setDescription("");
+                        }
+                        return embedA;
                     }
-                    return embedA;
-                }
 
                 msg.channel.send(God_Damn_Long(), Embed_A()).then(msgBOT => {
                     var Damage_caculate = function (a, b, c) {
@@ -177,19 +179,12 @@ client.on('message', msg => {
 
                     var Embed_battle = function (action) {
                         var arr = msg.mentions.users.array();
-                        if (msg.content.includes("--NeroFes") && arr.length == 0) {
-                            const embedB = new Discord.RichEmbed();
-                            embedB.setColor(0xFF0000);
-                            embedB.addBlankField();
-                            embedB.addField(msg.author.username, healthA + "/750", true);
-                            embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
-                            embedB.setDescription("");
-                        } else if (arr.length == 2) {
+                        if (arr.length == 2) {
                             embedB = new Discord.RichEmbed();
                             embedB.setColor(0xFF0000);
                             embedB.addBlankField();
-                            embedB.addField(msg.mentions.users.last().username, healthA + "/750", true);
-                            embedB.addField(msg.mentions.users.first().username, healthB + "/750", true);
+                            embedB.addField(msg.mentions.users.first().username, healthA + "/750", true);
+                            embedB.addField(msg.mentions.users.last().username, healthB + "/750", true);
                             embedB.setDescription(action);
                         } else if (arr.length == 1) {
                             embedB = new Discord.RichEmbed();
@@ -198,8 +193,13 @@ client.on('message', msg => {
                             embedB.addField(msg.author.username, healthA + "/750", true);
                             embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
                             embedB.setDescription(action);
-                        } else {
-                            msg.channel.send("ERROR(3).");
+                        } else if (msg.content.includes("--NeroFes") && arr.length != 2 && arr.length != 1) {
+                            const embedB = new Discord.RichEmbed();
+                            embedB.setColor(0xFF0000);
+                            embedB.addBlankField();
+                            embedB.addField(msg.author.username, healthA + "/750", true);
+                            embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
+                            embedB.setDescription("");
                         }
                     };
 
