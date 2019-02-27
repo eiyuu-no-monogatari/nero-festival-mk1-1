@@ -214,10 +214,10 @@ client.on('message', msg => {
                             } else if (Round == 2 && !(healthB <= 0)) {
                                 Round = 1;
                                 Battle_loop();
-                            } else if (Round == 1 && !(healthA <= 0) && world_First == true) {
+                            } else if (Round == 1 && !(healthA <= 0) && world_Second == true) {
                                 Round = 1;
                                 Battle_loop();
-                            } else if (Round == 2 && !(healthB <= 0) && world_Second == true) {
+                            } else if (Round == 2 && !(healthB <= 0) && world_First == true) {
                                 Round = 2;
                                 Battle_loop();
                             }
@@ -456,12 +456,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -495,12 +493,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -517,8 +513,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round = 2;
-                                        Battle_loop();
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -529,11 +524,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
-                                    Battle_loop();
+                                    healthTest();
                                 }
                             }
                         } else {
@@ -546,8 +540,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round = 1;
-                                        Battle_loop();
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -558,12 +551,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -580,8 +571,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round = 2;
-                                        Battle_loop();
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -592,12 +582,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -610,8 +598,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round = 1;
-                                        Battle_loop();
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -622,12 +609,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -644,8 +629,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_First = true;
-                                        Round = 2;
-                                        Battle_loop();
+healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -656,12 +640,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -674,8 +656,7 @@ client.on('message', msg => {
                                     client.setTimeout(function () {
                                         embedB.setImage("");
                                         world_Second = true;
-                                        Round = 1;
-                                        Battle_loop();
+                                        healthTest();
                                     }, 3000);
                                 }, 1500);
                             } else {
@@ -686,12 +667,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -718,12 +697,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -746,12 +723,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -779,12 +754,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -808,12 +781,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -842,12 +813,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -872,12 +841,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -905,12 +872,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -934,12 +899,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -967,12 +930,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -996,12 +957,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
@@ -1029,12 +988,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_First = false;
                                     worldTimes = 0;
-                                    Round = 1;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         } else {
@@ -1058,12 +1015,10 @@ client.on('message', msg => {
                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
                                     world_Second = false;
                                     worldTimes = 0;
-                                    Round = 2;
-                                    Battle_loop();
+                                    healthTest();
                                 } else {
                                     worldTimes += 1;
                                     healthTest();
-                                    Battle_loop();
                                 }
                             }
                         }
