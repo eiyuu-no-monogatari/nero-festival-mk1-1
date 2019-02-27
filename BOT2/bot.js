@@ -147,7 +147,7 @@ client.on('message', msg => {
                         embedA.setColor(0xFF0000);
                         embedA.addBlankField();
                         embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                        embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
+                        embedA.addField(userWhoGotTagged_COPY.username, 750 + "/750", true);
                         embedA.setDescription("");
                     } else if (arr.length == 1) {
                         embedA = new Discord.RichEmbed();
@@ -1108,7 +1108,48 @@ client.on('message', msg => {
                     };
 
                     var Battle_loop = function () {
-                        if (msg.mentions.users.first().username == "尼祿祭NeroFestival" && msg.mentions.users.first(1).username != "尼祿祭NeroFestival") {
+                        var arr = msg.mentions.users.array();
+                        if (arr.length == 1 && msg.mentions.users.first().username == "尼祿祭NeroFestival") {
+                            const data = require("./NeroFes/Nero_NP.json");
+                            var Datalength = data["member"].length;
+                            X = Math.floor(Math.random() * Datalength);
+                            var string1 = data["member"][X].line1;
+                            var string2 = data["member"][X].line2;
+                            var string3 = data["member"][X].line3;
+                            var string4 = data["member"][X].image;
+                            var duration = data["member"][X].duration;
+                                string = second_attack + string1;
+                                Embed_battle(string);
+                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                    client.setTimeout(function () {
+                                        string = second_attack + string2;
+                                        Embed_battle(string);
+                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                        client.setTimeout(function () {
+                                            string = second_attack + string3;
+                                            Embed_battle(string);
+                                            embedB.setImage(string4);
+                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                            client.setTimeout(function () {
+                                                if (evade_A == true) {
+                                                    Buff_B = 0;
+                                                    Damage_caculate(0, 0, 0);
+                                                    evade_A = false;
+                                                } else {
+                                                    Damage_caculate(200000, 100000, 50000);
+                                                }
+                                                healthA = 0;
+                                                string = "對" + first_attack + "造成" + Damage + "點傷害。";
+                                                Embed_battle(string);
+                                                embedB.setImage();
+                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
+                                                client.setTimeout(function () {
+                                                    healthTest();
+                                                }, 2500);
+                                            }, duration);
+                                        }, 2500);
+                                    }, 2500);
+                        } else if (arr.length == 2 && msg.mentions.users.first().username == "尼祿祭NeroFestival" && msg.mentions.users.first(1).username != "尼祿祭NeroFestival") {
                             const data = require("./NeroFes/Nero_NP.json");
                             var Datalength = data["member"].length;
                             X = Math.floor(Math.random() * Datalength);
