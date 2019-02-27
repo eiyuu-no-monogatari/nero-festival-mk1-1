@@ -1109,7 +1109,7 @@ client.on('message', msg => {
 
                     var Battle_loop = function () {
                         if(message.author.bot && message.author.username == "尼祿祭NeroFestival") {
-                            const data = require("./NeroFes/Nero_NP.json");
+                            const data = require(./NeroFes/Nero_NP.json);
                              X = Math.floor(Math.random() * Datalength);
                             var A = data["member"][X].line1;
                             var B = data["member"][X].line2;
@@ -1120,8 +1120,7 @@ client.on('message', msg => {
                             }
                             np(A, B, C, D, E);
                         } else {
-                            client.setTimeout(function() {
-                        var skillOrAttack = Math.random() * 100 + 1;
+                                                    var skillOrAttack = Math.random() * 100 + 1;
                         if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
                             if (healthA <= 100) {
                                 switchC = 1;
@@ -1156,9 +1155,11 @@ client.on('message', msg => {
                             var L = data["member"][X].duration;
                             AA(F, G, H, J, K, L);
                         }
-                   }, 1000);
-                   Battle_loop();
-                }
+                        }
+
+                    };
+                    Battle_loop();
+                });
                 Buff_A = 0;
                 Buff_B = 0;
                 Debuff_A = 0;
@@ -1175,6 +1176,9 @@ client.on('message', msg => {
                 worldTimes = 0;
                 world_Second = false;
                 world_First = false;
+            }, 1000);
+        }
+
         if (switchA != false) {
             if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
                 Jesus_fucking_long();
@@ -1185,7 +1189,6 @@ client.on('message', msg => {
         }
         switchC = 0;
     };
-
 
     if (!msg.author.bot) {
         if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
