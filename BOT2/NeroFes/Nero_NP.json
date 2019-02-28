@@ -1,31 +1,31 @@
 {
   "member":[
- {
+  {
     "name": "AestusDomusAurea",
     "line1": "：「凝見余之才華！聽聞萬雷喝采！」",
     "line2": "：「然後讚頌吧！黃金的劇場呀！」",
     "line3": "：「童女謳歌的榮華帝政（ラウス・セント・クラウディウス）！」",
-    "image": "https://i.imgur.com/W8rYLHX.gif",
+    "image": "https://i.imgur.com/lXJFOKC.gif",
     "duration": 10000
   },
   {
-    "name": "FaxCaelestis",
-    "line1": "：「春之暖陽，花之亂舞。五月的風拂過臉頰，祝福直到星辰的彼岸。」",
-    "line2": "：「開啟吧，黃金之結婚禮堂啊！」",
-    "line3": "：「謳歌吧！星馳終幕的薔薇（アロンダイト・オーバーロード）！這份愛，猶如烈焰！」",
-    "image": "https://i.imgur.com/lXJFOKC.gif",
-    "duration": 15000
+      "name": "FaxCaelestis",
+      "line1": "：「春之暖陽，花之亂舞。五月的風拂過臉頰，祝福直到星辰的彼岸。」",
+      "line2": "：「開啟吧，黃金之結婚禮堂啊！」",
+      "line3": "：「謳歌吧！星馳終幕的薔薇（アロンダイト・オーバーロード）！這份愛，猶如烈焰！」",
+      "image": "https://i.imgur.com/W8rYLHX.gif",
+      "duration": 15000
   },
   {
-    "name": "FaxCaelestis2",
+    "name": "FaxCaelestis２",
     "line1": "：「春之暖陽，花之亂舞。五月的風拂過臉頰，祝福直到星辰的彼岸。」",
     "line2": "：「開啟吧，黃金之結婚禮堂啊！」",
     "line3": "：「謳歌吧！星馳終幕的薔薇（アロンダイト・オーバーロード）！此乃，余的大勝利！」",
-    "image": "https://i.imgur.com/lXJFOKC.gif",
+    "image": "https://i.imgur.com/W8rYLHX.gif",
     "duration": 15000
   },
   {
-    "name": "LentumDomusIlusterias1",
+    "name": "LentumDomusIlusterias１",
     "line1": "：「劇場，由海而出──豪奢！莊嚴！然而流麗！」",
     "line2": "：「睜大雙眼看好了！這便是歌唱讚頌的Irusuterias！」",
     "line3": "：「也就是，余的！黃金劇場！」",
@@ -33,7 +33,7 @@
     "duration": 15000
   },
   {
-    "name": "LentumDomusIlusterias2",
+    "name": "LentumDomusIlusterias２",
     "line1": "：「享受吧，這可是最頂級的Aurora！」",
     "line2": "：「哼哼哼，那是什麼？美女！？羅馬！？當然，是余囉♪」",
     "line3": "：「高歌讚頌的黃金劇場（ラウダレントゥム・ドムス・イルステリアス）！」",
