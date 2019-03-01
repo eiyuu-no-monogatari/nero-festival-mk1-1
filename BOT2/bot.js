@@ -1365,4 +1365,4 @@ client.on('message', msg => {
 });
 
 
-client.login('NTQ3MzkzMTI0Mjg5MjE2NTUy.D02JYQ.rvALpoMXxLDk7MLu2WFgLmTXTkI'); //2號機
+client.login('YOUCANTWATCHIT'); //2號機
