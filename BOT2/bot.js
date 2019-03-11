@@ -50,11 +50,71 @@ setInterval(function () {
     http.get("http://nero-festival-mk1.herokuapp.com/");
 }, 600000);
 
+setInterval(function () {
+    var Time_Now = Date.now;
+    if (Time_Now.getMinutes == 0){
+        var hour = Time_Now.getHours + 8;
+        if (hour = 0){
+        client.channels.get(554170336900415489).send("現在是午夜零時……還沒睡嗎？");
+        } else if (hour = 1){
+        client.channels.get(554170336900415489).send("現在是凌晨壹時，只要您還沒睡，我也不會睡的。");
+        } else if (hour = 2){
+        client.channels.get(554170336900415489).send("現在是凌晨貳時，看來您是個工作狂呢。");
+        } else if (hour = 3){
+        client.channels.get(554170336900415489).send("現在是凌晨參時，已經有點疲累了呢。");
+        } else if (hour = 4){
+        client.channels.get(554170336900415489).send("現在是凌晨肆時，熬夜相當傷肝喔。");
+        } else if (hour = 5){
+        client.channels.get(554170336900415489).send("現在是凌晨伍時，一起欣賞美麗的日出吧？");
+        } else if (hour = 6){
+        client.channels.get(554170336900415489).send("現在是早上陸時，早安。");
+        } else if (hour = 7){
+        client.channels.get(554170336900415489).send("現在是早上柒時，想吃些什麼當早餐？");
+        } else if (hour = 8){
+        client.channels.get(554170336900415489).send("現在是早上捌時，精神不錯呢。");
+        } else if (hour = 9){
+        client.channels.get(554170336900415489).send("現在是早上玖時，有什麼新的靈感嗎？");
+        } else if (hour = 10){
+        client.channels.get(554170336900415489).send("現在是早上拾時，一起來玩個Paranoia吧？");
+        } else if (hour = 11){
+        client.channels.get(554170336900415489).send("現在是早上拾壹時，要稍微休息一下嗎？");
+        } else if (hour = 12){
+        client.channels.get(554170336900415489).send("現在是中午拾貳時，那先去準備一下午餐……");
+        } else if (hour = 13){
+        client.channels.get(554170336900415489).send("現在是下午壹時，要吃頓營養的午餐喔？");
+        } else if (hour = 14){
+        client.channels.get(554170336900415489).send("現在是下午貳時，讓我泡杯紅茶吧？");
+        } else if (hour = 15){
+        client.channels.get(554170336900415489).send("現在是下午參時，來喝杯下午茶怎麼樣？");
+        } else if (hour = 16){
+        client.channels.get(554170336900415489).send("現在是下午肆時，午安。");
+        } else if (hour = 17){
+        client.channels.get(554170336900415489).send("現在是下午伍時，今天的黃昏一樣很美麗呢。");
+        } else if (hour = 18){
+        client.channels.get(554170336900415489).send("現在是晚上陸時，希望能與您共進晚餐。");
+        } else if (hour = 19){
+        client.channels.get(554170336900415489).send("現在是晚上柒時，我很喜歡看夜景呢。");
+        } else if (hour = 20){
+        client.channels.get(554170336900415489).send("現在是晚上捌時，不妨在月下小酌一杯？");
+        } else if (hour = 21){
+        client.channels.get(554170336900415489).send("現在是晚上玖時，睡意有點濃厚了……");
+        } else if (hour = 22){
+        client.channels.get(554170336900415489).send("現在是晚上拾時，我還撐得下去……");
+        } else if (hour = 23){
+        client.channels.get(554170336900415489).send("現在是晚上拾壹時，差不多該睡覺了吧……？");
+        }
+        
+    }
+    
+
+}, 1);
+
+
 client.on('message', msg => {
     if (!msg.author.bot) {
         
         if (msg.guild.available == true) {
-            var Server = require("./NeroFes/Server.json");
+            var Server = require("./Battle/Server.json");
             ServerName = [{ id: msg.gulid.id, Battle_switch: true }];
             if (Server.serverList.includes(ServerName) == false) {
                 json.writeFile("Server.json", ServerName, { flag: 'a' }, function (err) {
@@ -70,7 +130,7 @@ client.on('message', msg => {
 
         var Jesus_fucking_long = function () {
             var God_Damn_Long = function () {
-                if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
+                if ((msg.content.includes("--Battle")) && (msg.mentions.users != null) && (msg.content !== "--Battle")) {
                     var arr = msg.mentions.users.array();
                     if (arr.length == 2) {
                         userWhoGotTagged = msg.mentions.users.last(); //2nd
@@ -80,7 +140,7 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.last().username; //2nd
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgA = '第 ' + a.toString() + ' 場戰鬥，開始！';
                             msgB = (msg.mentions.users.first() //1st
                                 + ' ＶＳ ' + userWhoGotTagged//2nd
                                 + "！");
@@ -97,14 +157,14 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.mentions.users.first().username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgA = '第 ' + a.toString() + ' 場戰鬥，開始！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                         } else if (switchA == false) {
                             const embedB = new Discord.RichEmbed()
                                 .setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
-                    } else if (msg.content === "--NeroFes") {
+                    } else if (msg.content === "--Battle") {
                         Y = msg.guild.members.random();
                         userWhoGotTagged = Y;
                         userWhoGotTagged_COPY = Y.user.username;
@@ -113,7 +173,7 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.author.username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgA = '第 ' + a.toString() + ' 場戰鬥，開始！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
 
                         } else if (switchA == false) {
@@ -121,7 +181,7 @@ client.on('message', msg => {
                                 .setDescription('有決鬥正在進行，請耐心等候。');
                             msg.channel.send(embedB);
                         }
-                    } else if (msg.content.includes("--NeroFes" && arr.length != 1 && arr.length != 2)) {
+                    } else if (msg.content.includes("--Battle" && arr.length != 1 && arr.length != 2)) {
                         Y = msg.guild.members.random();
                         userWhoGotTagged = Y;
                         userWhoGotTagged_COPY = Y.user.username;
@@ -130,7 +190,7 @@ client.on('message', msg => {
                             switchA = false;
                             a = a + 1;
                             second_attack = msg.author.username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
+                            msgA = '第 ' + a.toString() + ' 場戰鬥，開始！';
                             msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
                         } else if (switchA == false) {
                             const embedB = new Discord.RichEmbed()
@@ -146,7 +206,7 @@ client.on('message', msg => {
                 client.setTimeout(function () {
                     var Embed_A = function () {
                         var arr = msg.mentions.users.array();
-                        if (msg.content == "--NeroFes") {
+                        if (msg.content == "--Battle") {
                             embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
@@ -167,7 +227,7 @@ client.on('message', msg => {
                             embedA.addField(msg.author.username, 750 + "/750", true);
                             embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
                             embedA.setDescription("");
-                        } else if (msg.content.includes("--NeroFes") && arr.length != 1 && arr.length != 2) {
+                        } else if (msg.content.includes("--Battle") && arr.length != 1 && arr.length != 2) {
                             embedA = new Discord.RichEmbed();
                             embedA.setColor(0xFF0000);
                             embedA.addBlankField();
@@ -207,7 +267,7 @@ client.on('message', msg => {
                                 embedB.addField(msg.author.username, healthA + "/750", true);
                                 embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
                                 embedB.setDescription(action);
-                            } else if (msg.content.includes("--NeroFes") && arr.length != 2 && arr.length != 1) {
+                            } else if (msg.content.includes("--Battle") && arr.length != 2 && arr.length != 1) {
                                 const embedB = new Discord.RichEmbed();
                                 embedB.setColor(0xFF0000);
                                 embedB.addBlankField();
@@ -353,9 +413,7 @@ client.on('message', msg => {
                                                     Embed_battle(string);
                                                     embedB.setImage();
                                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                    client.setTimeout(function () {
-                                                        healthTest();
-                                                    }, 2500);
+                                                    client.setTimeout(healthTest(), 2500);
                                                 }, duration);
                                             }, 2500);
                                         }, 2500);
@@ -378,9 +436,7 @@ client.on('message', msg => {
                                                 Embed_battle(string);
                                                 embedB.setImage();
                                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    healthTest();
-                                                }, 2500);
+                                                client.setTimeout(healthTest(), 2500);
                                             }, duration);
                                         }, 2500);
                                     }
@@ -411,9 +467,7 @@ client.on('message', msg => {
                                                     Embed_battle(string);
                                                     embedB.setImage();
                                                     msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                    client.setTimeout(function () {
-                                                        healthTest();
-                                                    }, 2500);
+                                                    client.setTimeout(healthTest(), 2500);
                                                 }, duration);
                                             }, 2500);
                                         }, 2500);
@@ -436,9 +490,7 @@ client.on('message', msg => {
                                                 Embed_battle(string);
                                                 embedB.setImage();
                                                 msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    healthTest();
-                                                }, 2500);
+                                                client.setTimeout(healthTest(), 2500);
                                             }, duration);
                                         }, 2500);
                                     }
@@ -1120,8 +1172,8 @@ client.on('message', msg => {
 
                         var Battle_loop = function () {
                             var arr = msg.mentions.users.array();
-                            if (arr.length == 1 && msg.mentions.users.first().username == "尼祿祭NeroFestival") {
-                                const data = require("./NeroFes/Nero_NP.json");
+                            if (arr.length == 1 && msg.mentions.users.first().username == "尼祿祭Battletival") {
+                                const data = require("./Battle/Nero_NP.json");
                                 var Datalength = data["member"].length;
                                 X = Math.floor(Math.random() * Datalength);
                                 var string1 = data["member"][X].line1;
@@ -1161,7 +1213,7 @@ client.on('message', msg => {
                                     }, 2500);
                                 }, 2500);
                             } else if (arr.length == 2 && msg.mentions.users.has("547393124289216552")) {
-                                const data = require("./NeroFes/Nero_NP.json");
+                                const data = require("./Battle/Nero_NP.json");
                                 var Datalength = data["member"].length;
                                 X = Math.floor(Math.random() * Datalength);
                                 var string1 = data["member"][X].line1;
@@ -1209,7 +1261,7 @@ client.on('message', msg => {
                                     if (healthB <= 100) {
                                         switchC = 2;
                                     }
-                                    const data = require("./NeroFes/noble_phantasm.json");
+                                    const data = require("./Battle/noble_phantasm.json");
                                     var Datalength = data["member"].length;
                                     X = Math.floor(Math.random() * Datalength);
                                     var A = data["member"][X].line1;
@@ -1225,7 +1277,7 @@ client.on('message', msg => {
                                 } else if (skillOrAttack <= 40 && skillOrAttack > 0) {
                                     SpecialSkill();
                                 } else {
-                                    const data = require("./NeroFes/skill.json");
+                                    const data = require("./Battle/skill.json");
                                     var Datalength = data["member"].length;
                                     X = Math.floor(Math.random() * Datalength);
                                     var F = data["member"][X].line;
@@ -1260,10 +1312,10 @@ client.on('message', msg => {
                 }, 1000);
             }
                 if (switchA != false) {
-                    if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
+                    if ((msg.content.includes("--Battle")) && (msg.mentions.users != null) && (msg.content != "--Battle")) {
                         Jesus_fucking_long();
                     }
-                    if (msg.content == "--NeroFes") {
+                    if (msg.content == "--Battle") {
                         Jesus_fucking_long();
                     }
                 }
