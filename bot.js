@@ -30,10 +30,6 @@ const events = {
     MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
 };
 
-client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH9Qg.zpXe0lVdOkYpbRIXe0eU34PBllQ')
- .then(console.log)
- .catch(console.error);
-
 client.on('raw', async event => {
 // `event.t` is the raw event name
 	if (!events.hasOwnProperty(event.t)) return;
@@ -780,4 +776,9 @@ client.on('message', msg => {
             msg.channel.send(Flag[Flag_random]);
         }
     }
+	
 });
+
+client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH9Qg.zpXe0lVdOkYpbRIXe0eU34PBllQ')
+ .then(console.log)
+ .catch(console.error);
