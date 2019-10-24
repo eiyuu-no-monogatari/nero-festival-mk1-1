@@ -779,3 +779,4 @@ if (!msg.author.bot && msg.channel.type == "text" && msg.content === "--Flag") {
 });
 
 client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.D2dxtQ.EHNtmH9ehUmDWgbFoafbk2pSj70');
+
