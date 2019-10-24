@@ -30,7 +30,9 @@ const events = {
     MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
 };
 
-client.login("NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH8FA.MDMVzo5A9XT57c16akxH8uQFn08");
+client.login("NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH8FA.MDMVzo5A9XT57c16akxH8uQFn08")
+ .then(console.log)
+ .catch(console.error);
 
 client.on('raw', async event => {
 // `event.t` is the raw event name
