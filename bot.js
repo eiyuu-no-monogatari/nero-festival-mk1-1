@@ -778,4 +778,4 @@ if (!msg.author.bot && msg.channel.type == "text" && msg.content === "--Flag") {
 }
 });
 
-client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.D2dxtQ.EHNtmH9ehUmDWgbFoafbk2pSj70');
+client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH66Q._J14cco6JIhyERc-cgHZz74AVNI');
