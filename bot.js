@@ -779,6 +779,6 @@ client.on('message', msg => {
 	
 });
 
-client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH_yA.g2OckGX0vFYTSsLc-fzKgDuhZPU')
+client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbIAoA.2iu8b0bFgdKeF-yCbeYhgXpvf6A')
  .then(console.log)
  .catch(console.error);
