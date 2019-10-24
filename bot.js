@@ -30,7 +30,7 @@ const events = {
     MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
 };
 
-client.login("NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH93Q.DSmCPZXcr8JF4ACidfTGGgoY7ig")
+client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH9Qg.zpXe0lVdOkYpbRIXe0eU34PBllQ')
  .then(console.log)
  .catch(console.error);
 
