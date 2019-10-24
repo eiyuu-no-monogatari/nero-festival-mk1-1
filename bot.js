@@ -30,6 +30,8 @@ const events = {
     MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
 };
 
+client.login('Zd30aeogUt6tULaGnsDxE1g3bdZ9wtSZ');
+
 client.on('raw', async event => {
 // `event.t` is the raw event name
 	if (!events.hasOwnProperty(event.t)) return;
@@ -777,5 +779,3 @@ if (!msg.author.bot && msg.channel.type == "text" && msg.content === "--Flag") {
 }
 }
 });
-
-client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.XbH66Q._J14cco6JIhyERc-cgHZz74AVNI');
