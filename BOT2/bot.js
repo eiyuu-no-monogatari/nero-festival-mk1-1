@@ -1,35 +1,23 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const json = require('jsonfile');
-var a = 0;
-var switchA = true;
-var switchC = 0;
-var Round = 1;
-var X;
-var first_attack;
-var second_attack;
-var string;
-var embedB;
-var healthA;
-var healthB;
-var Damage;
-var world_First = false;
-var world_Second = false;
-var worldTimes = 0;
-var np_switch = true;
-var the_end_of_world;
-var Buff_A = 0;
-var Buff_B = 0;
-var Debuff_A = 0;
-var Debuff_B = 0;
-var Turn_count = 0;
-var BC_A = false;
-var BC_B = false;
-var BC_COUNT_A = 0;
-var BC_COUNT_B = 0;
-var evade_A = false
-var evade_B = false;
-var ServerName;
+const Pool = require('pg').Pool;
+const PG = require('pg').Client;
+var total = [];
+var total_number = 0;
+var statusString = "";
+var arrayStatus = [];
+var sclass = ["Saber", "Archer", "Lancer", "Rider", "Assassin", "Caster", "Berserker", "Avenger", "Ruler", "Shielder"];
+var level = ["E", "D", "C", "B", "A", "A+", "A++", "A+++", "EX"];
+const connectionString = 'postgres://tqetbljzlsbqze:1b02485578943649ac9edda30fec11b62d7f2b687ec52a369fc7aab469a3dff2@ec2-174-129-238-192.compute-1.amazonaws.com:5432/dfff1bl43dop7v';
+const pg = new PG({
+    connectionString: connectionString,
+    ssl: true
+});
+const pool = new Pool({
+    connectionString: connectionString,
+    ssl: true
+});
+require('events').EventEmitter.defaultMaxListeners = 100;
 
 const express = require('express')
 var port = process.env.PORT || 5000;
@@ -37,12 +25,103 @@ express().listen(port, "0.0.0.0", function () {
     console.log("Listening on Port 5000");
 });
 
+const events = {
+    MESSAGE_REACTION_ADD: 'messageReactionAdd',
+    MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
+};
+
+client.on('raw', async event => {
+// `event.t` is the raw event name
+	if (!events.hasOwnProperty(event.t)) return;
+
+const { d: data } = event;
+const user = client.users.get(data.user_id);
+const channel = client.channels.get(data.channel_id) || await user.createDM();
+
+// if the message is already in the cache, don't re-emit the event
+if (channel.messages.has(data.message_id)) return;
+
+// if you're on the master/v12 branch, use `channel.messages.fetch()`
+const message = await channel.fetchMessage(data.message_id);
+
+// custom emojis reactions are keyed in a `name:ID` format, while unicode emojis are keyed by names
+// if you're on the master/v12 branch, custom emojis reactions are keyed by their ID
+const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
+const reaction = message.reactions.get(emojiKey);
+
+client.emit(events[event.t], reaction, user);
+});
+
 client.on('ready', () => {
     console.log("以" + client.user.tag + "登入");
-    console.log("Nero C. Version 1.0.0");
-    client.user.setGame('ネロ祭～２０１９ＳＰＲＩＮＧ～');
-    healthA = 750;
-    healthB = 750;
+    console.log("Miss.Secretary Version 2.0.0");
+    client.user.setActivity('日常業務');
+
+});
+
+client.on('messageReactionAdd', (reaction, user) => {
+    console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
+    console.log("Level 1 passed.");
+    if (reaction.message.id === '636221170156437504') {
+        if (reaction.emoji.name === "🇯") {
+            console.log("Level 3 passed.");
+            var FateJ = client.guilds.get('581064270272528424').roles.get('635313526340059167');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(FateJ);
+        }
+        if (reaction.emoji.name === "🇸") {
+            var FateS = client.guilds.get('581064270272528424').roles.get('635313524435976195');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(FateS);
+        }
+        if (reaction.emoji.name === "🇱") {
+            var FateL = client.guilds.get('581064270272528424').roles.get('635313222232047636');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(FateL);
+        }
+        if (reaction.emoji.name === "6⃣") {
+            var Fate6 = client.guilds.get('581064270272528424').roles.get('635313527090839552');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(Fate6);
+        }
+        if (reaction.emoji.name === "🇳") {
+            var FateN = client.guilds.get('581064270272528424').roles.get('635313525681684480');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(FateN);
+        }
+        if (reaction.emoji.name === "⚡") {
+            var Spoiler = client.guilds.get('581064270272528424').roles.get('636504821222080522');
+            client.guilds.get('581064270272528424').members.get(user.id).addRole(Spoiler);
+        }
+
+
+    }
+});
+
+client.on('messageReactionRemove', (reaction, user) => {
+    console.log("Level 1 passed.");
+    if (reaction.message.id === '636221170156437504') {
+        if (reaction.emoji.name === "🇯") {
+            var FateJ = client.guilds.get('581064270272528424').roles.get('635313526340059167');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(FateJ);
+        }
+        if (reaction.emoji.name === "🇸") {
+            var FateS = client.guilds.get('581064270272528424').roles.get('635313524435976195');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(FateS);
+        }
+        if (reaction.emoji.name === "🇱") {
+            var FateL = client.guilds.get('581064270272528424').roles.get('635313222232047636');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(FateL);
+        }
+        if (reaction.emoji.name === "6⃣") {
+            var Fate6 = client.guilds.get('581064270272528424').roles.get('635313527090839552');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(Fate6);
+        }
+        if (reaction.emoji.name === "🇳") {
+            var FateN = client.guilds.get('581064270272528424').roles.get('635313525681684480');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(FateN);
+        }
+        if (reaction.emoji.name === "⚡") {
+            var Spoiler = client.guilds.get('581064270272528424').roles.get('636504821222080522');
+            client.guilds.get('581064270272528424').members.get(user.id).removeRole(Spoiler);
+        }
+
+    }
 });
 
 var http = require("http");
@@ -50,1318 +129,653 @@ setInterval(function () {
     http.get("http://nero-festival-mk1.herokuapp.com/");
 }, 600000);
 
+client.on('error', console.error);
+
 client.on('message', msg => {
-    if (!msg.author.bot) {
-        
-        if (msg.guild.available == true) {
-            var Server = require("./NeroFes/Server.json");
-            ServerName = [{ id: msg.gulid.id, Battle_switch: true }];
-            if (Server.serverList.includes(ServerName) == false) {
-                json.writeFile("./NeroFes/Server.json", ServerName, { flag: 'a' }, function (err) {
+
+    if(msg.channel.id == '636521241741623306') {
+        if(!msg.author.bot) {
+        	if (msg.content == "--FGOQ Login") {
+                var String = "SELECT id WHERE EXISTS ( SELECT * WHERE id ='" + msg.author.id + "' ) LIMIT 1;"
+                pool.query(String, (err, res) => {
+            	
                     if (err) {
+                        console.log(err.stack);
                         throw err;
-                    } else {
-                        console.log("成功寫入" + ServerName + "。");
+                    } else if (res) {
+                        console.log(res.rows[0]);
                     }
                 });
-            }
-        }
-        
+}
 
-        var Jesus_fucking_long = function () {
-            var God_Damn_Long = function () {
-                if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content !== "--NeroFes")) {
-                    var arr = msg.mentions.users.array();
-                    if (arr.length == 2) {
-                        userWhoGotTagged = msg.mentions.users.last(); //2nd
-                        first_attack = msg.mentions.users.first().username; //1st
-                        userWhoGotTagged_COPY = msg.mentions.users.last().username; //2nd
-                        if (switchA == true) {
-                            switchA = false;
-                            a = a + 1;
-                            second_attack = msg.mentions.users.last().username; //2nd
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.mentions.users.first() //1st
-                                + ' ＶＳ ' + userWhoGotTagged//2nd
-                                + "！");
-                        } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(embedB);
-                        }
-                    } else if (arr.length == 1) {
-                        userWhoGotTagged = msg.mentions.users.first();
-                        first_attack = msg.author.username;
-                        userWhoGotTagged_COPY = msg.mentions.users.first().username;
-                        if (switchA == true) {
-                            switchA = false;
-                            a = a + 1;
-                            second_attack = msg.mentions.users.first().username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(embedB);
-                        }
-                    } else if (msg.content === "--NeroFes") {
-                        Y = msg.guild.members.random();
-                        userWhoGotTagged = Y;
-                        userWhoGotTagged_COPY = Y.user.username;
-                        first_attack = Y.user.username;
-                        if (switchA == true) {
-                            switchA = false;
-                            a = a + 1;
-                            second_attack = msg.author.username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-
-                        } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(embedB);
-                        }
-                    } else if (msg.content.includes("--NeroFes" && arr.length != 1 && arr.length != 2)) {
-                        Y = msg.guild.members.random();
-                        userWhoGotTagged = Y;
-                        userWhoGotTagged_COPY = Y.user.username;
-                        first_attack = Y.user.username;
-                        if (switchA == true) {
-                            switchA = false;
-                            a = a + 1;
-                            second_attack = msg.author.username;
-                            msgA = '尼祿祭第 ' + a.toString() + ' 演技，開演！';
-                            msgB = (msg.author.toString() + ' ＶＳ ' + userWhoGotTagged + "！");
-                        } else if (switchA == false) {
-                            const embedB = new Discord.RichEmbed()
-                                .setDescription('有決鬥正在進行，請耐心等候。');
-                            msg.channel.send(embedB);
-                        }
-                    }
-                    return msgA + '\n' + msgB + '\n';
+                if (msg.content == "--FGOQ CC") {
+                var statusString = "";
+                for (var i = 0; i < 5; i++) {
+                    statusString += (Math.floor(Math.random() * 9) + "|");
                 }
-
-
-
-                client.setTimeout(function () {
-                    var Embed_A = function () {
-                        var arr = msg.mentions.users.array();
-                        if (msg.content == "--NeroFes") {
-                            embedA = new Discord.RichEmbed();
-                            embedA.setColor(0xFF0000);
-                            embedA.addBlankField();
-                            embedA.addField(msg.author.username, 750 + "/750", true);
-                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            embedA.setDescription("");
-                        } else if (arr.length == 2) {
-                            embedA = new Discord.RichEmbed();
-                            embedA.setColor(0xFF0000);
-                            embedA.addBlankField();
-                            embedA.addField(msg.mentions.users.first().username, 750 + "/750", true);
-                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            embedA.setDescription("");
-                        } else if (arr.length == 1) {
-                            embedA = new Discord.RichEmbed();
-                            embedA.setColor(0xFF0000);
-                            embedA.addBlankField();
-                            embedA.addField(msg.author.username, 750 + "/750", true);
-                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            embedA.setDescription("");
-                        } else if (msg.content.includes("--NeroFes") && arr.length != 1 && arr.length != 2) {
-                            embedA = new Discord.RichEmbed();
-                            embedA.setColor(0xFF0000);
-                            embedA.addBlankField();
-                            embedA.addField(msg.author.username, 750 + "/750", true);
-                            embedA.addField(userWhoGotTagged_COPY, 750 + "/750", true);
-                            embedA.setDescription("");
-                        }
-                        return embedA;
+                var classNumber = (Math.floor(Math.random() * 9));
+                statusString += sclass[classNumber];
+                arrayStatus = statusString.split("|");
+                var String = "SELECT fourthcharacter WHERE EXISTS ( SELECT * WHERE id ='" + msg.author.id + "' ) LIMIT 1;";
+                pool.query(String, (err, res) => {
+                    if (err) {
+                        console.log(err.stack);
+                        throw err;
+                    } else if (typeof(res.rows[0]) == "undefined" || JSON.stringify(res.rows[0]).includes("null")) {
+                    	msg.channel.send( "<@" + msg.author.id + "> ，這是您本次骰出的角色：\n```筋力：" +level[arrayStatus[0]]+"\n敏捷：" +level[arrayStatus[1]]+"\n耐力：" +level[arrayStatus[2]]+"\n魔力：" +level[arrayStatus[3]]+"\n幸運：" + level[arrayStatus[4]]+"\n職階：" + sclass[arrayStatus[4]] + "```");
+                        var String = "SELECT firstcharacter WHERE EXISTS ( SELECT * WHERE id = '" + msg.author.id + "' ) LIMIT 1;";
+                        pool.query(String, (err, res) => {
+                            if (err) {
+                                console.log(err.stack);
+                                throw err;
+                            } else if ( typeof(res.rows[0]) == "undefined" ) {
+                                var String = "INSERT INTO playerslist (id, firstcharacter) VALUES ('" + msg.author.id + "', '" + statusString + "')";
+                                pool.query(String, (err, res) => {
+                                    if (err) {
+                                        console.log(err.stack);
+                                        throw err;
+                                    }
+                                });
+                            } else if (typeof(res.rows[0]) != "undefined") {
+                                var String = "SELECT secondcharacter WHERE EXISTS ( SELECT * WHERE id ='" + msg.author.id + "' ) LIMIT 1;";
+                                pool.query(String, (err, res) => {
+                                    console.log(typeof(res.rows[0]));
+                                    console.log(JSON.stringify(res.rows[0]));
+                                    if (err) {
+                                        console.log(err.stack);
+                                        throw err;
+                                    } else if (JSON.stringify(res.rows[0]).includes("null")){
+                                        var String = "UPDATE playerslist SET secondcharacter = '" + statusString + "' WHERE id = '" + msg.author.id + "'";
+                                        pool.query(String, (err, res) => {
+				    
+                                            if (err) {
+                                                console.log(err.stack);
+                                                throw err;
+                                            }
+                                        });
+                                    } else if (typeof(res.rows[0]) != "undefined") {
+                                        var String = "SELECT thirdcharacter WHERE EXISTS ( SELECT * WHERE id ='" + msg.author.id + "' ) LIMIT 1;";
+                                        pool.query(String, (err, res) => {
+                                            console.log(typeof(res.rows[0]));
+                                            console.log(JSON.stringify(res.rows[0]));
+                                            if (err) {
+                                                console.log(err.stack);
+                                                throw err;
+                                            } else if (JSON.stringify(res.rows[0]).includes("null")) {
+                                                var String = "UPDATE playerslist SET thirdcharacter = '" + statusString + "' WHERE id = '" + msg.author.id + "'";
+                                                pool.query(String, (err, res) => {
+				    
+                                                    if (err) {
+                                                        console.log(err.stack);
+                                                        throw err;
+                                                    }
+                                                });
+                                            } else if (typeof(res.rows[0]) != "undefined") {
+                                                var String = "SELECT fourthcharacter WHERE EXISTS ( SELECT * WHERE id ='" + msg.author.id + "' ) LIMIT 1;";
+                                                pool.query(String, (err, res) => {
+                                                    console.log(typeof(res.rows[0]));
+                                                    console.log(JSON.stringify(res.rows[0]));
+                                                    if (err) {
+                                                        console.log(err.stack);
+                                                        throw err;
+                                                    } else if (JSON.stringify(res.rows[0]).includes("null")) {
+                                                        var String = "UPDATE playerslist SET fourthcharacter = '" + statusString + "' WHERE id = '" + msg.author.id + "'";
+                                                        pool.query(String, (err, res) => {
+				    
+                                                            if (err) {
+                                                                console.log(err.stack);
+                                                                throw err;
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    } else if (typeof(res.rows[0]) != "undefined") {
+                        msg.channel.send( "<@" + msg.author.id + "> " + "角色生成次數已用盡，請使用「--FGOQ CC:(號碼，1~4)」來選擇素質設定。");
                     }
-                    msg.channel.send(God_Damn_Long(), Embed_A()).then(msgBOT => {
-                        var Damage_caculate = function (a, b, c) {
-                            if (Round == 1) {
-                                Damage = a + Math.floor(Math.random() * b) - c + Buff_A - Debuff_A;
-                                Buff_A = 0;
-                                Debuff_A = 0;
-                            } else if (Round == 2) {
-                                Damage = a + Math.floor(Math.random() * b) - c + Buff_B - Debuff_B;
-                                Buff_B = 0;
-                                Debuff_B = 0;
-                            }
-                            return Damage;
-                        };
+                });
+                }
+                if (msg.content == "--FGOQ CC:1") {
+                    msg.channel.send( "<@" + msg.author.id + "> " + "確定以此角色為最終角色？").then(async function (message) {
+                        await message.react('⭕')
+                        await message.react('❌')
+      
+                        var filterO = (reaction, user) => reaction.emoji.name === '⭕' && user.id === msg.author.id;
+                        var filterX = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
 
-                        var Embed_battle = function (action) {
-                            var arr = msg.mentions.users.array();
-                            if (arr.length == 2) {
-                                embedB = new Discord.RichEmbed();
-                                embedB.setColor(0xFF0000);
-                                embedB.addBlankField();
-                                embedB.addField(msg.mentions.users.first().username, healthA + "/750", true);
-                                embedB.addField(msg.mentions.users.last().username, healthB + "/750", true);
-                                embedB.setDescription(action);
-                            } else if (arr.length == 1) {
-                                embedB = new Discord.RichEmbed();
-                                embedB.setColor(0xFF0000);
-                                embedB.addBlankField();
-                                embedB.addField(msg.author.username, healthA + "/750", true);
-                                embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
-                                embedB.setDescription(action);
-                            } else if (msg.content.includes("--NeroFes") && arr.length != 2 && arr.length != 1) {
-                                const embedB = new Discord.RichEmbed();
-                                embedB.setColor(0xFF0000);
-                                embedB.addBlankField();
-                                embedB.addField(msg.author.username, healthA + "/750", true);
-                                embedB.addField(userWhoGotTagged_COPY, healthB + "/750", true);
-                                embedB.setDescription("");
-                            }
-                        };
+                        const collectorO = message.createReactionCollector(filterO);
 
-                        var healthTest = function () {
-                            if (healthA <= 0 && BC_A == true && BC_COUNT_A >= Turn_count && BC_COUNT_A != 0) {
-                                string = first_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                healthA = Math.floor(Math.random() * 10) + 1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                BC_A = false;
-                                np_switch = false;
-                                BC_COUNT_A = 0;
-                                Battle_loop();
-                            } else if (healthB <= 0 && BC_B == true && BC_COUNT_B >= Turn_count && BC_COUNT_B != 0) {
-                                string = second_attack + "的戰鬥續行發動！用毅力再次地站了起來！";
-                                healthB = Math.floor(Math.random() * 10) + 1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                BC_B = false;
-                                np_switch = false;
-                                BC_COUNT_B = 0;
-                                Battle_loop();
-                            } else if (healthA > 0 && healthB > 0) {
-                                if (Round == 1 && !(healthA <= 0)) {
-                                    Round = 2;
-                                    Battle_loop();
-                                } else if (Round == 2 && !(healthB <= 0)) {
-                                    Round = 1;
-                                    Battle_loop();
-                                } else if (Round == 1 && !(healthA <= 0) && world_First == true) {
-                                    Round = 1;
-                                    Battle_loop();
-                                } else if (Round == 2 && !(healthB <= 0) && world_Second == true) {
-                                    Round = 2;
-                                    Battle_loop();
-                                }
-                            } else if (healthB <= 0) {
-                                client.setTimeout(function () {
-                                    if (world_Second == true) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else if (world_First == true) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
+                        const collectorX = message.createReactionCollector(filterX);
 
-                                        }, 2500);
-                                    } else {
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + first_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    }
-                                }, 2500);
-                            } else if (healthA <= 0) {
-                                client.setTimeout(function () {
-                                    if (world_Second == true) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else if (world_First == true) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    } else {
-                                        client.setTimeout(function () {
-                                            string = "戰鬥結束，" + second_attack + "獲勝！";
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            switchA = true;
-                                        }, 2500);
-                                    }
-                                }, 2500);
-                            }
-                        };
 
-                        var np = function (string1, string2, string3, string4, duration) {
-                            if (np_switch != false) {
-                                if (switchC == 1) { //偶數回合，即為第二位攻擊者的回合
-                                    string = second_attack + string1;
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    if (string3 != "") {
-                                        client.setTimeout(function () {
-                                            string = second_attack + string2;
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                string = second_attack + string3;
-                                                Embed_battle(string);
-                                                embedB.setImage(string4);
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    if (evade_A == true) {
-                                                        Buff_B = 0;
-                                                        Damage_caculate(0, 0, 0);
-                                                        evade_A = false;
-                                                    } else {
-                                                        Damage_caculate(200000, 100000, 50000);
-                                                    }
-                                                    healthA = 0;
-                                                    string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                                    Embed_battle(string);
-                                                    embedB.setImage();
-                                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                    client.setTimeout(function () {
-                                                        healthTest();
-                                                    }, 2500);
-                                                }, duration);
-                                            }, 2500);
-                                        }, 2500);
-                                    } else if (string3 == "") {
-                                        client.setTimeout(function () {
-                                            string = second_attack + string2;
-                                            Embed_battle(string);
-                                            embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                if (evade_A == true) {
-                                                    Buff_B = 0;
-                                                    Damage_caculate(0, 0, 0);
-                                                    evade_A = false;
-                                                } else {
-                                                    Damage_caculate(200000, 100000, 50000);
-                                                }
-                                                healthA = 0;
-                                                string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                                Embed_battle(string);
-                                                embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    healthTest();
-                                                }, 2500);
-                                            }, duration);
-                                        }, 2500);
-                                    }
-                                } else if (switchC == 2) { //奇數回合，即為第一位攻擊者的回合
-                                    string = first_attack + string1;
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    if (string3 != "") {
-                                        client.setTimeout(function () {
-                                            string = first_attack + string2;
-                                            Embed_battle(string);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                string = first_attack + string3;
-                                                Embed_battle(string);
-                                                embedB.setImage(string4);
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    if (evade_B == true) {
-                                                        Buff_A = 0;
-                                                        Damage_caculate(0, 0, 0);
-                                                        evade_B = false;
-                                                    } else {
-                                                        Damage_caculate(200000, 100000, 50000);
-                                                    }
-                                                    string = "對" + second_attack + "造成" + Damage + "點傷害。";
-                                                    healthB = 0;
-                                                    Embed_battle(string);
-                                                    embedB.setImage();
-                                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                    client.setTimeout(function () {
-                                                        healthTest();
-                                                    }, 2500);
-                                                }, duration);
-                                            }, 2500);
-                                        }, 2500);
-                                    } else if (string3 == "") {
-                                        client.setTimeout(function () {
-                                            string = first_attack + string2;
-                                            Embed_battle(string);
-                                            embedB.setImage(string4);
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                if (evade_A == true) {
-                                                    Buff_B = 0;
-                                                    Damage_caculate(0, 0, 0);
-                                                    evade_A = false;
-                                                } else {
-                                                    Damage_caculate(200000, 100000, 50000);
-                                                }
-                                                healthB = 0;
-                                                string = "對" + second_attack + "造成" + Damage + "點傷害。";
-                                                Embed_battle(string);
-                                                embedB.setImage();
-                                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                                client.setTimeout(function () {
-                                                    healthTest();
-                                                }, 2500);
-                                            }, duration);
-                                        }, 2500);
-                                    }
-                                }
-                            } else {
-                                if (Round == 1) {
-                                    Battle_loop();
-                                } else if (Round == 2) {
-                                    Battle_loop();
-                                }
-                            }
-                        };
-
-                        var AA = function (line, image, basic, maximum, minimum, duration) {
-                            if (Round % 2 != 0) { //奇數 A的回合
-                                if (world_First != true) { //如果A的時間沒被暫停
-                                    client.setTimeout(function () {
-                                        if (evade_B == true) {
-                                            Buff_A = 0;
-                                            Damage_caculate(0, 0, 0);
-                                            evade_B = false;
-                                        } else {
-                                            Damage_caculate(basic, maximum, minimum);
+                        collectorO.on('collect', (reaction, reactionCollector) => {
+                            var String = "SELECT firstcharacter WHERE EXISTS ( SELECT * WHERE id = '" + msg.author.id + "' ) LIMIT 1;";
+                            pool.query(String, (err, res) => {
+                                if (err) {
+                                    console.log(err.stack);
+                                    throw err;
+                                } else if ( typeof(res.rows[0]) != "undefined" ) {
+                                    var String = "UPDATE playerslist SET finalcharacter = firstcharacter WHERE id = '" + msg.author.id + "'";;
+                                    pool.query(String, (err, res) => {
+                                        if (err) {
+                                            console.log(err.stack);
+                                            throw err;
                                         }
-                                        healthB = healthB - Damage;
-                                        if (healthB <= 0) {
-                                            healthB = 0;
-                                        }
-                                        string = line + "對" + second_attack + "造成" + Damage + "點傷害。";
-                                        Embed_battle(string);
-                                        embedB.setImage(image);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            healthTest();
-                                            embedB.setImage();
-                                        }, duration);
-                                    }, 1500);
-                                } else { //如果A的時間被暫停
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
+                                        msg.channel.send("已確認設定，歡迎使用「--FGOQ Login」進入遊戲！")
+                                    });
+                                } else {
+                                    msg.channel.send( "<@" + msg.author.id + "> " + "尚未進行第一次角色創建。");
                                 }
-                            } else {
-                                if (world_Second != true) { //如果B的時間沒被暫停
-                                    client.setTimeout(function () {
-                                        if (evade_A == true) {
-                                            Buff_B = 0;
-                                            Damage_caculate(0, 0, 0);
-                                            evade_A = false;
-                                        } else {
-                                            Damage_caculate(basic, maximum, minimum);
-                                        }
-                                        healthA = healthA - Damage;
-                                        if (healthA <= 0) {
-                                            healthA = 0;
-                                        }
-                                        string = line + "對" + first_attack + "造成" + Damage + "點傷害。";
-                                        Embed_battle(string);
-                                        embedB.setImage(image);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            healthTest();
-                                            embedB.setImage();
-                                        }, duration);
-                                    }, 1500);
-                                } else { //如果B的時間被暫停
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
+                            });
 
-                        var za_warudo = function () {
-                            if (Round % 2 == 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_First = true;
-                                            Round = 2;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "用「世界（ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.imgur.com/wWKP5vq.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_Second = true;
-                                            Round = 1;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var za_warudo2 = function () {
-                            if (Round % 2 == 0) { //奇數回合
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_First = true;
-                                            Round = 2;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("http://pa1.narvii.com/6908/f66359dc41808f6490b11039cb7e88a481ef8c29r5-480-270_00.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_Second = true;
-                                            Round = 1;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var za_warudo3 = function () {
-                            if (Round % 2 == 0) { //奇數
-                                if (world_First != true) { //第一行動者沒被暫停
-                                    client.setTimeout(function () {
-                                        string = second_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_First = true;
-                                            Round = 2;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "用「白金之星‧世界（スタープラチナ・ザ・ワールド）」暫停了時間！";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.imgur.com/9Ftf91q.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            world_Second = true;
-                                            Round = 1;
-                                            Battle_loop();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var liar_no_taste = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "舔了" + second_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "舔了" + first_attack + "，感覺到說謊的味道，但沒有任何實質傷害。";
-                                        Embed_battle(string);
-                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/418/189/945.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var You_have_to_be_stronger = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "：「" + second_attack + "，你要成長啊，不要再用你的『海灘男孩』釣魚了。」，" + second_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_B = 100;
-                                        embedB.setImage("https://i.imgur.com/QHrieRy.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "：「" + first_attack + "你要成長啊，不要再用你的『海灘男孩』釣魚了。」，" + first_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_A = 100;
-                                        embedB.setImage("https://i.imgur.com/QHrieRy.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var Battle_Contiune = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true && BC_A != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "發動戰鬥續行！";
-                                        Embed_battle(string);
-                                        BC_A = true;
-                                        BC_COUNT_A = Turn_count + 5;
-                                        embedB.setImage("https://i.imgur.com/r5KBPNF.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true && BC_B != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "發動戰鬥續行！";
-                                        Embed_battle(string);
-                                        BC_B = true;
-                                        BC_COUNT_B = Turn_count + 5;
-                                        embedB.setImage("https://i.imgur.com/r5KBPNF.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var Gang_Torture_Dance = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "跳起奇怪的舞蹈！" + first_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_A = 100;
-                                        embedB.setImage("https://i.imgur.com/KXwlAFv.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "跳起奇怪的舞蹈！" + second_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_B = 100;
-                                        embedB.setImage("https://i.imgur.com/KXwlAFv.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var Legendary_Super_Saiyan = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "變身成「傳說中的超級賽亞人」！" + first_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_A = 150;
-                                        embedB.setImage("https://i.imgur.com/U5oE6FM.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "變身成「傳說中的超級賽亞人」" + second_attack + "下一次的攻擊傷害上升了。";
-                                        Embed_battle(string);
-                                        Buff_B = 150;
-                                        embedB.setImage("https://i.imgur.com/U5oE6FM.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 3000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var I_REFUSE = function () {
-                            if (Round % 2 != 0) { //偶數
-                                if (world_First != true) {
-                                    client.setTimeout(function () {
-                                        string = first_attack + "：「但是我拒絕。」" + first_attack + "將免疫下一次的攻擊。";
-                                        Embed_battle(string);
-                                        evade_A = true;
-                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/178/131/588.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = second_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_First = false;
-                                        worldTimes = 0;
-                                        Round = 1;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            } else {
-                                if (world_Second != true) {
-                                    client.setTimeout(function () {
-                                        string = second_attack + "「但是我拒絕。」" + second_attack + "將免疫下一次的攻擊。";
-                                        Embed_battle(string);
-                                        evade_B = true;
-                                        embedB.setImage("https://i.kym-cdn.com/photos/images/newsfeed/001/178/131/588.gif");
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            embedB.setImage("");
-                                            healthTest();
-                                        }, 6000);
-                                    }, 1500);
-                                } else {
-                                    the_end_of_world = Math.floor(Math.random() * 100) + 1;
-                                    if (the_end_of_world <= 50 || worldTimes >= 3 && worldTimes != 0) {
-                                        string = first_attack + "：「時間恢復流動。」";
-                                        Embed_battle(string);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        world_Second = false;
-                                        worldTimes = 0;
-                                        Round = 2;
-                                        Battle_loop();
-                                    } else {
-                                        worldTimes += 1;
-                                        healthTest();
-                                    }
-                                }
-                            }
-                        };
-
-                        var SpecialSkill = function () {
-                            var RandomSkill = Math.floor(Math.random() * 9) + 1;
-                            if (RandomSkill == 1) {
-                                if (world_First != true && world_Second != true) {
-                                    za_warudo();
-                                } else {
-                                    Battle_loop();
-                                }
-                            } else if (RandomSkill == 2) {
-                                if (world_First != true && world_Second != true) {
-                                    za_warudo2();
-                                } else {
-                                    Battle_loop();
-                                }
-                            } else if (RandomSkill == 3) {
-                                if (world_First != true && world_Second != true) {
-                                    za_warudo3();
-                                } else {
-                                    Battle_loop();
-                                }
-                            } else if (RandomSkill == 4) {
-                                liar_no_taste();
-
-                            } else if (RandomSkill == 5) {
-                                You_have_to_be_stronger();
-
-                            } else if (RandomSkill == 6) {
-                                Battle_Contiune();
-
-                            } else if (RandomSkill == 7) {
-                                Gang_Torture_Dance();
-
-                            } else if (RandomSkill == 8) {
-                                Legendary_Super_Saiyan();
-
-                            } else if (RandomSkill == 9) {
-                                I_REFUSE();
-                            }
-                        };
-
-                        var Battle_loop = function () {
-                            var arr = msg.mentions.users.array();
-                            if (arr.length == 1 && msg.mentions.users.first().username == "尼祿祭NeroFestival") {
-                                const data = require("./NeroFes/Nero_NP.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var string1 = data["member"][X].line1;
-                                var string2 = data["member"][X].line2;
-                                var string3 = data["member"][X].line3;
-                                var string4 = data["member"][X].image;
-                                var duration = data["member"][X].duration;
-                                string = second_attack + string1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                client.setTimeout(function () {
-                                    string = second_attack + string2;
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        string = second_attack + string3;
-                                        Embed_battle(string);
-                                        embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            if (evade_A == true) {
-                                                Buff_B = 0;
-                                                Damage_caculate(0, 0, 0);
-                                                evade_A = false;
-                                            } else {
-                                                Damage_caculate(200000, 100000, 50000);
-                                            }
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                            Embed_battle(string);
-                                            embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                healthTest();
-                                            }, 2500);
-                                        }, duration);
-                                    }, 2500);
-                                }, 2500);
-                            } else if (arr.length == 2 && msg.mentions.users.has("547393124289216552")) {
-                                const data = require("./NeroFes/Nero_NP.json");
-                                var Datalength = data["member"].length;
-                                X = Math.floor(Math.random() * Datalength);
-                                var string1 = data["member"][X].line1;
-                                var string2 = data["member"][X].line2;
-                                var string3 = data["member"][X].line3;
-                                var string4 = data["member"][X].image;
-                                var duration = data["member"][X].duration;
-                                string = second_attack + string1;
-                                Embed_battle(string);
-                                msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                client.setTimeout(function () {
-                                    string = second_attack + string2;
-                                    Embed_battle(string);
-                                    msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                    client.setTimeout(function () {
-                                        string = second_attack + string3;
-                                        Embed_battle(string);
-                                        embedB.setImage(string4);
-                                        msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                        client.setTimeout(function () {
-                                            if (evade_A == true) {
-                                                Buff_B = 0;
-                                                Damage_caculate(0, 0, 0);
-                                                evade_A = false;
-                                            } else {
-                                                Damage_caculate(200000, 100000, 50000);
-                                            }
-                                            healthA = 0;
-                                            string = "對" + first_attack + "造成" + Damage + "點傷害。";
-                                            Embed_battle(string);
-                                            embedB.setImage();
-                                            msgBOT.edit(msgA + '\n' + msgB + '\n', embedB);
-                                            client.setTimeout(function () {
-                                                healthTest();
-                                            }, 2500);
-                                        }, duration);
-                                    }, 2500);
-                                }, 2500);
-                            } else {
-                                var skillOrAttack = Math.random() * 100 + 1;
-                                if ((healthA <= 100 && healthA != 0) || (healthB <= 100 && healthB != 0)) {
-                                    if (healthA <= 100) {
-                                        switchC = 1;
-                                    }
-                                    if (healthB <= 100) {
-                                        switchC = 2;
-                                    }
-                                    const data = require("./NeroFes/noble_phantasm.json");
-                                    var Datalength = data["member"].length;
-                                    X = Math.floor(Math.random() * Datalength);
-                                    var A = data["member"][X].line1;
-                                    var B = data["member"][X].line2;
-                                    if (data["member"][X].line3 == "") {
-                                        var C = "";
-                                    } else {
-                                        var C = data["member"][X].line3;
-                                    }
-                                    var D = data["member"][X].image;
-                                    var E = data["member"][X].duration;
-                                    np(A, B, C, D, E);
-                                } else if (skillOrAttack <= 40 && skillOrAttack > 0) {
-                                    SpecialSkill();
-                                } else {
-                                    const data = require("./NeroFes/skill.json");
-                                    var Datalength = data["member"].length;
-                                    X = Math.floor(Math.random() * Datalength);
-                                    var F = data["member"][X].line;
-                                    var G = data["member"][X].image;
-                                    var H = data["member"][X].basicDamage;
-                                    var J = data["member"][X].maximumCorrection;
-                                    var K = data["member"][X].minimumCorrection;
-                                    var L = data["member"][X].duration;
-                                    AA(F, G, H, J, K, L);
-                                }
-                            }
-
-                        };
-                        Battle_loop();
+                            collectorX.on('collect', (reaction, reactionCollector) => {
+                                msg.channel.send("已取消設定。")
+                            });
+                        });
                     });
-                    Buff_A = 0;
-                    Buff_B = 0;
-                    Debuff_A = 0;
-                    Debuff_B = 0;
-                    Turn_count = 0;
-                    BC_A = false;
-                    BC_B = false;
-                    BC_COUNT_A = 0;
-                    BC_COUNT_B = 0;
-                    healthA = 750;
-                    healthB = 750;
-                    evade_A = false;
-                    evade_B = false;
-                    worldTimes = 0;
-                    world_Second = false;
-                    world_First = false;
-                }, 1000);
+                }
+
+                if (msg.content == "--FGOQ CC:2") {
+                    msg.channel.send( "<@" + msg.author.id + "> " + "確定以此角色為最終角色？").then(async function (message) {
+                        await message.react('⭕')
+                        await message.react('❌')
+      
+                        var filterO = (reaction, user) => reaction.emoji.name === '⭕' && user.id === msg.author.id;
+                        var filterX = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
+
+                        const collectorO = message.createReactionCollector(filterO);
+
+                        const collectorX = message.createReactionCollector(filterX);
+
+
+                        collectorO.on('collect', (reaction, reactionCollector) => {
+                            var String = "SELECT secondcharacter WHERE EXISTS ( SELECT * WHERE id = '" + msg.author.id + "' ) LIMIT 1;";
+                            pool.query(String, (err, res) => {
+                                if (err) {
+                                    console.log(err.stack);
+                                    throw err;
+                                } else if ( typeof(res.rows[0]) != "undefined" ) {
+                                    var String = "UPDATE playerslist SET finalcharacter = secondcharacter WHERE id = '" + msg.author.id + "'";;
+                                    pool.query(String, (err, res) => {
+                                        if (err) {
+                                            console.log(err.stack);
+                                            throw err;
+                                        }
+                                        msg.channel.send("已確認設定，歡迎使用「--FGOQ Login」進入遊戲！")
+                                    });
+                                } else {
+                                    msg.channel.send( "<@" + msg.author.id + "> " + "尚未進行第二次角色創建。");
+                                }
+                            });
+
+                            collectorX.on('collect', (reaction, reactionCollector) => {
+                                msg.channel.send("已取消設定。")
+                            });
+                        });
+                    });
+                }
+
+                if (msg.content == "--FGOQ CC:3") {
+                    msg.channel.send( "<@" + msg.author.id + "> " + "確定以此角色為最終角色？").then(async function (message) {
+                        await message.react('⭕')
+                        await message.react('❌')
+      
+                        var filterO = (reaction, user) => reaction.emoji.name === '⭕' && user.id === msg.author.id;
+                        var filterX = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
+
+                        const collectorO = message.createReactionCollector(filterO);
+
+                        const collectorX = message.createReactionCollector(filterX);
+
+
+                        collectorO.on('collect', (reaction, reactionCollector) => {
+                            var String = "SELECT thirdcharacter WHERE EXISTS ( SELECT * WHERE id = '" + msg.author.id + "' ) LIMIT 1;";
+                            pool.query(String, (err, res) => {
+                                if (err) {
+                                    console.log(err.stack);
+                                    throw err;
+                                } else if ( typeof(res.rows[0]) != "undefined" ) {
+                                    var String = "UPDATE playerslist SET finalcharacter = thirdcharacter WHERE id = '" + msg.author.id + "'";;
+                                    pool.query(String, (err, res) => {
+                                        if (err) {
+                                            console.log(err.stack);
+                                            throw err;
+                                        }
+                                        msg.channel.send("已確認設定，歡迎使用「--FGOQ Login」進入遊戲！")
+                                    });
+                                } else {
+                                    msg.channel.send( "<@" + msg.author.id + "> " + "尚未進行第三次角色創建。");
+                                }
+                            });
+
+                            collectorX.on('collect', (reaction, reactionCollector) => {
+                                msg.channel.send("已取消設定。")
+                            });
+                        });
+                    });
+                }
+
+                if (msg.content == "--FGOQ CC:4") {
+                    msg.channel.send( "<@" + msg.author.id + "> " + "確定以此角色為最終角色？").then(async function (message) {
+                        await message.react('⭕')
+                        await message.react('❌')
+      
+                        var filterO = (reaction, user) => reaction.emoji.name === '⭕' && user.id === msg.author.id;
+                        var filterX = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
+
+                        const collectorO = message.createReactionCollector(filterO);
+
+                        const collectorX = message.createReactionCollector(filterX);
+
+
+                        collectorO.on('collect', (reaction, reactionCollector) => {
+                            var String = "SELECT fourthcharacter WHERE EXISTS ( SELECT * WHERE id = '" + msg.author.id + "' ) LIMIT 1;";
+                            pool.query(String, (err, res) => {
+                                if (err) {
+                                    console.log(err.stack);
+                                    throw err;
+                                } else if ( typeof(res.rows[0]) != "undefined" ) {
+                                    var String = "UPDATE playerslist SET finalcharacter = fourthcharacter WHERE id = '" + msg.author.id + "'";;
+                                    pool.query(String, (err, res) => {
+                                        if (err) {
+                                            console.log(err.stack);
+                                            throw err;
+                                        }
+                                        msg.channel.send("已確認設定，歡迎使用「--FGOQ Login」進入遊戲！")
+                                    });
+                                } else {
+                                    msg.channel.send( "<@" + msg.author.id + "> " + "尚未進行第四次角色創建。");
+                                }
+                            });
+
+                            collectorX.on('collect', (reaction, reactionCollector) => {
+                                msg.channel.send("已取消設定。")
+                            });
+                        });
+                    });
+                }
             }
-                if (switchA != false) {
-                    if ((msg.content.includes("--NeroFes")) && (msg.mentions.users != null) && (msg.content != "--NeroFes")) {
-                        Jesus_fucking_long();
-                    }
-                    if (msg.content == "--NeroFes") {
-                        Jesus_fucking_long();
-                    }
-                }
-                switchC = 0;
-            }
-        };
-        if (!msg.author.bot) {
-            if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/)) {
-                MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[+]([1-9][0-9]*|0)[,]([1-9])/);
-                strA = MatchData[1];
-                var varA = parseInt(MatchData[2]);
-                var varB = parseInt(MatchData[3]);
-                var varC = parseInt(MatchData[4]);
-                var varD = parseInt(MatchData[5]);
 
-                var stringA = "";
 
-                if (varD != 1) {
-                    for (i = 0; i < varD; i++) {
-                        if (i >= varD - 1) {
-                            stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
-                        } else if (i <= varD - 1) {
-                            stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC) + ", ";
-                        }
-                    }
-                    if (varD = 1) {
-                        if (stringA >= 90 && stringA < 100) {
-                            ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-                        } else if (stringA == 100) {
-                            ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-                        } else if (stringA <= 10 && stringA > 1) {
-                            ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-                        } else if (stringA == 1) {
-                            ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-                        } else {
-                            ResultStr = strA + " 擲出 " + stringA;
-                        }
-                    } else {
-                        ResultStr = strA + " 擲出 " + stringA;
-                    }
-                    msg.channel.send(ResultStr);
-                } else if (varD == 1) {
-                    stringA = (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
-                    if (stringA >= 90 && stringA < 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-                    } else if (stringA == 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-                    } else if (stringA <= 10 && stringA > 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-                    } else if (stringA == 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-                    } else {
-                        ResultStr = strA + " 擲出 " + stringA;
-                    }
-                    msg.channel.send(ResultStr);
-                }
 
-            } else if (msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/)) {
-                MatchData = msg.content.match(/--Dice[ ](.+)[ ]([1-9][0-9]*)[d]([1-9][0-9]*)[-]([1-9][0-9]*|0)[,]([1-9])/);
-                strA = MatchData[1];
-                var varA = parseInt(MatchData[2]);
-                var varB = parseInt(MatchData[3]);
-                var varC = parseInt(MatchData[4]);
-                var varD = parseInt(MatchData[5]);
+                
+if (!msg.author.bot) {
+    console.log(msg.author.username + " says:");
+    console.log(msg.content);
+}
 
-                var stringA = "";
-
-                for (i = 0; i < varD; i++) {
-                    if (i >= varD - 1) {
-                        stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
-                    } else if (i <= varD - 1) {
-                        stringA = stringA + (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC) + " ,";
-                    }
-                }
-                if (varD = 1) {
-                    if (stringA >= 90 && stringA < 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
-                    } else if (stringA == 100) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
-                    } else if (stringA <= 10 && stringA > 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
-                    } else if (stringA == 1) {
-                        ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
-                    } else {
-                        ResultStr = strA + " 擲出 " + stringA;
-                    }
-                } else {
-                    ResultStr = strA + " 擲出 " + stringA;
-                }
-                msg.channel.send(ResultStr);
-            }
-        }
-
-    if (!msg.author.bot) {
-        if (msg.content === "--Dice ?") {
-            msg.channel.send("```指令：--Dice 玩家暱稱[任何字元] 骰子最小值[數字]d骰子最大值[數字]+補正值[數字],次數[數字]```");
+if (!msg.author.bot && msg.author.id == 282187584484933634) {
+    if (msg.content.match(/--TRPGSay[ ](.+)[ ](\d*)/)) {
+        var MatchDataSay = msg.content.match(/--TRPGSay[ ](.+)[ ](\d*)/);
+        console.log(MatchDataSay);
+        var content = MatchDataSay[1];
+        var channelId = client.channels.get(MatchDataSay[2].toString());
+        if (typeof channelId != "undefined") {
+            channelId.startTyping();
+            setTimeout(function () {
+                channelId.send(content);
+            }, 1500*msg.content.length);
+            channelId.stopTyping();
+        } else {
+            msg.channel.send("發送失敗。");
         }
     }
+}
+
+if (!msg.author.bot) {
+    if (msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)[+]([1-9][0-9]*)/)) {
+        var MatchData = msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)[+]([1-9][0-9]*)/);
+        var strA = MatchData[1];
+        var varA = 1;
+        var varB = parseInt(MatchData[3]);
+        var varD = parseInt(MatchData[2]);
+        var varC = parseInt(MatchData[4]);
+
+        var stringA = "";
+
+        if (varD != 1) {
+            for (i = 0; i < varD; i++) {
+                if (i >= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1);
+                } else if (i <= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1) + ", ";
+                }
+            }
+            total = stringA.split(", ");
+            total_number = 0;
+            for (i = 0; i < total.length; i++) {
+                total_number += parseInt(total[i]);
+            }
+            total_number += varC;
+            ResultStr = strA + " 擲出 " + stringA + " ，總合是： " + total_number;
+            msg.channel.send(ResultStr);
+
+        } else if (varD == 1) {
+            stringA = (Math.floor(Math.random() * (varB - varA + 1)) + varA + varC);
+            if ((stringA >= 90 && stringA < 100 && varB == 100) || (stringA == 20 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+            } else if (stringA == 100 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+            } else if ((stringA <= 10 && stringA > 1 && varB == 100) || (stringA == 1 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+            } else if (stringA == 1 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+            } else {
+                ResultStr = strA + " 擲出 " + stringA;
+            }
+            msg.channel.send(ResultStr);
+        }
+
+    } else if (msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)[-]([1-9][0-9]*)/)) {
+        var MatchData = msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)[-]([1-9][0-9]*)/);
+        var strA = MatchData[1];
+        var varA = 1;
+        var varB = parseInt(MatchData[3]);
+        var varD = parseInt(MatchData[2]);
+        var varC = parseInt(MatchData[4]);
+
+        var stringA = "";
+
+        if (varD != 1) {
+            for (i = 0; i < varD; i++) {
+                if (i >= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1);
+                } else if (i <= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1) + ", ";
+                }
+            }
+            total = stringA.split(", ");
+            total_number = 0;
+            for (i = 0; i < total.length; i++) {
+                total_number += parseInt(total[i]);
+            }
+            total_number -= varC;
+            ResultStr = strA + " 擲出 " + stringA + " ，總合是： " + total_number;
+            msg.channel.send(ResultStr);
+
+        } else if (varD == 1) {
+            stringA = (Math.floor(Math.random() * (varB - varA + 1)) + varA - varC);
+            if ((stringA >= 90 && stringA < 100 && varB == 100) || (stringA == 20 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+            } else if (stringA == 100 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+            } else if ((stringA <= 10 && stringA > 1 && varB == 100) || (stringA == 1 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+            } else if (stringA == 1 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+            } else {
+                ResultStr = strA + " 擲出 " + stringA;
+            }
+            msg.channel.send(ResultStr);
+        }
+
+    } else if (msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)/)) {
+        var MatchData = msg.content.match(/--[Dice|dice|DICE]{4}[ ](.+)[ ]([1-9])[d]([1-9][0-9]*)/);
+        var strA = MatchData[1];
+        var varA = 1;
+        var varB = parseInt(MatchData[3]);
+        var varD = parseInt(MatchData[2]);
+
+        var stringA = "";
+
+        if (varD != 1) {
+            for (i = 0; i < varD; i++) {
+                if (i >= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1);
+                } else if (i <= varD - 1) {
+                    stringA = stringA + (Math.floor(Math.random() * varB) + 1) + ", ";
+                }
+            }
+            total = stringA.split(", ");
+            total_number = 0;
+            for (i = 0; i < total.length; i++) {
+                total_number += parseInt(total[i]);
+            }
+            ResultStr = strA + " 擲出 " + stringA + " ，總合是： " + total_number;
+            msg.channel.send(ResultStr);
+
+        } else if (varD == 1) {
+            stringA = (Math.floor(Math.random() * (varB - varA + 1)) + varA);
+            if ((stringA >= 90 && stringA < 100 && varB == 100) || (stringA == 20 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大失敗！(σ′▽‵)′▽‵)σ";
+            } else if (stringA == 100 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大失敗！(☞ﾟ∀ﾟ)ﾟ∀ﾟ)☞";
+            } else if ((stringA <= 10 && stringA > 1 && varB == 100) || (stringA == 1 && varB == 20)) {
+                ResultStr = strA + " 擲出 " + stringA + "，大成功！d(`･∀･)b";
+            } else if (stringA == 1 && varB == 100) {
+                ResultStr = strA + " 擲出 " + stringA + "，極☆大成功！⎝༼ ◕▽◕ ༽⎠";
+            } else {
+                ResultStr = strA + " 擲出 " + stringA;
+            }
+            msg.channel.send(ResultStr);
+        }
+
+    } else if (msg.content.match(/--FGO[ ](B|A|Q)(B|A|Q)(B|A|Q)(B|A|Q)(B|A|Q)/)) {
+        var MatchData = msg.content.match(/--FGO[ ](B|A|Q)(B|A|Q)(B|A|Q)(B|A|Q)(B|A|Q)/);
+        console.log(MatchData);
+        var Card = [MatchData[1], MatchData[2], MatchData[3], MatchData[4], MatchData[5]];
+        console.log(Card);
+        var ReArray = [];
+        var FGOTimes = 1;
+        while (FGOTimes < 4) {
+            var result = Math.floor(Math.random() * 5) + 1;
+            if (ReArray.indexOf(result) == -1) {
+                ReArray[FGOTimes - 1] = result;
+                FGOTimes += 1;
+                console.log(ReArray);
+            }    
+        }
+        msg.reply("本回合卡片：" + Card[ReArray[0] - 1] + "、" + Card[ReArray[1] - 1] + "、" + Card[ReArray[2] - 1]);
+    }
+}
+    
+
+if (!msg.author.bot) {
+    if (msg.content === "--Dice ?") {
+        msg.channel.send("```指令：--Dice 擲骰理由[任何字元] 骰子數量[數字]d骰子最大值[數字]+總合補正[數字]```");
+    }
+}
+
+if (!msg.author.bot && msg.channel.type == "text") {
+    if (!msg.author.bot && msg.content == "給我上BUFF" && msg.guild.id == 554169939263750144) {
+        msg.react(msg.guild.emojis.get('555012424504311808'));
+        msg.react(msg.guild.emojis.get('555012344955142144'));
+        msg.react(msg.guild.emojis.get('555012311140532235'));
+        msg.react(msg.guild.emojis.get('555012408435933184'));
+        msg.react(msg.guild.emojis.get('555012390169608192'));
+        msg.react(msg.guild.emojis.get('555021337735725066'));
+        msg.react(msg.guild.emojis.get('555021319503216661'));
+        msg.react(msg.guild.emojis.get('555012329364783104'));
+        msg.react(msg.guild.emojis.get('555012374424322060'));
+        msg.react(msg.guild.emojis.get('555021392161013772'));
+    }
+    if (!msg.author.bot && msg.content.includes("給他上BUFF") && msg.guild.id == 554169939263750144) {
+        var messageOther = msg.mentions.members.first().lastMessage;
+        function check_if_null1() {
+            if (messageOther == null) {
+                client.setTimeout(function () {
+                    check_if_null1();
+                }, 1000);
+            } else {
+                client.setTimeout(function () {
+                    messageOther.react(msg.guild.emojis.get('555012424504311808'));
+                    messageOther.react(msg.guild.emojis.get('555012344955142144'));
+                    messageOther.react(msg.guild.emojis.get('555012311140532235'));
+                    messageOther.react(msg.guild.emojis.get('555012408435933184'));
+                    messageOther.react(msg.guild.emojis.get('555012390169608192'));
+                    messageOther.react(msg.guild.emojis.get('555021337735725066'));
+                    messageOther.react(msg.guild.emojis.get('555021319503216661'));
+                    messageOther.react(msg.guild.emojis.get('555012329364783104'));
+                    messageOther.react(msg.guild.emojis.get('555012374424322060'));
+                    messageOther.react(msg.guild.emojis.get('555021392161013772'));
+                }, 1000);
+            }
+        }
+        check_if_null1();
+    }
+    if (!msg.author.bot && msg.content == "給我上BUFF" && msg.guild.id != 554169939263750144) {
+        var emojis_array = msg.guild.emojis.random(10);
+        for (i = 0; i < 9; i++) {
+            msg.react(emojis_array[i]);
+        }
+    }
+    if (!msg.author.bot && msg.content.includes("給他上BUFF") && msg.guild.id != 554169939263750144) {
+        var messageOther = msg.mentions.members.first().lastMessage;
+        function check_if_null2() {
+            if (messageOther == null) {
+                client.setTimeout(function () {
+                    check_if_null2();
+                }, 1000);
+            } else {
+                client.setTimeout(function () {
+                    var emojis_array = msg.guild.emojis.random(10);
+                    for (i = 0; i < 9; i++) {
+                        messageOther.react(emojis_array[i]);
+                    }
+                }, 1000);
+            }
+        }
+        check_if_null2();
+    }
+    if (!msg.author.bot && msg.content.includes("說你快樂就快樂")) {
+        var messageOther = msg.mentions.members.first().lastMessage;
+        function check_if_null3() {
+            if (messageOther == null) {
+                client.setTimeout(function () {
+                    check_if_null3();
+                }, 1000);
+            } else {
+                client.setTimeout(function () {
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "HappyShake"));
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "HappyPills"));
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "GAY"));
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "EvilPatrick"));
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "TrollFace"));
+                    messageOther.react(client.emojis.find(emoji => emoji.name === "AAAAH"));
+                }, 1000);
+            }
+        }
+        check_if_null3();
+    }
+    if (!msg.author.bot && msg.content == "快樂") {
+        msg.react(client.emojis.find(emoji => emoji.name === "HappyShake"));
+        msg.react(client.emojis.find(emoji => emoji.name === "HappyPills"));
+        msg.react(client.emojis.find(emoji => emoji.name === "GAY"));
+        msg.react(client.emojis.find(emoji => emoji.name === "EvilPatrick"));
+        msg.react(client.emojis.find(emoji => emoji.name === "TrollFace"));
+        msg.react(client.emojis.find(emoji => emoji.name === "AAAAH"));
+    }
+
+    if (!msg.author.bot && msg.content == "軍師的指揮 EX" && msg.guild.id != 554169939263750144) {
+        var guild = client.guilds.get("554169939263750144");
+        msg.react(guild.emojis.get('555012424504311808'));
+        msg.react(guild.emojis.get('555012344955142144'));
+        msg.react(guild.emojis.get('555012311140532235'));
+        msg.react(guild.emojis.get('555012408435933184'));
+        msg.react(guild.emojis.get('555012390169608192'));
+        msg.react(guild.emojis.get('555021337735725066'));
+        msg.react(guild.emojis.get('555021319503216661'));
+        msg.react(guild.emojis.get('555012329364783104'));
+        msg.react(guild.emojis.get('555012374424322060'));
+        msg.react(guild.emojis.get('555021392161013772'));
+    }
+}
+
+if (!msg.author.bot && msg.channel.type == "text" && msg.content === "--Flag") {
+    var Flag = []
+    Flag = [
+    '「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」',
+    '「打完這一仗後我請你喝酒！」',
+    '「你、你要錢嗎！要什麼我都能給你！」',
+    '「誰雇用你的！出多少錢！？我出兩倍，不、三倍的錢！」',
+    '「做完這次任務，我就要結婚了。」',
+    '「幹完這一票我就金盆洗手了。」',
+    '「戰鬥力只有5的渣渣！」',
+    '「已經沒什麼好害怕的了（もう何も恐くない）……」',
+    '「我一定會回來的（必ず帰る）。」',
+    '「差不多該走了……」',
+    '「我只是希望你永遠不要忘記我。」',
+    '「我只是希望能永遠和你在一起。」',
+    '「啊啊……為什麼會在這種時候、想起了那些無聊的事呢？」',
+    '「能遇見你真是太好了。」',
+    '「我終於…為你們報仇了！」',
+    '「等到一切結束後，我有些話想跟妳說！」',
+    '「這段時間我過的很開心啊。」',
+    msg.member.displayName + '把自己的寶物借給其他人，然後說了：「待一切結束後記得還給我。」',
+    '「真希望這份幸福可以永遠持續下去。」',
+    '「我們三個人要永永遠遠在一起！」',
+    '「這是我女兒的照片，很可愛吧？」',
+    '「請告訴他，我永遠愛他……」',
+    '「聽好，在我回來之前絕不要亂走動哦（いいか、俺が帰ってくるまでここを動くんじゃないぞ）。」',
+    '「要像一個乖孩子一樣等著我回來。」',
+    '「我去去就來（先に行って、すぐ戻るから）。」',
+    '「快逃！(逃げろう！)」',
+    '「對方只有一個人，大家一起上啊」',
+    '「我就不信，這麼多人還殺不了他一個！」',
+    '「幹，幹掉了嗎？（やったのか？）」',
+    '「身體好輕……」',
+    '「可惡！你給我等著！」',
+    '「躲在這裡就應該不會被發現了吧。」',
+    '「我不會讓任何人死的。」',
+    '「可惡！原來是這麼回事！」',
+    '「跑這麼遠應該就行了。」',
+    '「我已經甚麼都不怕了（もう何も恐くない）。」',
+    '「這是什麼，怎麼之前沒見過？」',
+    '「什麽聲音……？就去看一下吧（「何の音だ？ちょっと見てくる」）」',
+    '「是我的錯覺嗎？可能是我看錯了。」',
+    '「是我的錯覺嗎？可能是我聽錯了。」',
+    '「果然是錯覺吧，可能是我聽錯了。」',
+    '「果然是錯覺吧，可能是我看錯了。」',
+    '「二十年後又是一條好漢！」',
+    '「' + msg.member.displayName + '，祝武運昌隆。」',
+    '「這次工作的報酬是以前無法比較的」',
+    '「我才不要和罪犯待在一起，我回自己的房間去了！（この中に殺人者がいるかもしれないのに、一緒に居られるか!俺は自分の部屋に戻るぞ！）」',
+    '「一切的謎題都解開了！」',
+    '「我已經天下無敵了～～」',
+    '「大人！這邊就交給小的吧，請快離開這邊吧」',
+    '「這就是我們流派的最終奧義。這一招我只會演示一次，你看好了！」',
+    '「誰敢殺我？」',
+    '「從來沒有人能越過我的劍圍。」',
+    '「看我塔下強殺！」',
+    '「騙人的吧，我們不是朋友嗎？」',
+    '「我老爸是……你有種就……」',
+    '「我可以好好利用這件事。」',
+    '「就算我不在了，靈魂也會陪伴在你身邊。」',
+    '「啊哩？懷錶停掉了，明明剛才才上過發條的。」',
+    '「既然說是要拖延對方的話，那麼把那傢伙打倒也沒關係吧？」',
+    '「從這邊出去之後，我要寫很多很多的信。」',
+    '「我出門了～」',
+    '「過了明天就沒事了。」',
+    '「出來混，遲早要還的。」',
+    '「你的生命值已經猶如風中殘燭了。」',
+    '「看來沒死過一次是不會瞭解的呢。」',
+    '「我讓你連後悔自己死的時間都沒有！」',
+    '「這就是我最後的波紋！」',
+    '「成功了……結束了……『白金之星』終究還是被我的『世界』所擊敗了……」',
+    '「我要過著平靜安逸的生活……我要活得比任何人都更加幸福……！」',
+    '「將體內的空氣排出，利用那壓差阻力改變軌道，回到地球！」',
+    '「放心，這艘船非常堅固，絕對不可能沉沒的！」',
+    '「今天真是和平啊……」',
+    '「我在大都等你！」',
+    '「Lancer，' + msg.member.displayName + '，接受召喚現界。」',
+    '「我走這邊，你去那邊看看。」',
+    '「儘管喊破喉嚨吧，沒有人會來救你的！」',
+    '「我去去就來。」',
+    '「我買幾個橘子去，你就在此地，不要走動。」',
+    '「明明什麼都沒有啊？」',
+    '「我累了，讓我先睡一會兒。」'
+    ];
+    Flag_random = Math.floor(Math.random() * Flag.length) - 1;
+    console.log(Flag_random);
+    console.log(Flag[Flag_random]);
+    msg.channel.send(Flag[Flag_random]);
+}
+}
 });
 
-client.login('NTQ3MzkzMTI0Mjg5MjE2NTUy.D1gz9A.9R39fXCcoRcF5QJhqHAGPvHdo3s'); //2號機
+client.login('NTQ1MTc4Mzk1NzcyNzE1MDE5.D2dxtQ.EHNtmH9ehUmDWgbFoafbk2pSj70');
